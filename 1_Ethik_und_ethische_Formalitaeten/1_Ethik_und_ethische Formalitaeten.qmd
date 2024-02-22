@@ -1,0 +1,75 @@
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Analyse und Dokumentation
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie SoSe 2024
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Design, Analyse, Dokumentation](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Herzlich Willkommen!{.plain} 
+\huge
+\center
+\vfill
+Herzlich willkommen!
+\vfill
+
+
+
+
+# (1) Ethik und ethische Formalitäten - Titelfolie {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Ethik und ethische Formalitäten}
+\vfill
+
+
+# TODO: Termine einfügen
+
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+Formalia
+
+TOP 2
+
+TOP 3
+
+
+
+# Formalia ===================================== {.plain}
+\AtBeginSection{}
+\section{Formalia}
+
+\large
+\vfill
+\setstretch{2.5}
+
+**TOPIC 1**
+
+TOPIC 2
+TOPIC 3
+
+
+
+
+# Selbstkontrollfragen?
+

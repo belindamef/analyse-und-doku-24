@@ -1,0 +1,476 @@
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Analyse und Dokumentation
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie SoSe 2024
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Design, Analyse, Dokumentation](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Herzlich Willkommen!{.plain} 
+\huge
+\center
+\vfill
+Herzlich willkommen!
+\vfill
+
+
+# (3) Offenheit und Transparenz - Titelfolie {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(3) Offenheit und Transparenz}
+\vfill
+
+
+# TODO: Termine einfügen
+
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+Motivation
+
+Methodentransparenz und Datentransparenz
+
+
+# Formalia ===================================== {.plain}
+\AtBeginSection{}
+\section{Formalia}
+
+\large
+\vfill
+\setstretch{2.5}
+
+**Motivation**
+
+Methodentransparenz und Datentransparenz
+
+
+# TOOD: Restliche Agendas noch einfügen: 
+
+
+# Ab hier vD
+
+
+#
+\vfill
+\setstretch{4}
+\large
+**Motivation**
+
+Methodentransparenz und Datentransparenz
+\vfill
+
+
+# Motivation
+\vfill
+\center
+\vspace{8mm}
+![](../Abbildungen/dad_6_nature_cartoon.pdf){width=80%}
+\vfill
+\flushright
+\tiny
+@chambers2019
+
+# Motivation
+\large 
+Das Replizierbarkeitskrisennarrativ
+
+\normalsize
+
+Psychologie – 64 von 100 Studien nicht replizierbar 
+
+* @openscience2015 
+
+Nulleffekte in preregistrierten Replizierbarkeitsstudien 
+
+* @hagger2016, @wagenmakers2017, @odonnell2018
+
+Vehaltensökonomie – 7 von 18  Studien nicht replizierbar 
+
+* @camerer2016
+
+Biologie – 47 von 53 Studien nicht replizierbar 
+
+* @begley2012
+
+Reproduzierbarkeitskrise in Machine-Learning-basierter Wissenschaft 
+
+* @kapoor2022
+
+
+# Motivation
+\large 
+Das Replizierbarkeitskrisennarrativ
+
+\center
+\vspace{3mm}
+![](../Abbildungen/dad_6_baker.pdf){width=50%}
+\vfill
+\flushright
+\tiny
+@baker2016
+
+# Motivation
+\large 
+Das Replizierbarkeitskrisennarrativ
+
+\center
+\vspace{3mm}
+![](../Abbildungen/dad_6_fanelli.pdf){width=60%}
+\vfill
+\flushright
+\tiny
+@fanelli2018
+
+# Motivation
+\large 
+Das Replizierbarkeitskrisennarrativ
+
+\center
+\vspace{3mm}
+![](../Abbildungen/dad_6_elsevier_1.pdf){width=60%}
+\vfill
+\flushright
+\tiny
+\url{https://www.elsevier.com/connect/trust-in-research} (2019)
+
+# Motivation
+\large 
+Das Replizierbarkeitskrisennarrativ
+
+\center
+\vspace{3mm}
+![](../Abbildungen/dad_6_elsevier_2.pdf){width=60%}
+\vfill
+\flushright
+\tiny
+\url{https://www.elsevier.com/connect/trust-in-research} (2019)
+
+
+# Motivation
+\large 
+Das Replizierbarkeitskrisennarrativ
+
+\center
+\vspace{3mm}
+![](../Abbildungen/dad_6_ritchie.pdf){width=40%}
+\vfill
+\flushright
+\tiny
+@ritchie2020
+
+
+
+#
+\vfill
+\setstretch{4}
+\large
+Motivation
+
+**Methodentransparenz und Datentransparenz**
+\vfill
+
+# Methodentransparenz und Datentransparenz
+Ausgangslage
+
+* Academia ist mehr an spannenden Resultaten als an sorgfältiger Arbeit interessiert.
+* Academia interessiert sich wenig für die eigentliche Arbeit, sondern die Resultate.
+* Academia liebt komplexe Analysen ohne den Anspruch, sie verstehen zu wollen.
+* Academia mag keine Nullergebnisse.
+
+Konsequenzen
+
+* Publizierte Resultate sind oft nicht reproduzierbar und aufbaufähig.
+* Ressourcenverschwendung.
+* Geringes innerakademisches Vertrauen in publizierte Resultate. 
+* Gefahr des geringen extraakademischen Vertrauens in publizierte Resultate.
+
+Lösung
+
+* Gewährleistung von Reproduzierbarkeit durch Methoden- und Datentransparenz.
+
+# Methodentransparenz und Datentransparenz
+\large
+Replizierbarkeit
+
+\normalsize
+Andere Wissenschaftler:innen nutzen andere (neue) Daten und potentiell 
+andere Methoden und kommen zur gleichen Schlußfolgerung wie eine Originalstudie.
+
+$\Rightarrow$ Abhängig von den wahren, aber unbekannten, Parametern.
+
+$\Rightarrow$ Unbeinflussbar
+
+\vspace{3mm}
+\large
+Reproduzierbarkeit
+
+\normalsize
+Andere Wissenschaftler:innen nutzen die gleichen Daten und die gleichen 
+Datenanalysemethoden und erhalten die gleichen Resultate (cf. @peng2011).
+
+$\Rightarrow$ Abhängig von der Sorgfältigkeit der wissenschaftlichen Arbeit
+
+$\Rightarrow$ Beinflussbar
+
+$\Rightarrow$ Menschen machen Fehler  
+
+# Methodentransparenz und Datentransparenz
+
+\center
+\vfill
+![](../Abbildungen/dad_6_methoden_und_daten_transparenz.pdf){width=100%}
+\vfill
+
+# Methodentransparenz und Datentransparenz
+
+Wissenschaftliche Qualitätssicherung
+
+* Pre- und Postpublikations-Mehraugenprinzip
+* Reproduzierbarkeit bei identischen Daten und Analysen gesichert
+* Replikationspotential für neue Daten und Analysen erhöht
+
+Nachhaltigkeit
+
+* Möglichkeit der Datenwiederverwendung in neuen Kontexten 
+* Maximierung der Anzahl experimenteller Einheiten
+* Ermöglichung automatisierter Metaanalysen
+
+Ethischer Imperativ
+
+* Respekt im Umgang mit öffentlichen Geldern
+* Respekt für die Beiträge von Forschungspersonen
+* Minimierung von Forschungsrisiken 
+
+# Methodentransparenz und Datentransparenz
+\setstretch{2}
+\large
+Kernaspekte der Methodentransparenz
+\normalsize
+
+* Computercode als ausführlichste Form der Dokumentation
+* Referenzierung datenanalytischer Skripte in Methods und Results Sections
+* Verfügbarkeit zum Zeitpunkt der Veröffentlichung (Preprint/Journal Submission)
+
+Vorbedingungen
+
+* Automatisierte Datenanalyse von Rohdaten zu Abbildungen und Tabellen
+* Lesbarer, gut-strukturierter und extensiv kommentierter Code
+* Verzicht auf Variablennamen mit persönlichkeitsrelevanten Merkmalen
+
+# Methodentransparenz und Datentransparenz
+\setstretch{2}
+\large
+Kernaspekte der Datentransparenz
+\normalsize
+
+* Digitale Rohdaten als ausführlichste Form der Datengrundlage
+* Formatierung anhand akzeptierter Datenstandards
+* Verfügbarkeit zum Zeitpunkt der Veröffentlichung (Preprint/Journal Submission)
+
+Vorbedingungen
+
+* Vorliegen digitaler Rohdaten
+* Verfügbarkeit von Speicherplatz
+* Respekt datenschutzrechtlicher Belange
+
+
+# Methodentransparenz und Datentransparenz
+\large
+Repositorien
+
+\normalsize
+[\textcolor{blue}{Open Science Framework}](https://osf.io/)
+
+* Nichtkommerzielles Datenrepositorium 
+* Projektarchivierung bei Preprint/Journal Submission/Revision
+* Seit 2020 beschränkter Speicherplatz pro Projekt
+
+[\textcolor{blue}{GitHub}](https://github.com/)
+
+* Kommerzieller Dienst zur Versionsverwaltung für Software-Entwicklungsprojekte.
+* Kollaborative Softwareentwicklung (Track Changes)
+* Oft irrtümlich zur Analysecodearchivierung benutzt
+
+[\textcolor{blue}{Forschungsdatenzentrum des ZPID}](https://rdc-psychology.org/de/homepage-deutsch)
+
+* Digitales Forschungsdatenzentrum für die psychologische Forschung
+* Teil der öffentlich finanzierten Leibniz-Gemeinschaft
+* Unterstützung bei Dokumentation und Archivierung als kostenpflichtige Services
+
+
+# Methodentransparenz und Datentransparenz
+\setstretch{2}
+\large
+Datenstandards
+\normalsize
+
+[\textcolor{blue}{Brain Imaging Data Structure}](https://bids-specification.readthedocs.io/en/stable/)
+
+* Datenstandard für Neuroimaging- und Verhaltensdaten
+* Stetige Weiterentwicklung auf weitere Datenmodalitäten
+* @gorgolewski2016
+
+[\textcolor{blue}{PsyCuraDat}](https://leibniz-psychology.org/institut/drittmittelprojekte/psycuradat/)
+
+* Datenstandard für psychologische Daten
+* Zur Zeit noch in der Entwicklung
+* @blask2021
+
+# Methodentransparenz und Datentransparenz
+\large
+Datenschutzrechtliche Aspekte
+
+\normalsize
+Psychologische Daten sind in aller Regel sensible humane Daten
+
+Datenschutzrechtliche Belange müssen respektiert werden
+
+Das Datenschutzrecht gliedert sich in 
+
+\small
+* EU Datenschutzgrundverordnung (DGSVO) [EU2016/679]
+* Bundesdatenschutzgesetz (BDSG)
+* Datenschutzgesetze der Bundesländer
+
+\normalsize
+Psychologische Daten fallen in aller Regel unter personenbezogene Daten
+
+\small
+
+"Alle Informationen, die sich auf eine identifizierte oder identifizierbare 
+natürliche Person beziehen; als identifizierbar wird eine natürliche Person 
+angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer 
+Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer 
+Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck 
+der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, 
+kulturellen oder sozialen Identität dieser natürlichen Person sind, 
+identifiziert werden kann"
+
+# Methodentransparenz und Datentransparenz
+\large
+Datenschutzrechtliche Aspekte
+
+\center
+\vfill
+![](../Abbildungen/dad_6_datenschutzabwägung.pdf){width=60%}
+\vfill
+
+
+# Methodentransparenz und Datentransparenz
+\large
+Datenschutzrechtliche Aspekte
+
+\center
+Möglichkeiten der Datentransparenz beim Umgang mit humanen Daten
+
+\vfill
+![](../Abbildungen/dad_6_data_sharing.pdf){width=80%}
+\vfill
+
+# Methodentransparenz und Datentransparenz
+\large
+Public Sharing
+
+\normalsize
+
+Datenbereitstellung auf weltweit frei zugänglichen Datenplattformen
+
+* Allgemeiner Datenzugang für alle Formen der Datennutzung
+
+Vorteile
+
+* Einfach
+* Etabliert 
+* Ressourcen sensibel
+
+Nachteile
+
+* Unwiderruflich 
+* Gefahr des Datenmissbrauchs
+* Unklarer datenschutzrechtlicher Stand (DSGVO)
+
+# Methodentransparenz und Datentransparenz
+\large
+Restricted sharing
+
+\normalsize
+
+* Datenzugangsregelung mithilfe von Data Use Agreements
+
+Vorteile
+
+* Risikominimierung
+* Klare Verantwortlichkeiten
+* Teilweise etabliert
+
+Nachteile
+
+* Restriktiv
+* Verantwortlichkeit auf Seiten der Wissenschaftler:innen
+* Paternalistisch
+
+# Methodentransparenz und Datentransparenz
+\large
+Dynamic sharing 
+
+\normalsize
+
+* Proband:innenzentrierte Datenplattformen
+* Datenzugangsregulation und Monetarisierung durch Proband:innen
+
+Vorteile
+
+* Digitales Empowerment
+* Klare Verantwortlichkeiten
+* Zukunftsorientiert
+
+
+Nachteile
+
+* Drop-out
+* Nicht etabliert
+* Ressourceintensiv
+
+# Methodentransparenz und Datentransparenz
+
+\large
+Dynamic Sharing 
+
+\center
+\vfill
+![](../Abbildungen/dad_6_midata_logo.png){width=40%}
+
+![](../Abbildungen/dad_6_midata_scheme.png){width=80%}
+\vfill
+
+# Methodentransparenz und Datentransparenz
+\center
+\vfill
+\vspace{5mm}
+![](../Abbildungen/dad_6_open_science.png){width=55%}
+
+[\textcolor{blue}{Pillars of Open Science, UNESCO (2021)}](https://unesdoc.unesco.org/ark:/48223/pf0000379949/PDF/379949eng.pdf.multi)
+\vfill
+
+# Referenzen
+\tiny
+\setstretch{1.2}

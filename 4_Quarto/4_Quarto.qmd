@@ -1,0 +1,256 @@
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Analyse und Dokumentation
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie SoSe 2024
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Design, Analyse, Dokumentation](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Herzlich Willkommen!{.plain} 
+\huge
+\center
+\vfill
+Herzlich willkommen!
+\vfill
+
+
+
+
+# (4) Quarto - Titelfolie {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(4) Quarto}
+\vfill
+
+
+# TODO: Termine einfügen
+
+
+# ab hier vD
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+
+Quarto
+
+Referenzmanager
+
+Berichte und Präsentationen mit Quarto
+
+
+# ToDo
+
+* noch alle AGENDAs einfügen
+
+# Formalia ===================================== {.plain}
+\AtBeginSection{}
+\section{Quarto}
+
+\large
+\vfill
+\setstretch{2.5}
+
+
+**Quarto**
+
+Referenzmanager
+
+Berichte und Präsentationen mit Quarto
+
+
+
+
+# ab hier vD
+
+
+
+# Quarto
+\textcolor{darkblue}{Was ist Quarto?}
+
+\center
+\vfill
+![](../Abbildungen/dad_7_quarto_1.pdf){width=90%}
+\vfill
+
+
+# Quarto
+\setstretch{2.3}
+\textcolor{darkblue}{Was ist Quarto?}
+
+\small
+
+* Ein seit 2022 verfügbares freies wissenschaftlich-technisches Publikationssystem
+* Eine Weiterentwicklung von [\textcolor{darkblue}{RMarkdown}](https://rmarkdown.rstudio.com/) und [\textcolor{darkblue}{RBookdown}](https://bookdown.org/) durch [\textcolor{darkblue}{Posit}](https://posit.co/) 
+* RMarkdown/RBookdown sind RStudio Adaptationen von [\textcolor{darkblue}{Markdown}](https://www.markdownguide.org/) und [\textcolor{darkblue}{Jupyter Notebooks}](https://jupyter.org/)
+* Allgemeines Ziel ist hier die einfache Integration von ausführbarem Programmiercode 
+in ein ansprechendes Text-, Tabellen- und Abbildungslayout für Web- und Printdokumente.
+* Quarto nutzt  [\textcolor{darkblue}{Markdown}](https://www.markdownguide.org/) und [\textcolor{darkblue}{Latex}](https://www.latex-project.org/) für Layoutprozesse.
+* Quarto nutzt [\textcolor{darkblue}{Pandoc}](https://pandoc.org/) für multiple Outputformate (.html, .docx, .pdf, etc.)
+* Quarto läuft smoother und schneller als RMarkdown und RBookdown.
+
+
+# Quarto
+\textcolor{darkblue}{Wie bekomme ich Quarto?}
+
+\center
+\vfill
+![](../Abbildungen/dad_7_quarto_2.pdf){width=90%}
+\vfill
+
+# Quarto
+\textcolor{darkblue}{Wie benutze ich Quarto in VSCode?}
+
+\center
+\vfill
+![](../Abbildungen/dad_7_quarto_3.pdf){width=90%}
+\vfill
+
+# Quarto
+\textcolor{darkblue}{Was ist Markdown?}
+\small
+
+* Eine Markup Language (Auszeichnungssprache) zur Erzeugung formatierten Texts 
+* Eine HTML Alternative zur Erstellung von Webseiten etc. mithilfe einfacher Texteditoren
+* Von John Gruber und Aaron Swartz 2004 mit dem Ziel hoher Lesbarkeit entwickelt  
+
+\center
+\vfill
+![](../Abbildungen/dad_7_markdown.pdf){width=70%}
+\vfill
+
+
+# Quarto
+\textcolor{darkblue}{Was ist LaTeX?}
+\setstretch{1.6}
+\small
+
+* Ein Softwarepaket zur Vereinfachung von [\textcolor{darkblue}{TeX}](https://ctan.org/tex?lang=en)
+* [\textcolor{darkblue}{TeX}](https://ctan.org/tex?lang=en) ist ein von Donald E. Knuth ab 1977 entwickeltes Textsatzsystem mit Makrosprache
+* LaTeX wurde von Leslie Lamport Anfang 1984 entwickelt 
+* LaTeX ist insbesondere für mathematische Berichte und Präsentationen (Beamer) nützlich
+
+\vspace{2mm}
+\center
+![](../Abbildungen/dad_7_latex_1.pdf){width=60%}
+
+$\Downarrow$
+
+![](../Abbildungen/dad_7_latex_2.pdf){width=60%}
+
+# Quarto
+\textcolor{darkblue}{Was ist Pandoc?}
+
+\small
+* [\textcolor{darkblue}{Pandoc}](https://pandoc.org/) ist eine kostenlose Document Conversion Software von John MacFarlane  
+* [\textcolor{darkblue}{Pandoc}](https://pandoc.org/) ist in die Quarto Engine integriert
+* Einige von [\textcolor{darkblue}{Pandocs}](https://pandoc.org/) Konvertierungsoptionen sind im Folgenden aufgeführt
+
+\center
+![](../Abbildungen/dad_7_pandoc.pdf){width=40%}
+
+
+
+# Quarto
+\textcolor{darkblue}{Wie benutze ich Quarto?}
+
+
+\center
+\vfill
+![](../Abbildungen/dad_7_quarto_4.pdf){width=60%}
+\vfill
+
+# 
+\vfill
+\setstretch{3}
+\large
+
+VSCode
+
+Quarto
+
+**Referenzmanager**
+
+Berichte und Präsentationen mit Quarto
+\vfill
+
+# Reference Manager
+\textcolor{darkblue}{Was ist ein Reference Manager?}
+\setstretch{2.7}
+
+\small
+
+* Reference Manager sind Literaturverwaltungsprogramme
+* Reference Manager unterstützen Zitationen und das Erstellen von Literaturverzeichnissen 
+* Zitierstile können automatisch auf bestimmte Spezifikationen (z.B. APA) eingestellt werden
+* Reference Manager dienen auch als digitale Bibliotheken
+* Kommerzielle Reference Manager sind z.B. EndNote, Citavi, Mendeley und Papers
+* Kostenlose/Freemium Reference Manager sind z.B. [\textcolor{darkblue}{JabRef}](https://www.jabref.org/) und [\textcolor{darkblue}{Zotero}](https://www.zotero.org/) 
+* Eine Integration in Quarto erlaubt z.B. der Export der eigenen Library in das [\textcolor{darkblue}{BibTex}](http://www.bibtex.org/) Format.
+
+# 
+\vfill
+\setstretch{3}
+\large
+
+VSCode
+
+Quarto
+
+Referenzmanager
+
+**Berichte und Präsentationen mit Quarto**
+
+# Berichte und Präsentationen mit Quarto
+
+\huge
+\center
+\vfill
+
+[\textcolor{darkblue}{Beispielbericht}](https://bit.ly/43niMG1)
+
+\vfill
+
+# Berichte und Präsentationen mit Quarto
+
+\huge
+\center
+\vfill
+
+[\textcolor{darkblue}{Beispielpräsentation}](https://bit.ly/45Jh5V2)
+
+\vfill
+
+# 
+\vfill
+\setstretch{3}
+\large
+
+VSCode
+
+Quarto
+
+Referenzmanager
+
+Berichte und Präsentationen mit Quarto
+\vfill
+
+

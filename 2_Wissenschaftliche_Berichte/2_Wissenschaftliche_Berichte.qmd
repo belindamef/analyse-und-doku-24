@@ -1,0 +1,479 @@
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Analyse und Dokumentation
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie SoSe 2024
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Design, Analyse, Dokumentation](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Herzlich Willkommen!{.plain} 
+\huge
+\center
+\vfill
+Herzlich willkommen!
+\vfill
+
+
+
+# (2) Wissenschaftliche Berichte - Titelfolie {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(2) Wissenschaftliche Berichte}
+\vfill
+
+
+# TODO: Termine einfügen
+
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+Wissenschaftliche Kommunikation
+
+Standardstruktur empirisch-quantitativer Berichte
+
+Selbstkontrollfragen
+
+
+# Wissenschaftliche Kommunikation ===================================== {.plain}
+\AtBeginSection{}
+\section{Wissenschaftliche Kommunikation}
+
+\large
+\vfill
+\setstretch{2.5}
+
+**Wissenschaftliche Kommunikation**
+
+Standardstruktur empirisch-quantitativer Berichte
+
+Selbstkontrollfragen
+
+
+
+# Wissenschaftliche Kommunikation
+\vfill
+\huge
+\center
+Wissenschaft ist Kommunikation
+\vfill
+
+
+# Wissenschaftliche Kommunikation
+\large
+Formen wissenschaftlicher Kommunikation
+
+\normalsize
+Journal article (Paper, Artikel)
+
+Conference paper (Tagungsbeitrag)
+
+Conference talk (Vortrag)
+
+Conference poster (Poster)
+
+Conference abstract (Abstract)
+
+Invited talk
+
+Textbook (Lehrbuch)
+
+Lecture notes (Vorlesungskript)
+
+Lecture (Vorlesung)
+
+TedEx talk, Podcasts, Blogs, Tweets
+
+...
+
+
+# Wissenschaftliche Kommunikation
+\vfill
+\huge
+\center
+Wissenschaft ist Dokumentation 
+\vfill
+
+
+# Wissenschaftliche Kommunikation
+\vfill
+\huge
+\center
+Wissenschaft ist Kunst
+\vfill
+
+# Wissenschaftliche Kommunikation
+\vfill
+\huge
+\center
+Wissenschaft und Academia
+\vfill
+
+# Wissenschaftliche Kommunikation
+\large
+Das wissenschaftliche Ideal
+\vspace{3mm}
+
+\center
+![](../Abbildungen/dad_5_wissenschaftsideal.pdf){width=90%}
+
+# Wissenschaftliche Kommunikation
+\large
+Die akademische Realität
+\vspace{3mm}
+
+\center
+![](../Abbildungen/dad_5_akademische_realität.pdf){width=90%}
+
+
+# Wissenschaftliche Kommunikation 
+\large
+Der wissenschaftliche Publikationsprozess
+\vspace{5mm}
+\center
+![](../Abbildungen/dad_5_publikationsprozess.png){width=80%}
+
+\flushright
+\tiny from https://plos.org/resource/understanding-the-publishing-process/
+
+# Wissenschaftliche Kommunikation
+\setstretch{1.6}
+\large
+Der wissenschaftliche Publikationsprozess ca. 1950 bis 2010 
+
+\normalsize
+Öffentlich finanzierte Wissenschaftler:innen
+
+* führen Studien durch und schreiben Manuskripte,
+* begutachten und editieren Manuskripte,
+* kreieren also Wissenschaftlichen Content.
+
+Private Verlage
+
+* setzen Manuskripte in Publikationstemplates,
+* verkaufen Wissenschaftlichen Content an öffentlich finanzierte Wissenschaft,
+* schließen über Paywalls Nichtabonnementen vom Zugang aus.	
+
+
+
+# Wissenschaftliche Kommunikation 
+\large
+Der wissenschaftliche Publikationsprozess
+
+\center
+![](../Abbildungen/dad_5_goldaccess.png){width=100%}
+
+
+
+
+# Wissenschaftliche Kommunikation 
+\large
+Der wissenschaftliche Publikationsprozess
+
+\center
+![](../Abbildungen/dad_5_greenaccess.png){width=100%}
+
+
+
+# Wissenschaftliche Kommunikation 
+\large
+Der wissenschaftliche Publikationsprozess
+
+\vspace{4mm}
+\center
+![](../Abbildungen/dad_5_preprint.png){width=40%}
+
+\tiny
+\flushright
+from Wikipedia/Thomas Shafee 
+
+
+
+# Wissenschaftliche Kommunikation
+\large
+Wissenschaftliche Begutachtung (Peer Review)
+
+\normalsize
+Was Peer Review als Qualitätssicherung leisten kann
+
+* Durch konstruktive Kritik Verständlichkeit von Manuskripten erhöhen
+* Erfüllung von fachspezifischen Standards bestätigen
+* Prinzipielle Reproduzierbarkeit bestätigen
+
+Was Peer Review als Qualitätssicherung nicht leisten kann
+
+* Wahrheit der Resultate einer Studie etablieren
+* Korrektheit der Resultate einer Studie etablieren
+* Konkrete Reproduzierbarkeit bestätigen
+
+Was Peer Review als Qualitätssicherung nicht leisten sollte
+
+* Wichtigkeit (Impact) einer wissenschaftlichen Arbeiten bewerten
+* Forschungsaktivitäten einfordern
+* Destruktive Kritik
+
+# Wissenschaftliche Kommunikation
+\large
+Journal Impact Factor
+\normalsize
+\setstretch{1.9}
+
+
+Maß der durchschnittlichen Anzahl an Zitationen von Artikeln einer Fachzeitschrift
+\small
+\begin{equation*}
+\mbox{2-Jahres Impact Factor} 
+= 
+\frac{\mbox{Anzahl Zitationen von Artikeln in Journal i in Jahr j-1 und j-2}}{\mbox{Anzahl Publikationen von Artikeln in Journal i in Jahr j-1 und j-2}}.
+\end{equation*}
+
+\normalsize
+Seit 1975 von Unternehmen veröffentlicht, momentan von [\textcolor{blue}{Clarivate Analytics}](https://clarivate.com/).
+
+Abonnementsentscheidungshilfe für Universitätsbibliotheken  (sic).
+
+Oft als wissenschaftliches Qualitätsmerkmal missverstanden.
+
+Qualität $\neq$ Popularität.
+
+
+
+# Wissenschaftliche Kommunikation
+\large
+San Francisco Declaration on Research Assessment [\textcolor{blue}{(DORA)}](https://sfdora.org/read/)
+
+\normalsize
+Qualität $\neq$ Popularität
+
+Erklärung zur Revision der Forschungsevaluation 
+
+\small
+"Eine Reihe von generellen Thematiken zieht sich durch diese Empfehlungen:
+die Notwendigkeit, die Verwendung von auf Fachzeitschriften basierenden Kennzahlen, 
+wie dem Journal Impact Factor, bei Abwägungen zur Finanzierung, Einstellung und Beförderung abzuschaffen;
+die Notwendigkeit, die Forschung selbst zu bewerten, und dieses nicht auf 
+Grundlage der Fachzeitschrift, in der sie veröffentlicht wird, zu tun; und
+die Notwendigkeit, die Möglichkeiten der Online-Veröffentlichung zu nutzen, 
+wie z.B. eine Lockerung der unnötigen Beschränkungen der Anzahl von Wörtern, 
+Abbildungen und Literaturangaben in Artikeln, und die Untersuchung neuer 
+Kennzahlen für die Signifikanz und Bedeutung."
+ 
+
+# Standardstruktur empirisch-quantitativer Berichte ===================================== {.plain}
+\AtBeginSection{}
+\section{Standardstruktur empirisch-quantitativer Berichte}
+
+\large
+\vfill
+\setstretch{2.5}
+
+Wissenschaftliche Kommunikation
+
+**Standardstruktur empirisch-quantitativer Berichte**
+
+Selbstkontrollfragen
+
+
+
+# Standardstruktur empirisch-quantitativer Berichte
+\large
+\setstretch{1.6}
+**Standardstruktur empirisch-quantitativer Berichte**
+
+Title
+
+Abstract
+
+Introduction
+
+Methods
+
+Results
+
+Discussion
+
+References
+
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_apa_publication_manual.pdf){width=40%}
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_apa.png){width=75%} 
+
+[\textcolor{blue}{www.apa.org}](https://www.apa.org/)
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_apa_history.png){width=75%} 
+
+[\textcolor{blue}{www.apa.org}](https://www.apa.org/)
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_apa_guidelines_website.png){width=70%} 
+
+[\textcolor{blue}{www.apastyle.apa.org}](https://apastyle.apa.org/)
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\vspace{3mm}
+\center
+![](../Abbildungen/dad_5_apa_toc_1.pdf){width=40%}
+![](../Abbildungen/dad_5_apa_toc_2.pdf){width=40%}
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_apa_jars.png){width=60%} 
+
+[\textcolor{blue}{https://apastyle.apa.org/jars}](https://apastyle.apa.org/jars)
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_jars_quant-decision_flowchart.pdf){width=90%} 
+\vfill
+
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_quant-table-title.pdf){width=90%} 
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_quant-table-abstract-1.pdf){width=70%} 
+
+![](../Abbildungen/dad_5_quant-table-abstract-2.pdf){width=70%} 
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_quant-table-introduction.pdf){width=90%} 
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_quant-table-method-1.pdf){width=90%} 
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_quant-table-method-header.pdf){width=90%} 
+
+![](../Abbildungen/dad_5_quant-table-method-2.pdf){width=90%} 
+
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_jars_quant-table-2.pdf){width=100%} 
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\vfill
+\center
+![](../Abbildungen/dad_5_jars_quant-table-2a.pdf){width=100%} 
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_quant-table-results-1.pdf){width=65%} 
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_quant-table-results-header.pdf){width=77%} 
+![](../Abbildungen/dad_5_quant-table-results-2.pdf){width=80%} 
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_numbers-statistics-guide-1.pdf){width=44%} 
+![](../Abbildungen/dad_5_numbers-statistics-guide-2.pdf){width=44%} 
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_quant-table-discussion.pdf){width=70%} 
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\vfill
+![](../Abbildungen/dad_5_apa_publication_manual.pdf){width=40%}
+\vfill
+
+# Standardstruktur empirisch-quantitativer Berichte
+\center
+\large
+Aber: Jedes Journal und jede Konferenz haben ihre eigenen Guidelines!
+\vfill
+![](../Abbildungen/dad_5_submission_guidelines.png){width=70%}
+\vfill
+
+# Selbstkontrollfragen===================================== {.plain}
+\AtBeginSection{}
+\section{Selbstkontrollfragen}
+
+\large
+\vfill
+\setstretch{2.5}
+
+Wissenschaftliche Kommunikation
+
+Standardstruktur empirisch-quantitativer Berichte
+
+**Selbstkontrollfragen**
+
+
+# Selbstkontrollfragen
+\vfill
+\footnotesize
+\setstretch{2.5}
+1. Nennen Sie fünf Formen wissenschaftlicher Kommunikation.
+1. Erläutern Sie den wissenschaftlichen Publikationsprozess.
+1. Erläutern Sie die Goldenen und den Grünen Weg des Open Access Publikationsprozesses.
+1. Erläutern Sie den Begriff des Preprints.
+1. Erläutern Sie den Begriff des Journal Impact Factors.
+1. Erläutern Sie die zentralen Aussagen der San Francisco Declaration on Research Assessment.
+1. Nennen Sie die sieben Sektionen der Standardstruktur empirisch-quantitativer Berichte.
+1. Nennen Sie jeweils drei Kernelemente der Introduction, Methods, Results und 
+Discussion Sections der Standardstruktur empirisch-quantitativer Berichte nach
+Empfehlung des Publication Manuals der APA.
+\vfill
