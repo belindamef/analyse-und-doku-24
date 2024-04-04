@@ -48,33 +48,6 @@ Aufnahme läuft.
 \vfill
 
 
-# AGENDA {.plain}
-\large
-\setstretch{2.5}
-\vfill
-
-Formalia
-
-TOP 2
-
-TOP 3
-
-
-
-# Formalia ===================================== {.plain}
-\AtBeginSection{}
-\section{Formalia}
-
-\large
-\vfill
-\setstretch{2.5}
-
-**Formalia**
-
-TOPIC 2
-TOPIC 3
-
-
 
 # Modul C: Einführung in empirisch-wissenschaftliches Arbeiten
 \setstretch{1.5}
@@ -91,22 +64,20 @@ TOPIC 3
 * Dokumentation empirischer Studien und Analysen
 
 
-# Organisatorisches \textcolor{red}{TODO: Update !}
-\setstretch{1.5}
+# Organisatorisches
+\setstretch{1.8}
 
 * \justifying Termine: Mittwochs in Raum G22A-218
   * Gruppe 1 um 13-15 Uhr
   * Gruppe 2 um 11-13 Uhr
-* Kursmaterialien (Folien, Videos, Source Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html}{Kurswebseite}}
+* Kursmaterialien (Folien, Videos, Source Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html}{Kurswebseite}} \textcolor{red}{TODO!}
 * Code auf \textcolor{linkblue}{\href{https://github.com/belindamef/analyse-und-doku-24}{Github}}
-* Ankündigungen über die \textcolor{linkblue}{\href{https://elearning.ovgu.de/course/view.php?id=15163}{Moodleseite}}
-* Vorherige Iteration des Kurses: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html}{PDS (WS 2022/23)}}
-* Empfohlene Vorbereitung: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Mathematische+Grundlagen.html}{Vorkurs ''Mathematische Grundlagen''}}
-* Q&A im \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/bsc-psychologie-2023/channels/c1---programmeriung-und-deskriptive-statistik}{Mattermost-Channel}}
+* Ankündigungen über die \textcolor{linkblue}{\href{https://elearning.ovgu.de/course/view.php?id=16231}{Moodleseite}}
+* Vorherige Iteration des Kurses: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html}{Design, Analyse, Dokumentation (SoSe 2023)}}
+* Q&A im \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/bsc-psychologie-2023/channels/c2---analyse-und-dokumentation-sose-2024}{Mattermost-Channel}}
   * Einmalige \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su}{Registrierung}} zum Team "bsc-psy-2023"
-* Zweiteiliger Leistungsnachweis: Unbenotet, Multiple Choice, digitales Format
-  * Teil 1 vor der Weihnachtspause
-  * Teil 2 am Semesterende
+* Klausurtermin und Klausurort gemäß Prüfungsplan des \textcolor{linkblue}{\href{https://www.fnw.ovgu.de/Studium/Prüfungfungsamt.html}{FNW Prüfungsamtes}}
+* Klausurwiederholungstermin am Ende des Wintersemesters 2024/25
 
 
 
@@ -133,18 +104,22 @@ Datum          & Einheit               & Thema                                  
 26.06.24       & Präsentationen        &  Zweifaktorielle Varianznalyse       & BF \\
 03.07.24       & Präsentationen        &  Multipe Regression                  & BF \\
 10.07.24       & Präsentationen        &  Kovarianzanalyse                    & BF \\\hline
-???            & Klausurtermin                                                     \\
-2025??         & Klausurwiederholungstermin                                        \\
+26.07.24       & Klausurtermin                                                     \\
+Feb 2025       & Klausurwiederholungstermin                                        \\
 \end{tabular}
 
 
 # Inhalte
+\setstretch{1.5}
 
 \textcolor{darkblue}{Analyse}
 
-* Frequentistische Verfahren (Theorie/Methoden aus WTFI, ALM und C1)
-* Analyse-Tools: R und Visual Studio Code (aus C1)
-* \textcolor{red}{siehe auch Modulhandbuch ???}
+\small
+
+* \textcolor{red}{Ethik?}
+* Anwendung Frequentistische Verfahren (Inhalte aus WTFI, ALM und C1) der Datenanalyse
+* Grundlagen Analyse-Tools: R und Visual Studio Code (aus C1)
+* \textcolor{red}{siehe auch Modulhandbuch}
 
 \textcolor{darkblue}{Dokumentation}
 
@@ -158,32 +133,26 @@ Datum          & Einheit               & Thema                                  
 
 
 # Inhalte
+\setstretch{1.8}
 
-\textcolor{darkblue}{Praxisseminar}
+\textcolor{darkblue}{Praxisseminar und Präsentationen}
 
-* Aktive Bearbeitung und Dokumentation von Übungsaufgaben
-* Hilfestellung von Lehrpersonen
-* Auch nach Präsentationsterminen, sofern Zeit übrig ist. 
+\small
 
-\textcolor{darkblue}{Präsentationen}
-
-* 4 Studierende ori Aufgabe verantwortlich für Bericht und Präsentation
-  * Bericht aus Einführung, Methoden, Resultate, Schlußfoolgerung
-  * Maximal 2 Seiten Flißtext plus Abbilungen und COde
-  * Präsentation aus EInführung, Methoden, Resultate und Schlußfolgerung
-  * Maxiimal 40 Minuten
-* -> 1/2 Seite Fließtext plus 10 Minuten Präsentation pro Student:in
-* Orkatischce Umsetzung der Analysemethoden is klausurrelevant
-* Praxisseminar plus Zeit nach Präsentationen für Fragen 
+* \small Aktive Bearbeitung und Dokumentation von Übungsaufgaben
+* Hilfestellung von Lehrpersonen in Praxisseminar und ggf. nach Präsentationsterminen.
+* Inhaltliches Leitthema ist die Effektivität von Psychotherapie bei Depression.
+* Datenanalyse mit \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}, Bericht und Präsentation mit \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}}.
+* 4 Studierende pro Aufgabe verantwortlich für Bericht und Präsentation
+  * \small Bericht aus Einführung, Methoden, Resultate, Schlußfolgerung
+  * Maximal 2 Seiten Fließtext plus Abbildungen und Code
+  * Präsentation aus Einführung, Methoden, Resultate und Schlußfolgerung
+  * Maximal 40 Minuten
+* $\Rightarrow$ 1/2 Seite Fließtext plus 10 Minuten Präsentation pro Studierende
+* Prakatischce Umsetzung der Analysemethoden is klausurrelevant
 * Organisation der Gruppen und Präsentationstermine über Moodle
 * -> Bei Terminkonflikten entscheidet das Los
 
-
-# Ablauf der Präsentationen
-
-* max. 40 min. pro Studierende
-* danach Diskussion
-* restliche Zeit Raum für offene Übung, Fragen etc.
 
 
 # {.plain}
