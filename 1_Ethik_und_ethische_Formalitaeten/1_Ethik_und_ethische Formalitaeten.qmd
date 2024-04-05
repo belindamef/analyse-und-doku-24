@@ -120,7 +120,7 @@ Selbstkontrollfragen
 
 \textcolor{darkblue}{Zentrale Ziele}
 
-  * \textbf{Abwenden von "Schaden an Personen"}
+  * \textbf{Abwenden von ''Schaden an Personen''}
   * \textbf{Freiwilligkeit} der Teilnahme an Studien (\textit{informierte Zustimmung})
 
 
@@ -1444,6 +1444,17 @@ Ethikantrag
 
 
 # Selbstkontrollfragen
+
+\vfill
+\footnotesize
+\setstretch{2.5}
+\begin{enumerate}
+  \item First item
+  \item Second item
+  \item Third item
+\end{enumerate}
+
+\vfill
 
 
 # Referenzen
