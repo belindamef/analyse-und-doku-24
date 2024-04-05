@@ -1411,9 +1411,9 @@ Selbstkontrollfragen
 
 # Einwilligungserklärung
 
-::: {layout-ncol=1}
-![](../Abbildungen/ad_1_Einwilligungserklaerung_5.png)
-:::
+
+![](../Abbildungen/ad_1_Einwilligungserklaerung_5.png){fig-align="center" width="50%"}
+
 
 \tiny
 \flushleft
