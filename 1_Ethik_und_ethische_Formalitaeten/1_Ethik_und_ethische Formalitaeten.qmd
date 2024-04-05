@@ -614,7 +614,7 @@ Studienteilnehmer:innen soll es möglich sein, ohne Zwang eine autonome Entschei
 
 
 
-# Teilnehmerinformation (Informed consent)
+# Teilnehmerinformation
 
 \textcolor{darkblue}{Grundlegendes Prinzip}
 
@@ -1449,9 +1449,19 @@ Ethikantrag
 \footnotesize
 \setstretch{2.5}
 \begin{enumerate}
-  \item First item
-  \item Second item
-  \item Third item
+  \item Nennen Sie vier zentrale Aspekte der Ethik in der Psychologie.
+  \item Erklären Sie relevante rechtliche Normen für ethische Fragestellungen in der Forschung.
+  \item Nennen Sie die wichtigsten Leitlinien für ethischen Handeln in psychologischer Praxis und Forschung.
+  \item Nennen und erläutern Sie fünf ethische Grundsätze der Deklaration von Helsinki, welche Relevanz für die psychologische Forschung haben.
+  \item Nennen Sie die Ethischen Grundprinzipien der APA.
+  \item Nennen Sie die Ethischen Grundprinzipien der DGPs.
+  \item Nennen und erläutern Sie die zentralen Aspekte des Prinzips "Respekt vor der Selbstbestimmung".
+  \item Nennen Sie die zentralen Aspekte einer Teilnehmerinformation, sowie fünf wichtige Inhalte.
+  \item Beschreiben Sie, was bei Täuschung in einer Studie beachtet werden muss.
+  \item Erläutern Sie die zentralen Aspekte der Einwilligungserklärung und formale Kriterien.
+  \item Erläutern Sie Typen von Risiken im Rahmen psychologischer Studien anhand von Beispiele, sowie mögliche Maßnahmen zur Risikominimierung.
+  \item TODO: hier weiter
+
 \end{enumerate}
 
 \vfill
