@@ -42,7 +42,33 @@ Herzlich willkommen!
 \vfill
 
 
-# TODO: Termine einfügen
+# Termine
+
+\setstretch{1.3}
+\vfill
+\center
+\small
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{llll}
+Datum          & Einheit               & Thema                                    & Lehrperson   \\\hline
+\textbf{10.04.24}       & \textbf{Dokumentation}         &  \textbf{(1) Ethik und Ethische Formalitäten}     & \textbf{BF} \\
+17.04.24       & Dokumentation         &  (2) Wissenschaftliche Berichte          & BF \\
+24.04.24       & Dokumentation         &  (3) Offenheit und Transparanz           & BF \\
+01.05.24       & \textcolor{gray}{Tag der Arbeit}   \\
+08.05.24       & Dokumentation         &  (4) Quarto                              & BF \\  \hline
+15.05.24       & Praxisseminar         &      Offene Übung                        & BF \\
+22.05.24       & Präsentationen        &  Einfache Lineare Regression         & JS \\
+29.05.24       & Präsentationen        &  Korrelation                         & JS \\
+05.06.24       & Präsentationen        &  Einstichproben-T-Test               & JS \\
+12.06.24       & Präsentationen        &  Zweistichproben-T-Test              & JS \\
+19.06.24       & Präsentationen        &  Einfaktorielle Varianzanalyse       & BF \\
+26.06.24       & Präsentationen        &  Zweifaktorielle Varianznalyse       & BF \\
+03.07.24       & Präsentationen        &  Multipe Regression                  & BF \\
+10.07.24       & Präsentationen        &  Kovarianzanalyse                    & BF \\\hline
+26.07.24       & Klausurtermin                                                     \\
+Feb 2025       & Klausurwiederholungstermin                                        \\
+\end{tabular}
 
 
 
@@ -57,7 +83,9 @@ Ethische Grundprinzipien
 
 Prozess der ethischen Antragstellung
 
-Ethikantrag Beispiel
+Ethikantrag Vorlagen
+
+Selbstkontrollfragen
 
 
 # Einführung ===================================== {.plain}
@@ -74,8 +102,9 @@ Ethische Grundprinzipien
 
 Prozess der ethischen Antragstellung
 
-Ethikantrag Beispiel
+Ethikantrag Vorlagen
 
+Selbstkontrollfragen
 
 # Motivation
 
@@ -83,16 +112,17 @@ Ethikantrag Beispiel
 
 \setstretch{1.8}
 * In psychologischer Forschung sind Menschen "Untersuchungsobjekte"
-* Das wirft Fragen zur ethischen Verantwortbarkeit und rechtliche Rahmenbedingungen auf
+* Das wirft Fragen zur ethischen Verantwortbarkeit und den rechtliche Rahmenbedingungen auf
 * Negativ-Beispiele in der Geschichte psychologischer Forschung:
   * Little-Albert Experiment [@watson1920]
   * Milgram-Experiment [@milgram1963]
   * Stanford Prison Experiment [@zimbardo2000]
 
-\textcolor{darkblue}{Übergeordnete Ziele}
+\textcolor{darkblue}{Zentrale Ziele}
 
-  * Abwenden von "Schaden an Personen"
-  * Freiwilligkeit der Teilnahme an Studien (*informierte Zustimmung*)
+  * \textbf{Abwenden von "Schaden an Personen"}
+  * \textbf{Freiwilligkeit} der Teilnahme an Studien (\textit{informierte Zustimmung})
+
 
 
 # Was ist Ethik?
@@ -117,40 +147,26 @@ Ethikantrag Beispiel
 * \small Berufsethische Richtlinien
 * Ethischer Umgang mit Menschen in der Forschung
 * Open-Science im Sinne von wissenschaftlicher Tranzparenz
-* Ethisch mit Daten umgehen (z.B. Datenschutz, eurapaweit-geltende DSGVO)
+* Ethischer Umgang mit Daten
 
 
-
-# Ethische Grundprinzipien ===================================== {.plain}
-\AtBeginSection{}
-\section{Ethische Grundprinzipien}
-
-\large
-\vfill
-\setstretch{2.5}
-
-Einführung
-
-**Ethische Grundprinzipien**
-
-Prozess der ethischen Antragstellung
-
-Ethikantrag Beispiel
 
 
 # Grundlagen und Quellen
 
 \textcolor{darkblue}{Rechtlicher Rahmen}
-\setstretch{1.5}
+\setstretch{1.6}
 \small
 
-* \setstretch{1.5} Gesetzgeber in Deutschland keine gesetzlichen Rahmen zur Forschung an und mit Menschen (anders als in beispielsweise GB oder Norwegen)
-* Die Mehrheit der Leitlinien und Grundprinzipien haben ihren Ursprung in der Medizin, da der ethische Fragen in der Medizin bisher mehr elaboriert ist als in der Psychologie.
-* Rechtliche Normen werden allgemein dem \textcolor{linkblue}{\href{https://www.gesetze-im-internet.de/gg/BJNR000010949.html}{Grundgesetz}}, Artikel 1 und 2 entnommen
-* Im Bereich humanmedizischer Forschung sin im speziellen \textcolor{linkblue}{\href{https://www.gesetze-im-internet.de/amg_1976/}{Arzneimittelgesetz (AMG)}} und \textcolor{linkblue}{\href{https://www.gesetze-im-internet.de/amg_1976/}{Medizinproduktgesetz (MPG)}} relevant.
-
+\begin{itemize} \justifying
+\item \setstretch{1.6} Gesetzgebung in Deutschland gibt keine gesetzlichen Rahmen zur Forschung an und mit Menschen (anders als in beispielsweise GB oder Norwegen).
+\item Rechtliche Normen werden allgemein dem \textcolor{linkblue}{\href{https://www.gesetze-im-internet.de/gg/BJNR000010949.html}{Grundgesetz}}, Artikel 1 und 2 entnommen
+\item Im Bereich humanmedizischer Forschung sin im speziellen \textcolor{linkblue}{\href{https://www.gesetze-im-internet.de/amg_1976/}{Arzneimittelgesetz (AMG)}} und \textcolor{linkblue}{\href{https://www.gesetze-im-internet.de/amg_1976/}{Medizinproduktgesetz (MPG)}} relevant.
+\item Die Mehrheit der Leitlinien und Grundprinzipien haben ihren Ursprung in der Medizin, da ethische Fragestellungen in der klinischen Forschung mehr elaboriert sind.
+\end{itemize}
 \vfill
 
+\vfill
 
 
 # Grundlagen und Quellen
@@ -171,19 +187,40 @@ Ethikantrag Beispiel
 \vfill
 
 
-# Ethische Grundsätze in der Deklaration von Helsinki
+
+# Ethische Grundprinzipien ===================================== {.plain}
+\AtBeginSection{}
+\section{Ethische Grundprinzipien}
+
+\large
+\vfill
+\setstretch{2.5}
+
+Einführung
+
+**Ethische Grundprinzipien**
+
+Prozess der ethischen Antragstellung
+
+Ethikantrag Vorlagen
+
+Selbstkontrollfragen
+
+
+
+# Ethische Grundsätze in der \textcolor{darkblue}{Deklaration von Helsinki}
 
 \setstretch{2}
 \normalsize
 \textcolor{darkblue}{Allgemeine Grundsätze}
 \small
 \setstretch{1.4}
-\begin{itemize}
-\item Erweiterung der ärztlichen Pflicht (internationaler Kodex), das Leben, Gesundheit, Würde, Integrität, Selbstbestimmungsrecht und Privatsphäre von Patient:innen zu fördern und zu erhalten, auf die medizinische Forschung.
-\item Vorrangiges Ziel medizinischer Forschung am Menschen (Ursachen, Entwicklung und Auswirkungen von Erkrankungen verstehen und präventive, diagnostische und therapeutischen Maßnahmen verbessern) darf niemals Vorrang vor den Rechten und Interessen einzelner Versuchspersonen haben.
+\begin{itemize} \justifying
+\item Erweiterung der \textbf{ärztlichen Pflicht (internationaler Kodex)}, das Leben, Gesundheit, Würde, Integrität, Selbstbestimmungsrecht und Privatsphäre von Patient:innen zu fördern und zu erhalten, auf die medizinische Forschung.
+\item Vorrangiges Ziel medizinischer Forschung (Ursachen, Entwicklung und Auswirkungen von Erkrankungen verstehen und präventive, diagnostische und therapeutischen Maßnahmen verbessern) darf \textbf{niemals Vorrang vor den Rechten und Interessen von Versuchspersonen} haben.
 \item Die Verantwortung für den Schutz von Versuchspersonen liegt stets bei Ärzt:innen und nie bei der Versuchsperson selbst, auch wenn sie ihr Einverständnis gegeben hat.
-\item Angemessenen Zugang zur Teilnahme an medizinischer Forschung für unterrepräsentierten Gruppen.
-\item Angemessene Entschädigung und Behandlung für Versuchspersonen.
+\item Angemessener Zugang zur Teilnahme für \textbf{unterrepräsentierte Gruppen}.
+\item Angemessene \textbf{Entschädigung und Behandlung} von Versuchspersonen.
 \end{itemize}
 
 \flushright
@@ -193,18 +230,18 @@ Ethikantrag Beispiel
 
 
 
-# Ethische Grundsätze in der Deklaration von Helsinki
+# Ethische Grundsätze in der \textcolor{darkblue}{Deklaration von Helsinki}
 
 \setstretch{2}
 \normalsize
 \textcolor{darkblue}{Risiken, Belastungen und Nutzen}
 \small
 \setstretch{1.4}
-\begin{itemize}
-\item Medizinische Forschung am Menschen darf nur durchgeführt werden, wenn die Bedeutung des Ziels die Risiken und Belastungen für die Versuchspersonen überwiegt
-\item Sorgfältige Abschätzung der voraussehbaren Risiken und Belastungen für beteiligte Einzelpersonen und Gruppen im Vergleich zu dem voraussichtlichen Nutzen
-\item Maßnahmen zur Risikominimierung
-\item Kontinuierliche Überwachung und Einschätzung, und ggf. Entscheidung über Modifizierung oder Abbruch
+\begin{itemize} \justifying
+\item \textbf{Sorgfältige Abschätzung} der voraussehbaren Risiken und Belastungen für beteiligte Einzelpersonen und Gruppen im Vergleich zu dem voraussichtlichen Nutzen.
+\item Medizinische Forschung am Menschen darf nur durchgeführt werden, wenn die Bedeutung des Ziels die Risiken und Belastungen für die Versuchspersonen \textbf{überwiegt}.
+\item Maßnahmen zur \textbf{Risikominimierung}.
+\item Kontinuierliche \textbf{Überwachung} und Einschätzung, und ggf. Entscheidung über \textbf{Modifizierung} oder \textbf{Abbruch}.
 \end{itemize}
 
 \setstretch{2}
@@ -213,7 +250,7 @@ Ethikantrag Beispiel
 \small
 \setstretch{1.4}
 \begin{itemize}
-\item Besonderer Schutz für alle vulnerablen Gruppen und Einzelpersonen.
+\item Besonderer Schutz für alle \textbf{vulnerablen} Gruppen und Einzelpersonen.
 \end{itemize}
 
 \flushright
@@ -222,27 +259,25 @@ Ethikantrag Beispiel
 
 
 
-
-
-# Ethische Grundsätze in der Deklaration von Helsinki
+# Ethische Grundsätze in der \textcolor{darkblue}{Deklaration von Helsinki}
 \setstretch{2}
 \normalsize
 \textcolor{darkblue}{Wissenschaftliche Anforderungen und Forschungsprotokolle}
 \small
 \setstretch{1.4}
-\begin{itemize}
-\item Verfolgen allgemein anerkannten wissenschaftlicher Grundsätze
-\item Basis einer gründlichen Kenntnis der wissenschaftlichen Literatur und relevanten Informationsquellen
-\item Klare Beschreibung und Rechtfertigung der der Planung und Durchführung in einem Studienprotokoll
+\begin{itemize} \justifying
+\item Verfolgen allgemein anerkannter \textbf{wissenschaftlicher Grundsätze}.
+\item Basis einer gründlichen Kenntnis der \textbf{wissenschaftlichen Literatur} und relevanten Informationsquellen.
+\item Klare Beschreibung und Rechtfertigung der Planung und Durchführung in einem \textbf{Studienprotokoll}.
 \end{itemize}
 
 \setstretch{2}
 \normalsize
-\textcolor{darkblue}{Forschungs-Ethikkommissionen}
+\textcolor{darkblue}{Forschungs-Ethikkommissionen} \justifying
 \small
 \setstretch{1.4}
 \begin{itemize}
-\item Vorlage des Studienprotokolls bei zuständiger Ethikkomissission zur Erwägung, Stellungnahme, Beratung und Zustimmung.
+\item Vorlage des Studienprotokolls bei \textbf{zuständiger Ethikkomissission} zur Erwägung, Stellungnahme, Beratung und Zustimmung.
 \end{itemize}
 
 
@@ -252,8 +287,8 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Privatsphäre und Vertraulichkeit}
 \small
 \setstretch{1.4}
-\begin{itemize}
-\item Wahrung der Privatsphäre der Versuchspersonen und die Vertraulichkeit ihrer persönlichen Informationen.
+\begin{itemize} \justifying
+\item Wahrung der \textbf{Privatsphäre} der Versuchspersonen und die \textbf{Vertraulichkeit} ihrer persönlichen Informationen.
 \end{itemize}
 
 \flushright
@@ -264,20 +299,19 @@ Ethikantrag Beispiel
 
 
 
-# Ethische Grundsätze in der Deklaration von Helsinki
-
+# Ethische Grundsätze in der \textcolor{darkblue}{Deklaration von Helsinki}
 
 \setstretch{2}
 \normalsize
 \textcolor{darkblue}{Informierte Einwilligung}
 \small
 \setstretch{1.4}
-\begin{itemize}
-\item Freiwilligkeit der Teilnahme.
-\item Angemessene Aufklärung über die Ziele, Methoden, Geldquellen, eventuelle Interessenkonflikte, institutionelle Verbindungen des Forschers, den erwarteten Nutzen und die potentiellen Risiken der Studie, mögliche Unannehmlichkeiten, vorgesehene Maßnahmen nach Abschluss einer Studie sowie alle anderen relevanten Aspekte.
-\item Aufklärung über das Recht, die Teilnahme an der Studie zu verweigern oder eine einmal gegebene Einwilligung jederzeit zu widerrufen, ohne dass ihr irgendwelche Nachteile entstehen.
-\item Die Weigerung eines Patienten, an einer Studie teilzunehmen, oder der Entschluss des Patienten, aus der Studie auszuscheiden, darf niemals die Patienten-Arzt-Beziehung nachteilig beeinflussen.
-\item Informierte Einwilligung zur Verwendung identifizierbare menschliche Materialien oder Daten.
+\begin{itemize} \justifying
+\item \textbf{Freiwilligkeit} der Teilnahme.
+\item Angemessene \textbf{Aufklärung} über die Ziele, Methoden, Geldquellen, eventuelle Interessenkonflikte, institutionelle Verbindungen des Forschers, den erwarteten Nutzen und die potentiellen Risiken der Studie, mögliche Unannehmlichkeiten, vorgesehene Maßnahmen nach Abschluss einer Studie sowie alle anderen relevanten Aspekte.
+\item Aufklärung über das Recht, die Teilnahme an der Studie zu \textbf{verweigern} oder eine einmal gegebene Einwilligung \textbf{jederzeit} zu \textbf{widerrufen}, ohne dass ihr irgendwelche Nachteile entstehen.
+\item Die Weigerung oder Zustimmung einer Patient:in darf \textbf{niemals} die Patienten-Arzt-Beziehung \textbf{nachteilig} beeinflussen.
+\item Informierte Einwilligung zur Verwendung \textbf{identifizierbare menschliche Materialien oder Daten}.
 \end{itemize}
 
 \flushright
@@ -286,17 +320,15 @@ Ethikantrag Beispiel
 
 
 
-# Ethische Grundsätze in der Deklaration von Helsinki
-
-
+# Ethische Grundsätze in der \textcolor{darkblue}{Deklaration von Helsinki}
 
 \setstretch{2}
 \normalsize
-\textcolor{darkblue}{Die Verwendung von Placebos}
+\textcolor{darkblue}{Die Verwendung von Placebos} \justifying
 \small
 \setstretch{1.4}
 \begin{itemize}
-\item Nur erlaubt, wenn keine nachgewiesene Maßnahme existiert, oder wenn sie notwendig sind, um die Wirksamkeit oder Sicherheit einer Maßnahme festzustellen, und wenn kein zusätzliches Risiko eines ernsten oder irreversiblen Schadens besteht.
+\item Nur erlaubt, wenn keine nachgewiesene Maßnahme existiert, oder wenn sie \textbf{notwendig} sind, um die Wirksamkeit oder Sicherheit einer Maßnahme festzustellen, und wenn kein zusätzliches Risiko eines ernsten oder irreversiblen Schadens besteht.
 \end{itemize}
 
 \setstretch{2}
@@ -305,7 +337,7 @@ Ethikantrag Beispiel
 \small
 \setstretch{1.4}
 \begin{itemize}
-\item Vorkehrungen für Maßnahmen nach Abschluss der Studie für alle Teilnehmer treffen, die noch eine Maßnahme benötigen, die in der Studie als nützlich erkannt wurde.
+\item Vorkehrungen für Maßnahmen \textbf{nach Abschluss der Studie} für alle Teilnehmer treffen, die noch eine Maßnahme benötigen, die in der Studie als nützlich erkannt wurde.
 \end{itemize}
 
 \flushright
@@ -315,18 +347,18 @@ Ethikantrag Beispiel
 
 
 
-# Ethische Grundsätze in der Deklaration von Helsinki
+# Ethische Grundsätze in der \textcolor{darkblue}{Deklaration von Helsinki}
 
 
 \setstretch{2}
 \normalsize
-\textcolor{darkblue}{Registrierung von Forschung sowie Publikation undVerbreitung von Ergebnissen}
+\textcolor{darkblue}{Registrierung von Forschung sowie Publikation und Verbreitung von Ergebnissen}
 \small
 \setstretch{1.4}
-\begin{itemize}
-\item Registrierung von Forschungshabenn in einer öffentlich zugänglichen Datenbank vor der Rekrutierung der ersten Versuchsperson.
-\item Verpfichtung von Forschenden, Ergebnisse ihrer Forschung am Menschen öffentlich verfügbar zu machen und Rechenschaftpflicht im Hinblick auf die Vollständigkeit und Richtigkeit ihrer Berichte.
-\item Negative und nicht schlüssige Ergebnisse, müssen ebenso wie positive veröffentlicht oder in anderer Form öffentlich verfügbar gemacht werden.
+\begin{itemize} \justifying
+\item \textbf{Registrierung} von Forschungshabenn in einer \textbf{öffentlich zugänglichen Datenbank} \textit{vor} der Rekrutierung der ersten Versuchsperson.
+\item Verpfichtung von Forschenden, \textbf{Ergebnisse} ihrer Forschung am Menschen öffentlich verfügbar zu machen und Rechenschaftpflicht im Hinblick auf die Vollständigkeit und Richtigkeit ihrer Berichte.
+\item \textbf{Negative und nicht schlüssige Ergebnisse} müssen ebenso wie positive veröffentlicht oder in anderer Form öffentlich verfügbar gemacht werden.
 \end{itemize}
 
 
@@ -335,7 +367,7 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Nicht nachgewiesene Maßnahmen in der klinischen Praxis}
 \small
 \setstretch{1.4}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Anwendung nicht nachgewiesener Maßnahmen nur dann zulässig, wenn nachgewiesene Maßnahmen unwirksam waren, wenn Hoffnung besteht, das Leben zu retten, die Gesundheit wiederherzustellen oder Leiden zu lindern.
 \end{itemize}
 
@@ -346,16 +378,16 @@ Ethikantrag Beispiel
 
 
 
-# Psychologisch-ethische Grundprinzipien der APA
+# Psychologisch-ethische \textcolor{darkblue}{Grundprinzipien der APA}
 
 
 \setstretch{2}
 \normalsize
-\textcolor{darkblue}{A: Fürsorge und Nichtschädigung}(beneficence and nonmaleficence)
+\textcolor{darkblue}{A: Fürsorge und Nichtschädigung} (beneficence and nonmaleficence)
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Psycholog:innen streben stets danach, den Personen, mit denen sie arbeiten, Nutzen und keinen Schaden anzurichten, und deren Wohl und Rechte zu schützen.
+\begin{itemize} \justifying
+\item Psycholog:innen streben stets danach, den Personen, mit denen sie arbeiten, \textbf{Nutzen und keinen Schaden} anzurichten, und deren Wohl und Rechte zu schützen.
 \end{itemize}
 
 \setstretch{2}
@@ -363,9 +395,9 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{B: Redlichkeit und Verantwortlichkeit} (fidelity and responsibility)
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Aufbau vertrauensvoller Beziehungen.
-\item Bewusstsein für gesellschaftliche Verantwortung und Einhaltung professioneller Standards.
+\begin{itemize} \justifying
+\item Aufbau vertrauensvoller \textbf{Beziehungen}.
+\item Bewusstsein für \textbf{gesellschaftliche Verantwortung} und Einhaltung professioneller \textbf{Standards}.
 \end{itemize}
 
 \setstretch{2}
@@ -373,10 +405,10 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{C: Integrität} (integrity)
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Streben nach Akkuratheit, Ehrlichkeit und Wahrhaftigkeit in Forschung, Lehre und Praxis der Psychologie.
-\item Vermeidung von Diebstahl, Betrug oder Täuschung.
-\item Im Falle notwendiger Täschung, Abwägung ethischer Rechtfertigbarkeit, Berücksichtigung und Verantwortungsübernahme für alle möglichen Konsequenzen
+\begin{itemize} \justifying
+\item Streben nach \textbf{Akkuratheit} und \textbf{Ehrlichkeit} in Forschung, Lehre und Praxis der Psychologie.
+\item Vermeidung von Diebstahl, Betrug oder \textbf{Täuschung}.
+\item Im Falle notwendiger Täschung, \textbf{Abwägung} ethischer Rechtfertigbarkeit, Berücksichtigung und \textbf{Verantwortungsübernahme} für alle möglichen \textbf{Konsequenzen}
 \end{itemize}
 
 
@@ -386,7 +418,7 @@ Ethikantrag Beispiel
 
 
 
-# Psychologisch-ethische Grundprinzipien der APA
+# Psychologisch-ethische \textcolor{darkblue}{Grundprinzipien der APA}
 
 
 
@@ -395,10 +427,10 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{D: Gerechtigkeit} (justice)
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Fairness und Gerechtigkeit für alle Personen.
-\item gleichberechtigter Zugang zu und Nutzen von psychologischer Arbeit für alle.
-\item Vernunftgemäße Urteilsfindung und Vorsicht hinsichtlich persönlicher Vorurteile und Kompetenzgrenzen.
+\begin{itemize}  \justifying
+\item \textbf{Fairness und Gerechtigkeit} für alle Personen.
+\item \textbf{Gleichberechtigter Zugang} zu und Nutzen von psychologischer Arbeit für alle.
+\item Vorsicht hinsichtlich persönlicher Vorurteile und Kompetenzgrenzen.
 \end{itemize}
 
 \setstretch{2}
@@ -407,10 +439,10 @@ Ethikantrag Beispiel
 
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Achtung der Würde und des Wertes aller Menschen.
-\item Respektieren der Rechte auf Privatsphäre, Vertraulichkeit und Selbstbestimmung.
-\item Besondere Rücksicht auf vulnerable Personen, und Beachtung kultureller, individueller und rollenspezifischer Unterschiede (Faktoren wie Alter, Geschlecht, Geschlechtsidentität, Rasse, Ethnizität, Kultur, Religion, sexueller Orientierung, Behinderung, Sprache und sozioökonomischem Status).
+\begin{itemize} \justifying
+\item Achtung der \textbf{Würde} und des \textbf{Wertes} aller Menschen.
+\item Respektieren der Rechte auf \textbf{Privatsphäre}, \textbf{Vertraulichkeit} und \textbf{Selbstbestimmung}.
+\item Besondere Rücksicht auf \textbf{vulnerable Personen}, und Beachtung kultureller, individueller und rollenspezifischer \textbf{Unterschiede} (Faktoren wie Alter, Geschlecht, Geschlechtsidentität, Rasse, Ethnizität, Kultur, Religion, sexueller Orientierung, Behinderung, Sprache und sozioökonomischem Status).
 \end{itemize}
 
 \flushright
@@ -418,9 +450,19 @@ Ethikantrag Beispiel
 @americanpsychologicalassociationapa2017
 
 
+# Leitfaden der DGPs
+
+\vfill
+
+![](../Abbildungen/ad_1_Buch_ethisches_Handeln_DGPs.png){fig-align="center" width="45%"}
+
+\flushleft
+\tiny
+@deutschegesellschaftfuerpsychologiedgps2018
 
 
-# Prinzipien nach DGPs
+
+# \textcolor{darkblue}{\textbf{Prinzipien nach DGPs}}
 
 \setstretch{2}
 \large
@@ -437,14 +479,12 @@ Ethikantrag Beispiel
 
 \footnotesize
 
-Wichtige Anmerkung:
+Wichtige Anmerkungen:
 
 \setstretch{1.3}
-\begin{itemize}
-\item Die Befolgung dieser vier Prinzipien bedeutet nicht automatisch, dass ein Forschungsvorhaben unbedenklich ist, und garantiert kein ethisches Votum.
-\item ''Die zu behandelnden Prinzipien stellen Wegweiser dar, den Weg zum Ziel einer ethisch verantwortbaren Studie müssen die am Forschungsprozess Beteiligten finden.'' [@deutschegesellschaftfuerpsychologiedgps2018]
-\end{itemize}
-
+\justifying
+* Die Befolgung dieser vier Prinzipien bedeutet nicht automatisch, dass ein Forschungsvorhaben unbedenklich ist, und garantiert kein ethisches Votum.
+* ''Die zu behandelnden Prinzipien stellen Wegweiser dar, den Weg zum Ziel einer ethisch verantwortbaren Studie müssen die am Forschungsprozess Beteiligten finden.'' [@deutschegesellschaftfuerpsychologiedgps2018, S. 24]
 
 
 # Respekt vor der Selbstbestimmung ------------------------------- {.plain}
@@ -462,7 +502,7 @@ Ethikkomissionenen
 **Ethische Grundprinzipien**
 
 \normalsize
-\setstretch{1.8}
+\setstretch{1.5}
 
 * **Respekt vor der Selbstbestimmung**
 * Nichtschädigung
@@ -474,17 +514,19 @@ Ethikkomissionenen
 
 Prozess der ethischen Antragstellung
 
-Ethikantrag Beispiel
+Ethikantrag Vorlagen
+
+Selbstkontrollfragen
+
 
 # **Respekt vor der Selbstbestimmung**
 
+
 \textcolor{darkblue}{Grundlegendes Prinzip}
 
-\small
+
 
 "Das Prinzip des Respekts vor der Selbstbestimmung unterstreicht die strikte Beachtung der **Freiwilligkeit** der Teilnahme an einer wissenschaftlichen Untersuchung in **allen Phasen** und **allen Teilen**." (DGPs)
-
-
 
 \vfill
 \normalsize
@@ -492,7 +534,7 @@ Ethikantrag Beispiel
 
 * Freiwillikeit der Teilnahme
 * Teilneherminformation
-* Experimente mit Täuschung/Cover story
+* Experimente mit Täuschung / Cover story
 * Die (formale) Einwilligungserklärung
 
 \vfill
@@ -508,16 +550,17 @@ Ethikantrag Beispiel
 \setstretch{1.3}
 Studienteilnehmer:innen soll es möglich sein, ohne Zwang eine autonome Entscheidung über ihre Teilnahme an einer Studie zu treffen. 
 
+\vfill
 
 \setstretch{2}
 \normalsize
 \textcolor{darkblue}{Zentrale Aspekte}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Rekruitierung: Jede Maßnahme ist so zu gestalten, dass eine freie, unbeeeinflusste Abwägnung, teilzunehmen oder nicht teilzunehmen
-\item Aufwandsentschädigung: Ethisch problematisch wird eine Kompensation wenn sie eine Höhe annimmt, in der Teilnehmde gegen Geld Risiken eingehen, die sie ohne die Zahlung nicht eingegangen wären.
-\item Recht auf vorzeitiger Abbruch: Teilnehmenden müssen zu jedem Zeitpunkt das Recht haben, eine Studie \textit{}{uneinschgeschränkt} (d.h. ohne, dass ihnen dadurch ein Nachteil entsteht) abzubrechen, \textbf{und} darüber informiert sein.
+\begin{itemize} \justifying \small
+\item \textbf{Rekruitierung}: Jede Maßnahme ist so zu gestalten, dass eine freie, unbeeinflusste Abwägnung, teilzunehmen oder nicht teilzunehmen möglich ist.
+\item \textbf{Aufwandsentschädigung}: Ethisch problematisch wird eine Kompensation wenn sie eine Höhe annimmt, in der Teilnehmende gegen Geld Risiken eingehen, die sie ohne die Zahlung nicht eingegangen wären.
+\item \textbf{Recht auf vorzeitiger Abbruch}: Teilnehmenden müssen zu jedem Zeitpunkt das Recht haben, eine Studie \textit{}{uneinschgeschränkt} (d.h. ohne, dass ihnen dadurch ein Nachteil entsteht) abzubrechen, \textit{und} darüber informiert sein.
 \end{itemize}
 
 
@@ -532,14 +575,10 @@ Studienteilnehmer:innen soll es möglich sein, ohne Zwang eine autonome Entschei
 \textcolor{darkcyan}{Setting}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Forschungsfrage: Einfluss von Stress Häufung und Intensität negativer Gefühle in Träumen.
-\item Anforderungen an Teilnehmende:
-\begin{itemize} \small
-  \item Reihe an Fragebögen
-  \item 14 Tage lang Traumtagebuch
-\end{itemize}
-\item Forscherin ist Professorin und behandelt in ihrer Vor das Thema Träume 
+\begin{itemize} \justifying
+\item Forschungsfrage: Einfluss von Stress auf die Häufung und Intensität negativer Gefühle in Träumen.
+\item Anforderungen an Teilnehmende: Fragebögen und Traumtagebuch (14 Tage)
+\item Forscherin: Professorin und behandelt in ihrer Vor das Thema Träume 
 \end{itemize}
 
 
@@ -548,7 +587,7 @@ Studienteilnehmer:innen soll es möglich sein, ohne Zwang eine autonome Entschei
 \textcolor{darkcyan}{Kritischer Aspekt: Rekrutierung}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Rekrutierung im Rahmen der Vorlesung
 \item $\Rightarrow$ Ethisch bedenklich, da nicht auszuschließen ist, das Studierende nur deshalb an der Studie teilnehmen, um ihre Professorin nicht zu enttäuschen, oder befürchten, in der Prüfung Nachteile zu haben
 \item Ethisch weniger bedenklich: Sicherstellen voller Anonymität (z.B. Ausgabe Fragebögen in Abwesenheit der Professorin \textbf{und} offene Kommunikation gegenüber Studierenden)
@@ -560,15 +599,15 @@ Studienteilnehmer:innen soll es möglich sein, ohne Zwang eine autonome Entschei
 
 \setstretch{2}
 \normalsize
-\textcolor{darkcyan}{Kritischer Aspekt: Rekrutierung}
+\textcolor{darkcyan}{Kritischer Aspekt: Aufwandsentschädigung}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Aushänge und Flyer am Campus mit Werbung, dass Teilnehmende für ausgefüllte Fragebögen und Traumtagebuch über 14 Tage Entschädigung bekommen (10€ oder 2 VPN)
-\item $\Rightarrow$ Ethische Abwägungen:
-\begin{itemize} \small
+\item Ethische Abwägungen:
+\begin{itemize} \justifying \small
     \item Angemessese Höhe der Aufwandsentschädigung
-    \item fairer Ausgleich für Zeit und Risiko vs. derart hoch, dass Freiwilligkeit der Studienteilnahme beeinflusst
+    \item Fairer Ausgleich für Zeit und Risiko vs. derart hoch, dass Freiwilligkeit der Studienteilnahme beeinflusst
     \item Risiko, Stichprobe hinsichtlich sozioökonomischen Hintergrund zu verzerren.
 \end{itemize}
 \end{itemize}
@@ -581,31 +620,31 @@ Studienteilnehmer:innen soll es möglich sein, ohne Zwang eine autonome Entschei
 
 \small 
 
-Offenlegen der Ziele und Anforderungen einer Studie, sodass Studienteilnehmende in die Lage versetzt werden, die möglichen Risiken und Vorteile einer Teilnahme abzuwägen. Von entscheidender Bedeutung sind Vollständigkeit, Nachvollziehbarkeit und Verständlichkeit aller relevanten Informationen und die Möglichkeit sowie ausreichend Zeit und Gelegenheit, Fragen zu stellen.
-
-
+Offenlegen der Ziele und Anforderungen einer Studie, sodass Studienteilnehmende in die Lage versetzt werden, mögliche Risiken und Vorteile einer Teilnahme abzuwägen.
 
 \setstretch{2}
 \normalsize
 \textcolor{darkblue}{Zentrale Aspekte}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Inhalt
-\item zusätzliche Information bei Interventionsstudien
-\item Umfang der Teilnehmerinformation
-\item Die Verständlichkeit der Teilnehmerinformation (für Laien)
+\begin{itemize} \justifying
+\item Vollständigkeit, Nachvollziehbarkeit und Verständlichkeit aller relevanten Informationen.
+\item Angemessene Umfang bzw. Detailliertheit der Informationen. „reasonable person standard“: einer vernünftigen ("reasonable") Person wird ermöglicht wird, eine Entscheidung zu treffen, die ihren Werten entsprechen.
+\item Möglichkeit sowie ausreichend Zeit und Gelegenheit, Fragen zu stellen.
+\item Zusätzliche Information bei Interventionsstudien
 \end{itemize}
 
+
+\vfill
 \footnotesize
 
 Anmerkung:
 
 \setstretch{1.3}
-\begin{itemize}
-\item Die DGPs stellt \textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission/vorlagen-antragstellung}{Mustervorlagen}} für Allgemeine Informationen für Teilnehmer/-innen, sowie für spezifische Studien (z.B. für MRT-Studien, EEG-Studie)
-\item Das Buch \textcolor{linkblue}{\href{https://www.hogrefe.com/de/shop/ethisches-handeln-in-der-psychologischen-forschung-75906.html}{Ethisches Handeln in der psychologischen Forschung}} der @deutschegesellschaftfuerpsychologiedgps2018 stellt zudem Beispielformulierungen sowie eine Checkliste für Teilnehmerinformation zur Verfügung.
-\end{itemize}
+
+* Die DGPs stellt \textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission/vorlagen-antragstellung}{Mustervorlagen}} für Allgemeine Informationen für Teilnehmer/-innen, sowie für spezifische Studien (z.B. für MRT-Studien, EEG-Studie)
+* Das Buch \textcolor{linkblue}{\href{https://www.hogrefe.com/de/shop/ethisches-handeln-in-der-psychologischen-forschung-75906.html}{Ethisches Handeln in der psychologischen Forschung}} der @deutschegesellschaftfuerpsychologiedgps2018 stellt zudem Beispielformulierungen sowie eine Checkliste für Teilnehmerinformation zur Verfügung.
+
 
 
 # Teilnehmerinformation
@@ -615,23 +654,22 @@ Anmerkung:
 \textcolor{darkblue}{Inhalt einer Teilnehmerinformation}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Ziel der Studie 
+\begin{itemize} \justifying
+\item Ziel der Studie
 \item Aufnahmebedingungen, Ein- und Ausschlusskriterien
-\item Aufgaben der Proband:innen, zeitlicher Aufwand 
+\item Aufgaben der Versuchspersonen, Zeitlicher Aufwand 
 \item Mögliche Risiken oder Belastungen (physisch, emotional etc.) und Nutzen
 \item Aufklärung über das Recht ohne negative Konsequenzen die Teilnahme an der Studie abzulehnen oder jederzeit, auch vorzeitig, abzubrechen
-\item Zusicherung Vertraulichkeit und Hinweis auf möglichen Einschränkungen (z. B. begrenzt erlaubter Zugriff auf Kodierlisten)
-\item Aufklärung über Datennutzung und Datenschutz (Verwertung und Veröffentlichungsform, z.B. anonymisiert, pseudonymisiert, personenbezogener Daten)
+\item Zusicherung der Vertraulichkeit und Hinweis auf mögliche Einschränkungen (z. B. begrenzt erlaubter Zugriff auf Kodierlisten)
+\item Aufklärung über Datennutzung und Datenschutz (Verwertung und Veröffentlichungsform; anonymisiert, pseudonymisiert)
 \item ggf. Höhe und Beidungungen für eine Aufwandsentschädigung
-\item Hinweis ob, und falls ja welche Art von Versicherungsschutz vorgesehen ist.
-\item Angabe von Kontaktinformationen einer Ansprechperson bei weiteren Fragen.
+\item Hinweis ob, und falls ja welche Art von Versicherungsschutz vorgesehen ist
+\item Angabe von Kontaktinformationen einer Ansprechperson bei weiteren Fragen
 \end{itemize}
 
 
 
 # Teilnehmerinformation
-
 
 \setstretch{2}
 \normalsize
@@ -641,7 +679,7 @@ Relevant, wenn eine Zuteilung auf verschiedene Behandlungsformen erfolgt:
 
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Methoden der Zuteilung zu Behandlungs- und Kontrollgruppen (z.B. Randomisierung)
 \item Alternative Behandlungsmöglichkeiten
 \item ggf. Aufklärung über experimenteller Charakter der Behandlung
@@ -653,27 +691,13 @@ Relevant, wenn die Aufnahme in die Experimentalgruppe mit einem Vorteil für die
 
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Information über Angebote, die der Kontrollgruppe zur Verfügung stehen bzw. nicht zur Verfügung stehen
 \item Information über verfügbarer Alternativen, falls potenziell Teilnehmende nicht an der Forschungsarbeit mitwirken oder die Teilnahme vorzeitig beenden möchten
 \item ggf. Information über Kostenübernahme für die durchgeführten Interventionen
 \end{itemize}
 
 
-# Teilnehmerinformation
-
-
-\setstretch{2}
-\normalsize
-\textcolor{darkblue}{Umfang der Teilnehmerinformation}
-
-\small
-\setstretch{1.3}
-\begin{itemize}
-\item „reasonable person standard“: Umfang bzw. Detailliertheit einer Information ist dann angemessen, wenn einer vernünftigen ("reasonable") Person ermöglicht wird , eine Entscheidung zu treffen, die ihren Werten entsprechen.
-\item Ausreichend Zeit, sich mit den Informationen auseinanderzusetzen
-\item Ausreichend Gelegeneheit, im Gespräch mit Studienleitung, den persönlich benötigten Umfang zu konkretisieren.
-\end{itemize}
 
 
 # Teilnehmerinformation
@@ -685,7 +709,7 @@ Relevant, wenn die Aufnahme in die Experimentalgruppe mit einem Vorteil für die
 
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Berücksichtigung von Vorwissen und die Auffassungsgabe der Adressierten
 \item Verwendung adressatenspezifische Sprache 
 \item ggf. Altersgerechte Sprache (z.B. bei Kindern und Jugendlichen)
@@ -702,24 +726,24 @@ Relevant, wenn die Aufnahme in die Experimentalgruppe mit einem Vorteil für die
 \small
 \setstretch{1.2}
 
-\begin{itemize}
-\item Teilnehmende werden über das eigentliche Ziel der Studie im Unklaren gelassen, indem spezifische Informationen vorenthalten werden (bspw. bestimmte Aufgaben) oder sogar falsche Informationen (z.B. ein scheinbares Ziel, ''Cover story'') gegeben werden.
-\item Grundsätzlich unvereinbar mit dem Prinzip des \textit{informed consent}, aber unter Umständen notwendig, um ein Mindestmaß an Validität zu sichern
+\begin{itemize} \justifying
+\item Teilnehmende werden über das eigentliche Ziel der Studie im Unklaren gelassen, indem spezifische Informationen vorenthalten werden oder sogar falsche Informationen (z.B. ein scheinbares Ziel, ''Cover story'') gegeben werden.
+\item Grundsätzlich unvereinbar mit dem Prinzip des \textit{informed consent}, aber unter Umständen notwendig, um ein Mindestmaß an Validität zu sichern.
 \end{itemize}
 
 \setstretch{2}
 \normalsize
-\textcolor{darkblue}{Generelles Prinzip}
+\textcolor{darkblue}{Generelle Prinzipien}
 \small
 \setstretch{1.2}
 
-\begin{itemize}
+\begin{itemize} \justifying
 \item Wenn möglich, keine Täuschung; wenn nötig, so wenig Täuschung wie möglich.
-\item Möglichkeiten die Täuschung auf ein Mindestmaß zu reduzieren.
-\item Ethische Problematik im Verhältnis zum erwarteten Erkenntnisgewinn.
-\item Möglichkeiten eventuelle negative Konsequenzen einer Täuschung zu minimieren.
+\item Reduzieren der Täuschung auf ein Mindestmaß.
+\item Sorgfältige Abwägung ethischer Problematik im Verhältnis zum erwarteten Erkenntnisgewinn.
+\item Möglichkeiten negative Konsequenzen einer Täuschung zu minimieren.
 \item Wenn möglich, Aufklärung vor Einwilligungserklärung, dass noch nicht alle Informationen offenliegen und dass eine vollständige Aufklärung erst nach der Untersuchung erfolgen wird, sowie, dass das Recht auf Nichtteilnahme, Abbruch und Löschung der Daten besten bleibt.
-\item Vollständige, wahrheitsgemäße, und frühstmögliche Aufklärung (vorzugsweise am Ende der Teilnahme, spätestens am Ende der Datenerhebung) über Täuschung (''debriefing''), sowie das Recht Daten nach Aufklärung zurückzuziehen
+\item \textit{"Debriefing"} Vollständige, wahrheitsgemäße, und frühstmögliche Aufklärung (vorzugsweise am Ende der Teilnahme, spätestens am Ende der Datenerhebung) über Täuschung, sowie das Recht Daten nach Aufklärung zurückzuziehen.
 \end{itemize}
 
 
@@ -731,11 +755,11 @@ Relevant, wenn die Aufnahme in die Experimentalgruppe mit einem Vorteil für die
 \small
 \setstretch{1.3}
 
-\begin{itemize}
-\item Täuschung durch Wichtigkeit/Bedeutsamkeit des potentiellen Erkenntnisgewinns gerechtfertigt.
+\begin{itemize} \justifying
+\item Rechtfertigbarkeit der Täuschung durch Wichtigkeit/Bedeutsamkeit des potentiellen Erkenntnisgewinns.
 \item Keine Möglichkeit die Forschungsfrage mit einem alternativen Design zu untersuchen.
-\item Kein postiver Einfluss auf Teilnahme (Probandin würde bei Kenntnis der Information nicht teilnehmen)
-\item Keine Täuschung bei Aspekten einer Forschungsarbeit ''von denen vernünftigerweise angenommen werden kann, dass sie ernsthafte physische und/oder psychische Belastungen erzeugen'' [@deutschegesellschaftfurpsychologiedgps2022]
+\item Kein postiver Einfluss auf Teilnahme (Versuchsperson würde bei Kenntnis der vorenthaltenen Information nicht teilnehmen).
+\item Keine Täuschung bei Aspekten einer Forschungsarbeit mit erwartbaren ernsthafte physische und/oder psychische Belastungen.
 \end{itemize}
 
 \vfill
@@ -745,9 +769,8 @@ Relevant, wenn die Aufnahme in die Experimentalgruppe mit einem Vorteil für die
 Anmerkung:
 
 \setstretch{1.3}
-\begin{itemize} \footnotesize
-\item Im Buch \textcolor{linkblue}{\href{https://www.hogrefe.com/de/shop/ethisches-handeln-in-der-psychologischen-forschung-75906.html}{Ethisches Handeln in der psychologischen Forschung}} der @deutschegesellschaftfuerpsychologiedgps2018 sind Beispielformulierungen für unvollständige Informationen oder Täuschung sowie ein Leitfaden für ein angemessenes debriefing zu finden.
-\end{itemize}
+\justifying \footnotesize
+* Im Buch \textcolor{linkblue}{\href{https://www.hogrefe.com/de/shop/ethisches-handeln-in-der-psychologischen-forschung-75906.html}{Ethisches Handeln in der psychologischen Forschung}} der @deutschegesellschaftfuerpsychologiedgps2018 sind Beispielformulierungen für unvollständige Informationen oder Täuschung sowie ein Leitfaden für ein angemessenes *debriefing* zu finden.
 
 
 
@@ -758,12 +781,12 @@ Anmerkung:
 \textcolor{darkblue}{Grundlegendes Prinzip}
 \small
 \setstretch{1.2}
-\begin{itemize}
-\item Die Einwilligung einer Proband:in an einer Studie teilzunehmen ist \textit{vor} Untersuchungsbeginn schriftlich festzuhalten.
-\item Die \textit{informierte Zustimmung} (''informed consent'') soll formaler Prozess im Untersuchungsablauf sein.
+\begin{itemize} \justifying
+\item Die Einwilligung einer Versuchsperson, an einer Studie teilzunehmen ist \textit{vor} Untersuchungsbeginn schriftlich festzuhalten.
+\item Die \textit{informierte Zustimmung} (''informed consent'') soll ein formaler Prozess im Untersuchungsablauf sein.
 \item Zusätzliche informierte Zustimmung für Erfassung von Bild, Ton, oder Gendaten.
-\item Im Kontext von open science, explizite Einwilligung zur Datenveröffentlichung und -nutzung.
-\item ggf. besonderer Hinweis auf potenziellen physisichen Risiko in der Einwilligungserklärung (z.B. bei MRT-, TMS-, oder Gen-Studien).
+\item Im Kontext von Open Science, explizite Einwilligung zur Datenveröffentlichung und -nutzung.
+\item ggf. besonderer Hinweis auf potenzielle physisiche Risiken in der Einwilligungserklärung (z.B. bei MRT-, TMS-, oder Gen-Studien).
 \end{itemize}
 
 \setstretch{2}
@@ -771,7 +794,7 @@ Anmerkung:
 \textcolor{darkblue}{Zentrale Voraussetzungen}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Informiertheit
 \item Freiwilligkeit
 \item Kompetenz, Entscheidungsfähigkeit
@@ -779,9 +802,9 @@ Anmerkung:
 
 
 \footnotesize
+\setstretch{1.3}
 Anmerkung:
 
-\setstretch{1.3}
 \begin{itemize} \footnotesize
 \item Für alle Einwilligungserkärungen stellt die DGPs \textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission/vorlagen-antragstellung}{Mustervorlagen}} zur Verfügung. 
 \end{itemize}
@@ -796,11 +819,11 @@ Anmerkung:
 \textcolor{darkblue}{Formale Kriterien}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Titel der Studie und Briefkopf mit Name, Adresse, E-Mail und Telefonummer Kontaktperson.
 \item Schriftliche Bestätigung der Teilnehmenden dass sie umfassend über die Studie informiert wurden.
 \item Gegenzeichnung der Versuchsleiter:in.
-\item Zwei Kopien der Einwilligungserklärung mit Unterschriften der Versuchsperson und -leiter:in, eine für die Versuchsperson, eine für die Versuchsleiter:in.
+\item Zwei Kopien der Einwilligungserklärung mit Unterschriften der Versuchsperson und Versuchsleiter:in, eine für jede Partei.
 \end{itemize}
 
 \vfill
@@ -809,7 +832,7 @@ Anmerkung:
 
 \setstretch{1.3}
 \begin{itemize} \footnotesize
-\item Ehtikkommissionen verlangen stets die Einreichung zwei separater Unterlagen, die jeweils den Teilnehmenden vorzulegen sind: Die \textit{Allgemeine Teilnehmerinformation} und die \textit{schriftliche Einwilligungserklärung}.
+\item Ehtikkommissionen verlangen stets die Einreichung zwei separater Unterlagen für Information und Einiwilligung, die jeweils den Teilnehmenden vorzulegen sind: Die \textit{Allgemeine Teilnehmerinformation} und die \textit{schriftliche Einwilligungserklärung}.
 \item Für beide Dokumente stellt die DGPs \textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission/vorlagen-antragstellung}{Mustervorlagen}} zur Verfügung. 
 \end{itemize}
 
@@ -822,7 +845,7 @@ Anmerkung:
 \textcolor{darkblue}{Sonderfälle}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Bei Täuschung oder unvollständigen Informationen, sollte der Satz ''Ich bin darüber informiert, dass ich zum gegenwärtigen Zeitpunkt noch nicht über alle Aspekte die Studie betreffend aufgeklärt werden kann. Diese werden mir erst nach Abschluss der Untersuchung mitgeteilt'' hinzugefügt werden.
 \item Falls das eigentliche Ziel zum Zeitpunkt der Teilnahme nicht klar ist, muss \textit{nach} Abschluss der Studie die Einwilligung zur Verwendung der Daten eingeholt werden.
 \item Falls Messwiederholungen geplant sind, muss die schriftliche Einwilligung zur erneuten Kontatkaufnahme eingeholt werden.
@@ -845,7 +868,7 @@ Ethikkomissionenen
 **Ethische Grundprinzipien**
 
 \normalsize
-\setstretch{1.8}
+\setstretch{1.5}
 
 * Respekt vor der Selbstbestimmung
 * **Nichtschädigung**
@@ -857,7 +880,9 @@ Ethikkomissionenen
 
 Prozess der ethischen Antragstellung
 
-Ethikantrag Beispiel
+Ethikantrag Vorlagen
+
+Selbstkontrollfragen
 
 
 # **Nichschädiung**
@@ -867,9 +892,9 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Grundlegendes Prinzip}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Abwägung, ob die Teilnahme an einer Studie mit einer möglichen Beeinträchtigung oder dem Risiko eines zukünftigen Schadens verbunden ist.
-\item Es ist die Pflicht der Studienverantwortlichen, Proband:innen vor möglichen Schäden zu schützen und jedes Risiko zu minimieren.
+\item Es ist die Pflicht der Studienverantwortlichen, Versuchspersonen vor möglichen Schäden zu schützen und jedes Risiko zu minimieren.
 \item Sorgfältige Abwägung von Chancen und Risiken (Besonderheit bei klinischen Studien: Forschung an erkrankten Menschen, die Anspruch auf medizinische Versorgung haben)
 \end{itemize}
 
@@ -879,7 +904,7 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Zentrale Aspekte}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item \textit{körperlich}: z.B. durch Entnahme von Blut, Speichel, durch Medikamenten- oder Placebo-Gaben, durch invasive oder nicht invasive Messungen
 \item \textit{mental}: z.B. aversive Reize, Erzählen negativer Erfahrungen, Stress
 \item \textit{Belastung}: Die mit der Durchführung einer Studie unmittelbar verknüpften und nahezu unvermeidbaren Unannehmlichkeiten
@@ -894,11 +919,11 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Typen von Risiken im Rahmen psychologischer Studien}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item \textit{Körperliche Risiken} (Schmerzen, Verletzungen oder Sinnesbeeinträchtigungen)
-\item \textit{Psychologische Risiken} (Gefühle, z.B. Angst, Traurigkeit, Kummer oder auch Beeinträchtigungen und Negativbewertungen in Selbsteinschätzung und Selbstwert)
-\item \textit{Soziale Risiken} (Wahrnehmung der Person durch andere, z.B. Sozialer Status, Privatsphäre)
-\item \textit{Ökonomische Risiken} (z.B. Ablehnung von Lebens- oder private Krankenversicherungen aufgrund zufälliger Befundfeststellung im Rahmen einer MRT- oder EEG-Studie)
+\begin{itemize} \justifying
+\item \textit{Körperliche Risiken}: Schmerzen, Verletzungen oder Sinnesbeeinträchtigungen
+\item \textit{Psychologische Risiken}: z.B. Gefühle wie Angst, Traurigkeit, Kummer;  Beeinträchtigungen und Negativbewertungen in Selbsteinschätzung und Selbstwert
+\item \textit{Soziale Risiken}: Wahrnehmung der Person durch andere, z.B. Sozialer Status, Privatsphäre
+\item \textit{Ökonomische Risiken}: z.B. Ablehnung von Lebens- oder private Krankenversicherungen aufgrund zufälliger Befundfeststellung im Rahmen einer MRT- oder EEG-Studie
 \end{itemize}
 
 \setstretch{2}
@@ -906,11 +931,11 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Weitere Beispiele}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Induktion von kurzzeitigem Stress, Auswirkung auf Leistung
-\item Unlösbare Rechenaufgaben, Messung Perseveranztendenzen
-\item Erinnerung an Sitatuationen mit moralischer Schuld, Messung Schuldgefühlserleben
-\item Zustimmung Teilnahme an Studie zu häuslicher Gewalt
+\begin{itemize} \justifying
+\item Induktion von kurzzeitigem Stress, Untersuchung der Auswirkung auf Leistung
+\item Unlösbare Rechenaufgaben, Messung der Perseveranztendenzen
+\item Erinnerung an Sitatuationen mit moralischer Schuld, Messung des Schuldgefühlserleben
+\item Zustimmung zur Teilnahme an Studie zu häuslicher Gewalt
 \end{itemize}
 
 
@@ -922,16 +947,16 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Maßnahmen zur Risikominderung oder -verhinderung}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Kontinuierliche Aufsicht und Überwachung der Studiendurchführung (ggf. Möglichkeit des Abbruch eines Experiments zu jeder Zeit gegeben)
-\item Ausschluss vulnerabler Gruppen (wobei Abwägung mit Gleichbehandlungsprinzip).
+\begin{itemize} \justifying
+\item Kontinuierliche Aufsicht und Überwachung der Studiendurchführung (Möglichkeit des Abbruch eines Experiments zu jeder Zeit gegeben)
+\item Ausschluss vulnerabler Gruppen (wobei Abwägung mit Gleichbehandlungsprinzip)
 \item Weniger riskante Alternativen bei der Studiendurchführung.
 \item Angebot einer psychosozialen Unterstützung.
 \item Nachsprechungsmöglichkeit über Studienzweck und -ablauf und Klären evtl. erst während der Untersuchung entstandener Fragen.
 \item Sicherung der Privatsphäre und effizienter Datenschutz.
-\item ggf. Hinweis Verschwiegenheitspflicht aller Beteiligten oder berufsrechtlicher Schweigepflicht
-\item Umfassende Aufklärung über mögliche Konsequenzen (z.B. Zufallsbefunden)
-\item ggf. Haftpflicht- und/oder Probandenversicherung (\textit{nicht} vorgeschrieben, aber empfohlen)
+\item ggf. Hinweis Verschwiegenheitspflicht aller Beteiligten oder berufsrechtlicher Schweigepflicht.
+\item Umfassende Aufklärung über mögliche Konsequenzen (z.B. Zufallsbefunden).
+\item ggf. Haftpflicht- und/oder Probandenversicherung (\textit{nicht} vorgeschrieben, aber empfohlen).
 \end{itemize}
 
 
@@ -942,13 +967,13 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Datenschutz}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Beachtung des Bundesdatenschutzgesetzes (BDSG) und Datenschutz-Grundversordnung (DSGVO)
 \item Gebot, sparsam mit Daten umzugehen. 
 \item Verhinderung einer Zuordnung von Daten zu Personen
-\begin{itemize} \small
+\begin{itemize} \justifying \small
 \item \textit{formal anonymisiert}: Keine eindeutige und fehlerfreie Zuordnung von Daten zu einer Person möglich.
-\item \textit{pseudonymisiert}: Keine direkte Zuordnung von Daten zu einer Person möglich, aber durch die Verwendung eines Pseudonyms, welches idR. einer separat aufbewahrten Kodierliste steht.
+\item \textit{pseudonymisiert}: Keine direkte Zuordnung von Daten zu einer Person möglich, aber durch die Verwendung eines Pseudonyms, welches i.d.R. in einer separat aufbewahrten Kodierliste (i.d.R. temporär) dokumentiert ist.
 \end{itemize}
 \item Aufklärung der Teilnehmenden über Form und Dauer der Datenspeicherung (idR. mind. 10 Jahre nach Vorschrift der DFG).
 \item Im Falle pseudonymisierter Daten, Hinweis über Aufbewahrung und Löschung der Kodierliste.
@@ -970,7 +995,7 @@ Ethikkomissionenen
 **Ethische Grundprinzipien**
 
 \normalsize
-\setstretch{1.8}
+\setstretch{1.5}
 
 * Respekt vor der Selbstbestimmung
 * Nichtschädigung
@@ -982,7 +1007,11 @@ Ethikkomissionenen
 
 Prozess der ethischen Antragstellung
 
-Ethikantrag Beispiel
+Ethikantrag Vorlagen
+
+Selbstkontrollfragen
+
+
 
 # **Fürsorge**
 
@@ -991,7 +1020,7 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Grundlegendes Prinzip}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Ausgleich möglicher Risiken, ggf. in Form eines konkreten Nutzens durch Teilnahme.
 \item Wahrung der Würde, Integrität und Respekt vor der Individualität der Teilnehmenden.
 \item Anstreben einer Verbesserung der Lebensqualität oder Wohlbefindens der Teilnehmenden.
@@ -1002,8 +1031,8 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Maßnahmen}
 \small
 \setstretch{1.2}
-\begin{itemize}
-\item Aufklärung über tatächlich realisierbare persönlichen Nutzen durch Teilnahme.
+\begin{itemize} \justifying
+\item Aufklärung über tatächlich realisierbaren persönlichen Nutzen durch Teilnahme.
 \item Aufklärung über möglicherweise erwartete, aber \textit{nicht} realisierbare persönlichen Nutzen, um mögliche Enttäuschung zu vermeiden.
 \end{itemize}
 
@@ -1012,7 +1041,7 @@ Ethikantrag Beispiel
 Anmerkung:
 
 \setstretch{1.3}
-\begin{itemize} \footnotesize
+\begin{itemize} \justifying \footnotesize
 \item Vor allem bei randomisierten Designs kommt es häufiger zu Missverständnissen über den erwartbaren Nutzen, wenn z.B. Teilnehmende misstverstehen, wie die Gruppenzuordnung erfolgt.
 \end{itemize}
 
@@ -1024,15 +1053,15 @@ Anmerkung:
 \textcolor{darkblue}{Beispiele für konkrenten Nutzen in psychologischen Studien}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Gesellschaftlicher Nutzen der Forschungsergebnisse.
 \item Symptomverbessernde Effekte für Individuen in Interventionsforschung.
-\item Verbesserung individueller Lebensfähigkeiten (z.B. sozialer Kompotenzen, Selbstwirksamkeit).
+\item Verbesserung individueller Lebensfähigkeiten (z.B. Sozialer Kompotenzen, Selbstwirksamkeit).
 \item Befriedigung von Neugier an Forschung.
-\item Altruistische Bedürfnisse.
+\item Befriedigung altruistische Bedürfnisse.
 \item Selbsteinsicht und Selbsterkenntnis.
-\item Verbessertes Verständnis von Wissenschaft (z.B. Erlernen von Modellen zu Stress, Strategien zur Emotionsregulierung)
-\item Potential von sekundärem Nutezn, wie finanzielle Entschädigung und verkürzte Therapiewartezeit umstritten. 
+\item Verbessertes Verständnis von Wissenschaft (z.B. Modelle zu Stress, Strategien zur Emotionsregulierung)
+\item Sekundärer Nutzen, wie finanzielle Entschädigung oder verkürzte Therapiewartezeit (umstritten). 
 \end{itemize}
 
 
@@ -1051,7 +1080,7 @@ Ethikkomissionenen
 **Ethische Grundprinzipien**
 
 \normalsize
-\setstretch{1.8}
+\setstretch{1.5}
 
 * Respekt vor der Selbstbestimmung
 * Nichtschädigung
@@ -1063,8 +1092,9 @@ Ethikkomissionenen
 
 Prozess der ethischen Antragstellung
 
-Ethikantrag Beispiel
+Ethikantrag Vorlagen
 
+Selbstkontrollfragen
 
 
 # Gerechtigkeit
@@ -1075,11 +1105,11 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Zentrale Aspekte}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Das Verhältnis von Aufwand und Entschädigung bei der Teilnahme an einer Studie.
 \item Die Gleichbehandlung der Teilnehmenden in einer Stichprobe.
-\item Die Gruppen potenziell Teilnehmender.
-\item Der potenzielle Nutzen der Forschung.
+\item Die Gruppen potenzieller Teilnehmender.
+\item Potenzielle Nutzen der Forschung.
 \end{itemize}
 
 \setstretch{2}
@@ -1087,11 +1117,11 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Mögliche Maßnahmen}
 \small
 \setstretch{1.2}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Sicherstellen einer dem Aufwand entsprechenden Entschädigung für die Teilnahme.
 \item Gleichbehandlung aller Teilnehmenden.
-\item Einbeziehen alle potenziell möglichen Teilnehmenden in der Stichprobenrekrutierung.
-\item Zeitlich versetzter Zugang zu Intervention for Kontrollgruppen (''Warte-Kontroll-Gruppe'').
+\item Einbeziehen aller potenziell möglichen Versuchspersonen (unterschiedlicher sozialer Gruppen) in der Stichprobenrekrutierung.
+\item Zeitlich versetzter Zugang zu Interventionen for Kontrollgruppen (''Warte-Kontroll-Gruppe'').
 \item Verständliche Erläuterung des Randomisierungsprinzips.
 \end{itemize}
 
@@ -1114,7 +1144,10 @@ Ethische Grundprinzipien
 
 **Prozess der ethischen Antragstellung**
 
-Ethikantrag Beispiel
+Ethikantrag Vorlagen
+
+Selbstkontrollfragen
+
 
 # Notwendigkeit und Motivation für Ethik-Anträge
 
@@ -1123,7 +1156,7 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Notwendigkeit eines Unbedenklichkeitsvotums}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Es gibt keine verbindliche Verpflichtung zur Einreichung von Ethik-Anträgen, oder Regelung, dass Studien nur nach Unbedenklichkeitsvotum durch eine Ethikkommission durchgeführt werden dürfen.
 \item Praktische Motivation ist häufig die Tatsache, dass Herausgeber wissenschaftlicher Zeitschriften sowie Drittmittelgeber eine Unbedenklichkeitsvotum voraussetzen.
 \end{itemize}
@@ -1133,9 +1166,9 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Wann auf einen Ethikantrag verzichtet werden kann}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Kein Schaden oder Unbehagen durch Teilnahme, das über alltägliche Erfahrungen hinausgehen
-\item Beispiele: Erziehungsmethoden, Curricula oder Unterrichtsmethoden im Bildungsbereich; anonyme Fragebögen; freie Beobachtungen; Faktoren der Arbeits- und Organisationseffizienz in Organisationen (keine beruflichen Nachteile für Teilnehmende)
+\begin{itemize} \justifying
+\item Durch die Teilnahme entsteht kein Schaden oder Unbehagen, das über alltägliche Erfahrungen hinausgeht.
+\item Beispiele: Erziehungsmethoden, Curricula oder Unterrichtsmethoden im Bildungsbereich; anonyme Fragebögen; freie Beobachtungen; Faktoren der Arbeits- und Organisationseffizienz in Organisationen (keine beruflichen Nachteile für Teilnehmende).
 \end{itemize}
 
 # Ethik-Kommissionen
@@ -1145,11 +1178,11 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Aufgabe und Funktion}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Unterstützung und Beratung von Forschenden.
 \item Schutz der Teilnehmenden einer Studie.
-\item Ethische Prüfung von Forschungsvorhaben, insbes. Aufklärung und Einwilligung.
-\item Indirekte Prüfung der wissenschaftlichen Qualität (z.B. Klarheit und  Forschungsfragen, Angemessenheit der Methoden)
+\item Ethische Prüfung von Forschungsvorhaben, insbesesondere Aufklärung und Einwilligung.
+\item Indirekte Prüfung der wissenschaftlichen Qualität (z.B. Klarheit der Forschungsfragen, Angemessenheit der Methoden)
 \end{itemize}
 
 \setstretch{2}
@@ -1157,10 +1190,10 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Ethik-Kommissionen}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item \textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission}{Zentrale Ethikkommission der DGPs}}
-\item Lokale Ethikkommissionen (Auflistung der DGPs \textcolor{linkblue}{\href{https://www.dgps.de/die-dgps/kommissionen/ethikkommission/lokale-ethikkommissionen/}{(hier)}})
-\item in Magdeburg: \textcolor{linkblue}{\href{http://www.ethikkommission.ovgu.de/}{Ethik-Kommission der Otto-von-Guericke-Universität in Magdeburg}}
+\item Lokale Ethikkommissionen (eine Auflistung der DGPs \textcolor{linkblue}{\href{https://www.dgps.de/die-dgps/kommissionen/ethikkommission/lokale-ethikkommissionen/}{hier}})
+\item In Magdeburg: \textcolor{linkblue}{\href{http://www.ethikkommission.ovgu.de/}{Ethik-Kommission der Otto-von-Guericke-Universität in Magdeburg}}
 \end{itemize}
 
 
@@ -1172,11 +1205,11 @@ Ethikantrag Beispiel
 \textcolor{darkblue}{Was psychologische Ethik-Kommissionen nicht leisten}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Beurteilung klinischer Studien der Medizin (Ausnahme bei fachübergreifenden lokalen Ethik-Kommissionen)
 \item ''Genehmigung'' einer Studie. Entscheidung liegt in der Verantwortung der Forschenden.
 \item Überwachung der korrekten Durchführung.
-\item Haftungsübernahme bei Schäden nachdem Stellungnahme durch Ethikkommission erfolgte.
+\item Haftungsübernahme bei Schäden, nachdem Stellungnahme durch Ethikkommission erfolgte.
 \end{itemize}
 
 \vfill
@@ -1188,7 +1221,7 @@ Anmerkung:
 
 \setstretch{1.3}
 
-"die Verantwortung für einen ethisch vertretbaren Ablauf und für einen angemessenen Schutz vor möglichen Schäden durch die Untersuchung in letzter Instanz immer bei den durchführenden Wissenschaftlerinnen bzw. Wissenschaftlern. Ein positives Votum der Ethikkommission entbindet nicht von der Verantwortung, jederzeit selbst für die Einhaltung der entsprechenden ethischen Regelungen einzutreten." [@deutschegesellschaftfuerpsychologiedgps2018]
+"[Die] Verantwortung für einen ethisch vertretbaren Ablauf und für einen angemessenen Schutz vor möglichen Schäden durch die Untersuchung [liegt] in letzter Instanz immer bei den durchführenden Wissenschaftlerinnen bzw. Wissenschaftlern. Ein positives Votum der Ethikkommission entbindet nicht von der Verantwortung, jederzeit selbst für die Einhaltung der entsprechenden ethischen Regelungen einzutreten." [@deutschegesellschaftfuerpsychologiedgps2018, S.22]
 
 
 
@@ -1199,17 +1232,29 @@ Anmerkung:
 \textcolor{darkblue}{Zentrale Aspekte}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Zeitpunkt der Antragsstellung: \textit{vor} Beginn einer Studie
 \item Mindestbestandteile:
-\begin{itemize} \small
+\begin{itemize} \justifying \small
 \item \textit{Darstellung des Studienvorhabens} (''Antrag auf Stellungnahme der Ethikkommission'')
 \item \textit{Teilnehmerinformation} (''Allgemeine Information für Teilnehmende'')
-\item \textit{Einwilligungserklärung} (''Einwilligungserklärung'')
+\item \textit{Einwilligungserklärung}
 \end{itemize}
 \item ggf. weitere Dokumente (z.B. Information für MRT-Studien oder Bild- oder Tonaufnahmen)
-\item In manchen Fällen, bei späteren Änderungen im Studiendesign (z.B. Stichprobenerweiterung, verwendete Fragebögen) ein \textit{Amendment} statt neuer Antrag ausreichend.
+\item In manchen Fällen ist bei späteren Änderungen im Studiendesign (z.B. Stichprobenerweiterung, verwendete Fragebögen) ein \textit{Amendment} statt eines neuen Antrags ausreichend.
 \end{itemize}
+
+
+\vfill
+\footnotesize
+Anmerkung:
+
+\setstretch{1.3}
+\begin{itemize} \justifying \footnotesize
+\item Die DGPs stellt Mustervorlagen für die \textit{Darstellung des Studienvorhabens} (unter \textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission/vorlagen-antragstellung}{Vorlage Ethikantrag}}) und \textcolor{linkblue}{\href{https://zwpd.transmit.de/images/zwpd/dienstleistungen/ethikkommission/hinweise_zum_ethikantrag_v13.pdf}{Hinweise zum Ethikantrag}}, sowie für die \textit{Teilnehmerinformation} und \textit{Einwilligungserklärung} zur Verfügung.
+\item Auf der selben \textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission/vorlagen-antragstellung}{Website}} finden sich auch weitere Vorlagen für die Einwilligung von Bild- und Tonaufnahmen, Informationen zu EEG Studien, etc.
+\end{itemize}
+
 
 
 
@@ -1218,28 +1263,29 @@ Anmerkung:
 \textcolor{darkblue}{Prüfkriterien}
 \small
 \setstretch{1.3}
-\begin{itemize}
+\begin{itemize} \justifying
 \item Vorhandensein aller Vorkehrungen zur Minimierung eines Probanden-Risikos.
 \item Angemessenes Verhältnis zwischen Nutzen und Risiko.
 \item Hinreichende Belege der freiwilligen informierten Teilnahme am Forschungsvorhaben sowie die Einwilligung der teilnehmenden Person oder gesetzlichen Vertreters.
-\item Beachtung einseitiger Bestimmungen (relevante Gesetze und Vorschriften), insbesondere Datenschutz.
+\item Beachtung einseitiger Bestimmungen (Gesetze und Vorschriften), insbesondere Datenschutz.
 \end{itemize}
 
+\normalsize
 \textcolor{darkblue}{Arten von Ethikvoten}
 \small
 \setstretch{1.3}
-\begin{itemize}
-\item Ethisch unbedenklich ohne Einschränkungen: positives Votum
-\item Ethisch unbedenklich: Formulierung bestimmter Auflagen und Empfehlung, die geplantes Vorhaben zu überdenken problematische Aspekte zu ändern. (keine Überprüfung)
-\item Ethisch bedenklich: Abraten von geplantem Vorhaben, Möglichkeit, revidierte Fassung einzureichen
+\begin{itemize} \justifying
+\item \textbf{Ethisch unbedenklich ohne Einschränkungen}: positives Votum
+\item \textbf{Ethisch unbedenklich}: Formulierung bestimmter Auflagen und Empfehlung, die geplantes Vorhaben zu überdenken problematische Aspekte zu ändern. (keine Überprüfung)
+\item \text{Ethisch bedenklich}: Abraten von geplantem Vorhaben, Möglichkeit, revidierte Fassung einzureichen
 \end{itemize}
 
 
 
 
-# Ethikantrag Beispiel ===================================== {.plain}
+# Ethikantrag Vorlagen===================================== {.plain}
 \AtBeginSection{}
-\section{Ethikantrag Beispiel}
+\section{Ethikantrag Vorlagen}
 
 \large
 \vfill
@@ -1253,12 +1299,149 @@ Ethische Grundprinzipien
 
 Prozess der ethischen Antragstellung
 
-**Ethikantrag Beispiel**
+**Ethikantrag Vorlagen**
+
+Selbstkontrollfragen
+
+
+# Vorlagen der DGPs
+\small
+\textcolor{linkblue}{\href{https://zwpd.transmit.de/zwpd-dienstleistungen/zwpd-ethikkommission/vorlagen-antragstellung}{Website}} der DPGs mit Mustervorlagen
+
+\center
+![](../Abbildungen/ad_1_vorlagen_website.png){width="75%"}
+
+
 
 
 # Antrag auf Stellungnahme der Ethikkommission
 
-# 
+::: {layout-ncol=2}
+![](../Abbildungen/ad_1_Antragsmuster_1.png){width="50%"}
+
+![](../Abbildungen/ad_1_Antragsmuster_2.png)
+:::
+
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+# Antrag auf Stellungnahme der Ethikkommission
+
+::: {layout-ncol=2}
+![](../Abbildungen/ad_1_Antragsmuster_3.png)
+
+![](../Abbildungen/ad_1_Antragsmuster_4.png)
+:::
+
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+# Antrag auf Stellungnahme der Ethikkommission
+
+::: {layout-ncol=2}
+![](../Abbildungen/ad_1_Antragsmuster_5.png)
+:::
+
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+# Allgemeine Information für Teilnehmende
+
+::: {layout-ncol=2}
+![](../Abbildungen/ad_1_Allgemeine_Info_1.png)
+
+![](../Abbildungen/ad_1_Allgemeine_Info_2.png)
+:::
+
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+# Allgemeine Information für Teilnehmende
+
+::: {layout-ncol=2}
+![](../Abbildungen/ad_1_Allgemeine_Info_3.png)
+
+:::
+
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+# Einwilligungserklärung
+
+::: {layout-ncol=2}
+![](../Abbildungen/ad_1_Einwilligungserklaerung_1.png)
+
+![](../Abbildungen/ad_1_Einwilligungserklaerung_2.png)
+:::
+
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+# Einwilligungserklärung
+
+::: {layout-ncol=2}
+![](../Abbildungen/ad_1_Einwilligungserklaerung_3.png)
+
+![](../Abbildungen/ad_1_Einwilligungserklaerung_4.png)
+:::
+
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+# Einwilligungserklärung
+
+::: {layout-ncol=1}
+![](../Abbildungen/ad_1_Einwilligungserklaerung_5.png)
+:::
+
+\tiny
+\flushleft
+@deutschegesellschaftfurpsychologiedgps2024
+
+
+
+# Selbstkontrollfragen ===================================== {.plain}
+\AtBeginSection{}
+\section{Selbstkontrollfragen}
+
+\large
+\vfill
+\setstretch{2.5}
+
+Einführung
+
+Ethikkomissionenen
+
+Ethische Grundprinzipien
+
+Prozess der ethischen Antragstellung
+
+Ethikantrag
+
+**Selbstkontrollfragen**
+
+
 
 # Selbstkontrollfragen
 
