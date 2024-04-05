@@ -968,8 +968,8 @@ Selbstkontrollfragen
 \small
 \setstretch{1.2}
 \begin{itemize} \justifying
-\item Beachtung des Bundesdatenschutzgesetzes (BDSG) und Datenschutz-Grundversordnung (DSGVO)
-\item Gebot, sparsam mit Daten umzugehen. 
+\item Beachtung des \textcolor{linkblue}{\href{https://www.gesetze-im-internet.de/bdsg_2018/}{Datenschutz-Grundversordnung (Bundesdatenschutzgesetzes (BDSG))}} und \textcolor{linkblue}{\href{https://www.bmi.bund.de/SharedDocs/faqs/DE/themen/it-digitalpolitik/datenschutz/datenschutzgrundvo-liste.html}{Datenschutz-Grundversordnung (DSGVO)}}
+\item Gebot, sparsam mit Daten umzugehen.
 \item Verhinderung einer Zuordnung von Daten zu Personen
 \begin{itemize} \justifying \small
 \item \textit{formal anonymisiert}: Keine eindeutige und fehlerfreie Zuordnung von Daten zu einer Person möglich.
@@ -1050,7 +1050,7 @@ Anmerkung:
 
 \setstretch{2}
 \normalsize
-\textcolor{darkblue}{Beispiele für konkrenten Nutzen in psychologischen Studien}
+\textcolor{darkblue}{Beispiele für konkreten Nutzen in psychologischen Studien}
 \small
 \setstretch{1.2}
 \begin{itemize} \justifying
@@ -1159,6 +1159,7 @@ Selbstkontrollfragen
 \begin{itemize} \justifying
 \item Es gibt keine verbindliche Verpflichtung zur Einreichung von Ethik-Anträgen, oder Regelung, dass Studien nur nach Unbedenklichkeitsvotum durch eine Ethikkommission durchgeführt werden dürfen.
 \item Praktische Motivation ist häufig die Tatsache, dass Herausgeber wissenschaftlicher Zeitschriften sowie Drittmittelgeber eine Unbedenklichkeitsvotum voraussetzen.
+\item Zielführender und hilfreicher Nebeneffekt des Verfassens eines Ethik-Antrags ist die Strukturierung des Forschungsprojekts im Sinne wissenschaftlicher Standards.
 \end{itemize}
 
 \setstretch{2}
@@ -1411,9 +1412,7 @@ Selbstkontrollfragen
 
 # Einwilligungserklärung
 
-
-![](../Abbildungen/ad_1_Einwilligungserklaerung_5.png){fig-align="center" width="50%"}
-
+![](../Abbildungen/ad_1_Einwilligungserklaerung_5.png){fig-align="center" width="45%"}
 
 \tiny
 \flushleft
@@ -1442,12 +1441,11 @@ Ethikantrag
 **Selbstkontrollfragen**
 
 
-
 # Selbstkontrollfragen
 
 \vfill
 \footnotesize
-\setstretch{2.5}
+\setstretch{2.2}
 \begin{enumerate}
   \item Nennen Sie vier zentrale Aspekte der Ethik in der Psychologie.
   \item Erklären Sie relevante rechtliche Normen für ethische Fragestellungen in der Forschung.
@@ -1456,15 +1454,33 @@ Ethikantrag
   \item Nennen Sie die Ethischen Grundprinzipien der APA.
   \item Nennen Sie die Ethischen Grundprinzipien der DGPs.
   \item Nennen und erläutern Sie die zentralen Aspekte des Prinzips "Respekt vor der Selbstbestimmung".
-  \item Nennen Sie die zentralen Aspekte einer Teilnehmerinformation, sowie fünf wichtige Inhalte.
+  \item Nennen Sie die zentralen Aspekte einer Teilnehmerinformation, sowie fwesentliche Inhalte.
   \item Beschreiben Sie, was bei Täuschung in einer Studie beachtet werden muss.
   \item Erläutern Sie die zentralen Aspekte der Einwilligungserklärung und formale Kriterien.
-  \item Erläutern Sie Typen von Risiken im Rahmen psychologischer Studien anhand von Beispiele, sowie mögliche Maßnahmen zur Risikominimierung.
-  \item TODO: hier weiter
-
 \end{enumerate}
 
 \vfill
+
+
+# Selbstkontrollfragen
+
+\vfill
+\footnotesize
+\setstretch{2.2}
+\begin{enumerate}
+\addtocounter{enumi}{10}
+  \item Erläutern Sie Typen von Risiken im Rahmen psychologischer Studien anhand von Beispielen.
+  \item Erklären Sie den Unterschied zwischen Anonymisierung und Pseudonymisierung.
+  \item Nennen Sie Beispiele für Nutzen in psychologischen Studien.
+  \item Nennen Sie zentrale Aspekte des Gerechtigkeitsprinzips und erläutern Sie, wie diesen durch geeignete Maßnahmen Rechnung getragen werden kann.
+  \item Diskutieren Sie die Notwendigkeit und Nutzen von Ethik-Anträgen.
+  \item Diskutieren Sie die Aufgaben und Funktionen von Ethikkommissionen.
+  \item Nennen Sie die zentralen Aspekte und formalen Mindestbestandteile eines Ethik-Antrags.
+  \item Erläutern Sie die Bedeutung der möglichen Ethikvoten
+\end{enumerate}
+
+\vfill
+
 
 
 # Referenzen
