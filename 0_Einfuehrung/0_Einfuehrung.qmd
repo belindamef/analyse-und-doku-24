@@ -70,7 +70,7 @@ Aufnahme läuft.
 * \justifying Termine: Mittwochs in Raum G22A-218
   * Gruppe 1 um 13-15 Uhr
   * Gruppe 2 um 11-13 Uhr
-* Kursmaterialien (Folien, Videos, Source Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html}{Kurswebseite}} \textcolor{red}{TODO!}
+* Kursmaterialien (Folien, Videos, Source Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2024/Analyse+und+Dokumentation.html}{Kurswebseite}}
 * Code auf \textcolor{linkblue}{\href{https://github.com/belindamef/analyse-und-doku-24}{Github}}
 * Ankündigungen über die \textcolor{linkblue}{\href{https://elearning.ovgu.de/course/view.php?id=16231}{Moodleseite}}
 * Vorherige Iteration des Kurses: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html}{Design, Analyse, Dokumentation (SoSe 2023)}}
@@ -89,70 +89,77 @@ Aufnahme läuft.
 
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{llll}
-Datum          & Einheit               & Thema                                    & Lehrperson   \\\hline
-10.04.24       & Dokumentation         &  (1) Ethik und Ethische Formalitäten     & BF \\
-17.04.24       & Dokumentation         &  (2) Wissenschaftliche Berichte          & BF \\
-24.04.24       & Dokumentation         &  (3) Offenheit und Transparanz           & BF \\
+Datum          & Einheit               & Thema                                 & Lehrperson   \\\hline
+10.04.24       & Dokumentation         &  (1) Ethik und Ethische Formalitäten  & BF \\
+17.04.24       & Dokumentation         &  (2) Wissenschaftliche Berichte       & BF \\
+24.04.24       & Dokumentation         &  (3) Offenheit und Transparenz        & BF \\
 01.05.24       & \textcolor{gray}{Tag der Arbeit}   \\
-08.05.24       & Dokumentation         &  (4) Quarto                              & BF \\  \hline
-15.05.24       & Praxisseminar         &      Offene Übung                        & BF \\
-22.05.24       & Präsentationen        &  Einfache Lineare Regression         & JS \\
-29.05.24       & Präsentationen        &  Korrelation                         & JS \\
-05.06.24       & Präsentationen        &  Einstichproben-T-Test               & JS \\
-12.06.24       & Präsentationen        &  Zweistichproben-T-Test              & JS \\
-19.06.24       & Präsentationen        &  Einfaktorielle Varianzanalyse       & BF \\
-26.06.24       & Präsentationen        &  Zweifaktorielle Varianznalyse       & BF \\
-03.07.24       & Präsentationen        &  Multipe Regression                  & BF \\
-10.07.24       & Präsentationen        &  Kovarianzanalyse                    & BF \\\hline
+08.05.24       & Dokumentation         &  (4) Quarto                           & BF \\  \hline
+15.05.24       & Praxisseminar         &      Offene Übung                     & BF \\
+22.05.24       & Präsentationen        &  Einfache Lineare Regression          & JS \\
+29.05.24       & Präsentationen        &  Korrelation                          & JS \\
+05.06.24       & Präsentationen        &  Einstichproben-T-Test                & JS \\
+12.06.24       & Präsentationen        &  Zweistichproben-T-Test               & JS \\
+19.06.24       & Präsentationen        &  Einfaktorielle Varianzanalyse        & BF \\
+26.06.24       & Präsentationen        &  Zweifaktorielle Varianznalyse        & BF \\
+03.07.24       & Präsentationen        &  Multipe Regression                   & BF \\
+10.07.24       & Präsentationen        &  Kovarianzanalyse                     & BF \\\hline
 26.07.24       & Klausurtermin                                                     \\
 Feb 2025       & Klausurwiederholungstermin                                        \\
 \end{tabular}
 
 
-# Inhalte
+# Inhalte | SoSe 2024 | Analyse und Dokumentation
 \setstretch{1.5}
+
+
+\textcolor{darkblue}{Wissenschaftliches Arbeiten}
+\begin{itemize} \small \justifying
+\item Ethik in der psychologischen Forschung und der Prozess der Ethikanstragsstellung
+\end{itemize}
+
 
 \textcolor{darkblue}{Analyse}
 
-\small
+\begin{itemize} \small \justifying
+\item Anwendungsfälle des Allgemeinen Linearen Modells
+\item Grundlagen zu Analyse-ools in \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}
+\end{itemize}
 
-* \textcolor{red}{Ethik?}
-* Anwendung Frequentistische Verfahren (Inhalte aus WTFI, ALM und C1) der Datenanalyse
-* Grundlagen Analyse-Tools: R und Visual Studio Code (aus C1)
-* \textcolor{red}{siehe auch Modulhandbuch}
 
 \textcolor{darkblue}{Dokumentation}
 
-* Übersicht zu häufig benutzten Strukuren wissenschaftlicher Berichte
-* Fokus auf quantitativ-empirische Artikel und Präsentationen
-* Introduction, Methods, Restuls, Discussion
-* Kurzeinführung zu Quarto und Zotero
+\begin{itemize} \small \justifying
+\item Übersicht zu häufig benutzten Strukuren wissenschaftlicher Berichte
+\item Fokus auf quantitativ-empirische Artikel und Präsentationen
+\item Introduction, Methods, Restuls, Discussion
+\item Kurzeinführung zu \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}} und \textcolor{linkblue}{\href{https://www.zotero.org/}{Zotero}}
+\end{itemize}
 
 
-\textcolor{red}{TODO: Verlinkungen}
 
-
-# Inhalte
-\setstretch{1.8}
+# Inhalte | SoSe 2024 | Analyse und Dokumentation
+\setstretch{1.3}
 
 \textcolor{darkblue}{Praxisseminar und Präsentationen}
 
-\small
-
-* \small Aktive Bearbeitung und Dokumentation von Übungsaufgaben
-* Hilfestellung von Lehrpersonen in Praxisseminar und ggf. nach Präsentationsterminen.
-* Inhaltliches Leitthema ist die Effektivität von Psychotherapie bei Depression.
-* Datenanalyse mit \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}, Bericht und Präsentation mit \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}}.
-* 4 Studierende pro Aufgabe verantwortlich für Bericht und Präsentation
-  * \small Bericht aus Einführung, Methoden, Resultate, Schlußfolgerung
-  * Maximal 2 Seiten Fließtext plus Abbildungen und Code
-  * Präsentation aus Einführung, Methoden, Resultate und Schlußfolgerung
-  * Maximal 40 Minuten
-* $\Rightarrow$ 1/2 Seite Fließtext plus 10 Minuten Präsentation pro Studierende
-* Prakatischce Umsetzung der Analysemethoden is klausurrelevant
-* Organisation der Gruppen und Präsentationstermine über Moodle
-* -> Bei Terminkonflikten entscheidet das Los
-
+\begin{itemize}\small \justifying
+\item  Aktive Bearbeitung und Dokumentation von Übungsaufgaben
+\item Hilfestellung von Lehrpersonen in Praxisseminar und ggf. nach Präsentationsterminen.
+\item Inhaltliches Leitthema ist die Effektivität von Psychotherapie bei Depression.
+\item Datenanalyse mit \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}, Bericht und Präsentation mit \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}}.
+\item 4 Studierende pro Aufgabe verantwortlich für Bericht und Präsentation
+\begin{itemize} \small \justifying
+  \item  Bericht aus Einführung, Methoden, Resultate, Schlußfolgerung
+  \item Maximal 2 Seiten Fließtext plus Abbildungen und Code
+  \item Präsentation aus Einführung, Methoden, Resultate und Schlußfolgerung
+  \item Maximal 40 Minuten
+\end{itemize}
+\item $\Rightarrow$ 1/2 Seite Fließtext plus 10 Minuten Präsentation pro Studierende
+\item Prakatischce Umsetzung der Analysemethoden is klausurrelevant
+\item Organisation der Gruppen und Präsentationstermine über Moodle
+\item -> Bei Terminkonflikten entscheidet das Los
+\end{itemize}
 
 
 # {.plain}

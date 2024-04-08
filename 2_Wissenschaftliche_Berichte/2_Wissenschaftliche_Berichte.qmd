@@ -37,8 +37,10 @@ Herzlich willkommen!
 \vfill
 
 
-# TODO: Termine einfügen
+# TODO: 
 
+* Termine einfügen
+* APA: discussion: es fehlt dass die Egebnisse vor dem Hintergrund der bisherigen Literatur diskutiert wird
 
 
 # AGENDA {.plain}
