@@ -2,10 +2,8 @@
 bibliography: ../Referenzen_neu.bib
 format:
   beamer:
-    include-in-header: 1_Header.tex
+    include-in-header: ../Header_add_copyright.tex
 ---
-
-
 
 
 # Titelfolie {.plain}

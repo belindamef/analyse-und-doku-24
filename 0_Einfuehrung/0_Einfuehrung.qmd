@@ -1,3 +1,11 @@
+---
+format:
+  beamer:
+    include-in-header: ../Header_add_copyright.tex
+---
+
+
+
 # Titelfolie {.plain}
 \center
 ![](../Abbildungen/otto.png){width="20%"}
