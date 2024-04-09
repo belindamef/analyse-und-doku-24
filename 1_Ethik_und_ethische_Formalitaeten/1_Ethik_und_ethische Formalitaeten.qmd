@@ -52,11 +52,11 @@ Herzlich willkommen!
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{llll}
 Datum          & Einheit               & Thema                                    & Lehrperson   \\\hline
-\textbf{10.04.24}       & \textbf{Dokumentation}         &  \textbf{(1) Ethik und Ethische Formalitäten}     & \textbf{BF} \\
-17.04.24       & Dokumentation         &  (2) Wissenschaftliche Berichte          & BF \\
-24.04.24       & Dokumentation         &  (3) Offenheit und Transparenz           & BF \\
+\textbf{10.04.24}       & \textbf{Seminar}         &  \textbf{(1) Ethik und Ethische Formalitäten}     & \textbf{BF} \\
+17.04.24       & Seminar               &  (2) Wissenschaftliche Berichte          & BF \\
+24.04.24       & Seminar               &  (3) Offenheit und Transparenz           & BF \\
 01.05.24       & \textcolor{gray}{Tag der Arbeit}   \\
-08.05.24       & Dokumentation         &  (4) R und Quarto                        & BF \\  \hline
+08.05.24       & Seminar               &  (4) R und Quarto                        & BF \\  \hline
 15.05.24       & Praxisseminar         &      Offene Übung                        & BF \\
 22.05.24       & Präsentationen        &  Einfache Lineare Regression         & JS \\
 29.05.24       & Präsentationen        &  Korrelation                         & JS \\

@@ -95,11 +95,11 @@ Aufnahme läuft.
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{llll}
 Datum          & Einheit               & Thema                                 & Lehrperson   \\\hline
-10.04.24       & Dokumentation         &  (1) Ethik und Ethische Formalitäten  & BF \\
-17.04.24       & Dokumentation         &  (2) Wissenschaftliche Berichte       & BF \\
-24.04.24       & Dokumentation         &  (3) Offenheit und Transparenz        & BF \\
+10.04.24       & Seminar               &  (1) Ethik und Ethische Formalitäten  & BF \\
+17.04.24       & Seminar               &  (2) Wissenschaftliche Berichte       & BF \\
+24.04.24       & Seminar               &  (3) Offenheit und Transparenz        & BF \\
 01.05.24       & \textcolor{gray}{Tag der Arbeit}   \\
-08.05.24       & Dokumentation         &  (4) R und Quarto                     & BF \\  \hline
+08.05.24       & Seminar               &  (4) R und Quarto                     & BF \\  \hline
 15.05.24       & Praxisseminar         &      Offene Übung                     & BF \\
 22.05.24       & Präsentationen        &  Einfache Lineare Regression          & JS \\
 29.05.24       & Präsentationen        &  Korrelation                          & JS \\
@@ -127,7 +127,7 @@ Feb 2025       & Klausurwiederholungstermin                                     
 \textcolor{darkblue}{Analyse}
 
 \begin{itemize} \small \justifying
-\item Grundlagen zu Datenanalyse-Tools in \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}.
+\item Grundlagen zu Kontrollstrukturen und Schleifen in \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}.
 \item Bearbeitung von Anwendungsfällen des Allgemeinen Linearen Modells.
 \end{itemize}
 
@@ -137,7 +137,7 @@ Feb 2025       & Klausurwiederholungstermin                                     
 \begin{itemize} \small \justifying
 \item Übersicht zu häufig benutzten Strukuren wissenschaftlicher Berichte.
 \item Fokus auf quantitativ-empirische Artikel und Präsentationen.
-\item Introduction, Methods, Restuls, Discussion.
+\item Introduction, Methods, Results, Discussion.
 \item Kurzeinführung zu \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}} und \textcolor{linkblue}{\href{https://www.zotero.org/}
 {Zotero}}.
 \item Dokumentation der bearbeiteten Anwendungsfälle.
