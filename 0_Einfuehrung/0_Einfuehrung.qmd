@@ -99,7 +99,7 @@ Datum          & Einheit               & Thema                                 &
 17.04.24       & Dokumentation         &  (2) Wissenschaftliche Berichte       & BF \\
 24.04.24       & Dokumentation         &  (3) Offenheit und Transparenz        & BF \\
 01.05.24       & \textcolor{gray}{Tag der Arbeit}   \\
-08.05.24       & Dokumentation         &  (4) Quarto                           & BF \\  \hline
+08.05.24       & Dokumentation         &  (4) R und Quarto                     & BF \\  \hline
 15.05.24       & Praxisseminar         &      Offene Übung                     & BF \\
 22.05.24       & Präsentationen        &  Einfache Lineare Regression          & JS \\
 29.05.24       & Präsentationen        &  Korrelation                          & JS \\
@@ -115,30 +115,32 @@ Feb 2025       & Klausurwiederholungstermin                                     
 
 
 # Inhalte | SoSe 2024 | Analyse und Dokumentation
-\setstretch{1.5}
-
+\setstretch{1.3}
 
 \textcolor{darkblue}{Wissenschaftliches Arbeiten}
 \begin{itemize} \small \justifying
-\item Ethik in der psychologischen Forschung und der Prozess der Ethikanstragsstellung
+\item Einführung in Ethisches Handeln in der psychologischen Forschung und die Formalitäten der Ethikantragsstellung.
+\item Grundlagen zu Offenheit in Forschung und den Möglichkeiten und Herausforderungen von Methoden- und Datentransparenz.
 \end{itemize}
 
 
 \textcolor{darkblue}{Analyse}
 
 \begin{itemize} \small \justifying
-\item Anwendungsfälle des Allgemeinen Linearen Modells
-\item Grundlagen zu Analyse-ools in \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}
+\item Grundlagen zu Datenanalyse-Tools in \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}.
+\item Bearbeitung von Anwendungsfällen des Allgemeinen Linearen Modells.
 \end{itemize}
 
 
 \textcolor{darkblue}{Dokumentation}
 
 \begin{itemize} \small \justifying
-\item Übersicht zu häufig benutzten Strukuren wissenschaftlicher Berichte
-\item Fokus auf quantitativ-empirische Artikel und Präsentationen
-\item Introduction, Methods, Restuls, Discussion
-\item Kurzeinführung zu \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}} und \textcolor{linkblue}{\href{https://www.zotero.org/}{Zotero}}
+\item Übersicht zu häufig benutzten Strukuren wissenschaftlicher Berichte.
+\item Fokus auf quantitativ-empirische Artikel und Präsentationen.
+\item Introduction, Methods, Restuls, Discussion.
+\item Kurzeinführung zu \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}} und \textcolor{linkblue}{\href{https://www.zotero.org/}
+{Zotero}}.
+\item Dokumentation der bearbeiteten Anwendungsfälle.
 \end{itemize}
 
 
@@ -155,7 +157,7 @@ Feb 2025       & Klausurwiederholungstermin                                     
 \item Datenanalyse mit \textcolor{linkblue}{\href{https://www.r-project.org/}{R}}, Bericht und Präsentation mit \textcolor{linkblue}{\href{https://quarto.org/}{Quarto}}.
 \item 4 Studierende pro Aufgabe verantwortlich für Bericht und Präsentation
 \begin{itemize} \small \justifying
-  \item  Bericht aus Einführung, Methoden, Resultate, Schlußfolgerung
+  \item Bericht aus Einführung, Methoden, Resultate, Schlußfolgerung
   \item Maximal 2 Seiten Fließtext plus Abbildungen und Code
   \item Präsentation aus Einführung, Methoden, Resultate und Schlußfolgerung
   \item Maximal 40 Minuten
