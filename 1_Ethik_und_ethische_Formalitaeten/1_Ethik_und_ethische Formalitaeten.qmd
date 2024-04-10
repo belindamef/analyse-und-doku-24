@@ -24,15 +24,6 @@ BSc Psychologie SoSe 2024
 Belinda Fleischmann
 
 
-# Herzlich Willkommen!{.plain} 
-\huge
-\center
-\vfill
-Herzlich willkommen!
-\vfill
-
-
-
 
 # (1) Ethik und ethische Formalitäten - Titelfolie {.plain}
 \vfill
@@ -179,6 +170,7 @@ Selbstkontrollfragen
 * \textcolor{linkblue}{\href{http://www.apa.org/ethics/code/index.html}{Ethical Principles of Psychologists and Code of Conduct}} [@americanpsychologicalassociationapa2017] \small 
   * \small Prinzipien A-E
   * 10 Ethical standards für spezifische Themen
+  * Insbesondere Section 8: Research and Publication
 * \small \textcolor{linkblue}{\href{https://www.hogrefe.com/de/shop/ethisches-handeln-in-der-psychologischen-forschung-75906.html}{Ethisches Handeln in der psychologischen Forschung}} [@deutschegesellschaftfuerpsychologiedgps2018]
   * \small Leitlinien und Prinzipien (i.A. an APA und WMA)
   * Good practice Beispiele
