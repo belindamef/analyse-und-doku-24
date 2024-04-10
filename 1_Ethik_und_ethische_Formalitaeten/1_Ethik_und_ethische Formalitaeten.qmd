@@ -24,15 +24,6 @@ BSc Psychologie SoSe 2024
 Belinda Fleischmann
 
 
-
-# (1) Ethik und ethische Formalitäten - Titelfolie {.plain}
-\vfill
-\center
-\huge
-\textcolor{black}{(1) Ethik und Ethische Formalitäten}
-\vfill
-
-
 # Termine
 
 \setstretch{1.3}
@@ -60,6 +51,15 @@ Datum          & Einheit               & Thema                                  
 26.07.24       & Klausurtermin                                                     \\
 Feb 2025       & Klausurwiederholungstermin                                        \\
 \end{tabular}
+
+
+
+# (1) Ethik und ethische Formalitäten - Titelfolie {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Ethik und Ethische Formalitäten}
+\vfill
 
 
 
