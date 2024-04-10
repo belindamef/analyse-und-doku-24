@@ -210,7 +210,7 @@ Selbstkontrollfragen
 \begin{itemize} \justifying
 \item Erweiterung der \textbf{ärztlichen Pflicht (internationaler Kodex)}, das Leben, Gesundheit, Würde, Integrität, Selbstbestimmungsrecht und Privatsphäre von Patient:innen zu fördern und zu erhalten, auf die medizinische Forschung.
 \item Vorrangiges Ziel medizinischer Forschung (Ursachen, Entwicklung und Auswirkungen von Erkrankungen verstehen und präventive, diagnostische und therapeutischen Maßnahmen verbessern) darf \textbf{niemals Vorrang vor den Rechten und Interessen von Versuchspersonen} haben.
-\item Die Verantwortung für den Schutz von Versuchspersonen liegt stets bei Ärzt:innen und nie bei der Versuchsperson selbst, auch wenn sie ihr Einverständnis gegeben hat.
+\item Die \textbf{Verantwortung} für den Schutz von Versuchspersonen liegt \textbf{stets bei Ärzt:innen} und nie bei der Versuchsperson selbst, auch wenn sie ihr Einverständnis gegeben hat.
 \item Angemessener Zugang zur Teilnahme für \textbf{unterrepräsentierte Gruppen}.
 \item Angemessene \textbf{Entschädigung und Behandlung} von Versuchspersonen.
 \end{itemize}
@@ -329,7 +329,7 @@ Selbstkontrollfragen
 \small
 \setstretch{1.4}
 \begin{itemize}
-\item Vorkehrungen für Maßnahmen \textbf{nach Abschluss der Studie} für alle Teilnehmer treffen, die noch eine Maßnahme benötigen, die in der Studie als nützlich erkannt wurde.
+\item Vorkehrungen für Maßnahmen \textbf{nach Abschluss der Studie} für alle Teilnehmenden treffen, die noch eine Maßnahme benötigen, die in der Studie als nützlich erkannt wurde.
 \end{itemize}
 
 \flushright
@@ -349,7 +349,7 @@ Selbstkontrollfragen
 \setstretch{1.4}
 \begin{itemize} \justifying
 \item \textbf{Registrierung} von Forschungshaben in einer \textbf{öffentlich zugänglichen Datenbank} \textit{vor} der Rekrutierung der ersten Versuchsperson.
-\item Verpflichtung von Forschenden, \textbf{Ergebnisse} ihrer Forschung am Menschen öffentlich verfügbar zu machen und Rechenschaftpflicht im Hinblick auf die Vollständigkeit und Richtigkeit ihrer Berichte.
+\item Verpflichtung von Forschenden, \textbf{Ergebnisse} ihrer Forschung am Menschen \textbf{öffentlich verfügbar} zu machen und Rechenschaftpflicht im Hinblick auf die Vollständigkeit und Richtigkeit ihrer Berichte.
 \item \textbf{Negative und nicht schlüssige Ergebnisse} müssen ebenso wie positive veröffentlicht oder in anderer Form öffentlich verfügbar gemacht werden.
 \end{itemize}
 
@@ -413,7 +413,6 @@ Selbstkontrollfragen
 # Psychologisch-ethische \textcolor{darkblue}{Grundprinzipien der APA}
 
 
-
 \setstretch{2}
 \normalsize
 \textcolor{darkblue}{D: Gerechtigkeit} (justice)
@@ -440,6 +439,27 @@ Selbstkontrollfragen
 \flushright
 \footnotesize
 @americanpsychologicalassociationapa2017
+
+
+# Psychologisch-ethische \textcolor{darkblue}{Grundprinzipien der APA}
+
+\setstretch{2}
+\normalsize
+\textcolor{darkblue}{Section 8: Research and Publication}
+\small
+\setstretch{1.1}
+\begin{itemize} \justifying
+\item Institutional Approval
+\item Informed Consent
+\item Offering Inducements for Research Participation
+\item Deception in Research
+\item Debriefing
+\item Humane Care and Use of Animals in Research
+\item Reporting Research Results
+\item Plagiarism, Publication Credit
+\item Sharing Research Data for Verification
+\end{itemize}
+
 
 
 # Leitfaden der DGPs
@@ -476,7 +496,7 @@ Wichtige Anmerkungen:
 \setstretch{1.3}
 \justifying
 * Die Befolgung dieser vier Prinzipien bedeutet nicht automatisch, dass ein Forschungsvorhaben unbedenklich ist, und garantiert kein ethisches Votum.
-* ''Die zu behandelnden Prinzipien stellen Wegweiser dar, den Weg zum Ziel einer ethisch verantwortbaren Studie müssen die am Forschungsprozess Beteiligten finden.'' [@deutschegesellschaftfuerpsychologiedgps2018, S. 24]
+* "Die zu behandelnden Prinzipien stellen Wegweiser dar, den Weg zum Ziel einer ethisch verantwortbaren Studie müssen die am Forschungsprozess Beteiligten finden." [@deutschegesellschaftfuerpsychologiedgps2018, S. 24]
 
 
 # Respekt vor Selbstbestimmung ------------------------------- {.plain}
@@ -1235,7 +1255,7 @@ Anmerkung:
 \item \textit{Teilnehmendeninformation} (''Allgemeine Information für Teilnehmende'')
 \item \textit{Einwilligungserklärung}
 \end{itemize}
-\item ggf. weitere Dokumente (z.B. Information für MRT-Studien oder Bild- oder Tonaufnahmen)
+\item Ggf. weitere Dokumente (z.B. Information für MRT-Studien oder Bild- oder Tonaufnahmen)
 \item In manchen Fällen ist bei späteren Änderungen im Studiendesign (z.B. Stichprobenerweiterung, verwendete Fragebögen) ein \textit{Amendment} statt eines neuen Antrags ausreichend.
 \end{itemize}
 
