@@ -24,7 +24,7 @@ BSc Psychologie SoSe 2024
 Belinda Fleischmann
 
 
-# Termine
+# Termine {.plain}
 
 \setstretch{1.3}
 \vfill
