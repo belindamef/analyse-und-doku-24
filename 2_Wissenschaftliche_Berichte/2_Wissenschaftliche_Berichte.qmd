@@ -157,10 +157,6 @@ Wissenschaft und Academia
 ![](../Abbildungen/dad_5_wissenschaftsideal.pdf){width=90%}
 
 
-\flushright
-\tiny \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html}{Ostwald 2023}}
-
-
 # Wissenschaftliche Kommunikation
 \large
 \textcolor{darkblue}{Die akademische Realität}
@@ -169,9 +165,6 @@ Wissenschaft und Academia
 \center
 ![](../Abbildungen/dad_5_akademische_realität.pdf){width=90%}
 
-
-\flushright
-\tiny \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html}{Ostwald 2023}}
 
 
 # Der wissenschaftliche Publikationsprozess
