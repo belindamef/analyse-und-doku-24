@@ -1,6 +1,6 @@
 ---
 title: "Einfaktorielle Varianzanalyse"
-author: "Übungsaufgabe zu Design, Analyse, Dokumentation SoSe 2024"
+author: "Übungsaufgabe zu Analyse und Dokumentation SoSe 2024"
 bibliography: 5-Referenzen.bib
 lang: en
 format: 

@@ -1,6 +1,6 @@
 ---
 title: "Zweistichproben-T-Test"
-author: "Übungsaufgabe zu Design, Analyse, Dokumentation SoSe 2024"
+author: "Übungsaufgabe zu Analyse und Dokumentation SoSe 2024"
 bibliography: 4-Referenzen.bib
 lang: de
 format: 
