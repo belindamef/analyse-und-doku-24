@@ -1,0 +1,225 @@
+---
+title: "Einfaktorielle Varianzanalyse"
+author: "Übungsaufgabe zu Design, Analyse, Dokumentation SoSe 2024"
+bibliography: 5-Referenzen.bib
+lang: en
+format: 
+  pdf:
+    include-in-header:
+      text: |
+       \usepackage[font=small,format=plain,labelfont=bf, labelsep=period,justification=justified,singlelinecheck=false]{caption}
+---
+
+Grundlage dieser Übung ist die Studie von @rief2018. Ziel ist es, mithilfe einer
+einfaktoriellen Varianzanalyse zu quantifizieren, inwieweit sich die 
+Depressionssymptomatik von vier Studiengruppen (CBASP mit $n = 43$, CBT-E mit 
+$n = 45$, CBT-M mit $n = 43$, WL mit $n = 42$) Behandlungsgruppen vor Beginn der 
+jeweiligen Intervention unterscheidet. Zum Zwecke dieser Übung fokussieren wir 
+auf den *Beck Depression Inventory (BDI)* Wert als Ergebnismaß der Studie von 
+@rief2018.
+
+### Datensatz {-}
+
+Der Datensatz `5-Einfaktorielle-Varianzanalyse.csv` enthält als erste Spalte 
+die jeweilige Studiengruppe und als zweite die Pre-Treatment BDI Werte. @tbl-bdi 
+zeigt exemplarisch die Daten von drei Patient:innen jeder Studiengruppe.
+
+```{r, echo = F, warning = F}
+library(MASS)                                                                   # Multivariate Normalverteilung
+set.seed(1)                                                                     # Ergebnisreproduzierbarkeit
+n_i       = c(43,45,43,42)                                                      # Anzahl Patient:innen pro Gruppe
+p         = length(n_i)                                                         # Anzahl Betaparameter
+n         = sum(n_i)                                                            # Gesamtzahl Datenpunkte
+n_m       = 2                                                                   # Anzahl Messzeitpunkte Pre und Post
+beta      = matrix(c(28,3,1,0), nrow = p)                                       # Erwartungswertparameter CBASP, CBT-E, CBT-M, WL
+sigsqr    = 8                                                                   # Varianzparameter CBASP, CBT-E, CBT-M, WL
+X         = matrix(                                                             # Designmatrix
+            c(rep(1,n_i[1]),rep(1,n_i[2]),rep(1,n_i[3]),rep(1,n_i[4]),          # \mu_0    Regressor
+              rep(0,n_i[1]),rep(1,n_i[2]),rep(0,n_i[3]),rep(0,n_i[4]),          # \alpha_2 Regressor
+              rep(0,n_i[1]),rep(0,n_i[2]),rep(1,n_i[3]),rep(0,n_i[4]),          # \alpha_3 Regressor
+              rep(0,n_i[1]),rep(0,n_i[2]),rep(0,n_i[3]),rep(1,n_i[4])),         # \alpha_4 Regressor
+            nrow = n)                                                           # Anzahl Zeilen
+y        = mvrnorm(1, X %*% beta, sigsqr*diag(n))                               # Datenrealisierung
+y        = round(y)                                                             # diskrete BDI Werte
+y[y < 0] = 0                                                                    # natürliche BDI Werte
+D        = data.frame(Treatment  = c(rep("CBASP", n_i[1]),                      # CBASP Bedingung
+                                     rep("CBT-E", n_i[2]),                      # CBT-E Bedingung
+                                     rep("CBT-M", n_i[3]),                      # CBT-M Bedingung
+                                     rep("WL"   , n_i[4])),                     # WL Bedingung 
+                      BDI = y)                                                  # BDI Werte                   
+fname    = file.path("5-Einfaktorielle-Varianzanalyse.csv")                     # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                   # Speichern 
+```
+
+```{r echo = F, warning = F}
+#| label: tbl-bdi
+#| tbl-cap : "Pre Intervention BDI Werte der Studiengruppen"
+library(knitr)                                                                  # knitr für Tabellen
+fname       = "5-Einfaktorielle-Varianzanalyse.csv"                             # Dateiname
+D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
+kable(D[c(1:3,                                                                  # erste zwei Patient:innen CBASP Bedingung
+         (1:3)+sum(n_i[1]),                                                     # erste zwei Patient:innen CBT-E Bedingung
+         (1:3)+sum(n_i[1:2]),                                                   # erste zwei Patient:innen CBT-M Bedingung
+         (1:3)+sum(n_i[1:3])),], digits = 2, align = "c")                       # erste zwei Patient:innen WL    Bedingung
+``` 
+
+\newpage
+### Programmieraufgaben {-}
+\noindent 1. Bestimmen Sie für jede der vier Studiengruppen die Stichprobengröße und für
+die BDI Werte jeweils das Maximum, das Minimum, den Median, den Mittelwert, die 
+Varianz und die Standardabweichung. Bestimmen Sie weiterhin mithilfe der Matrizenrechnung
+den Wert der F-Statistik für eine einfaktorielle Varianzanalyse dieses Datensatzes.
+Validieren Sie Ihr Ergebnis schließlich mithilfe der `aov()` Funktion. Sie sollten
+folgende Ergebnisse erhalten.
+
+\footnotesize
+```{r, echo = F}
+# Laden des Datensatzes
+fname       = "5-Einfaktorielle-Varianzanalyse.csv"                             # Dateiname
+D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
+
+# Deskriptivstatistik
+tp      = c("CBASP", "CBT-E", "CBT-M", "WL")                                    # Studienbedingungen
+ntp     = length(tp)                                                            # Anzahl Studienbedingungen
+S       = data.frame(                                                           # Dataframeerzeugung
+n       = rep(NaN,ntp),                                                         # Stichprobengrößen
+Max     = rep(NaN,ntp),                                                         # Maxima
+Min     = rep(NaN,ntp),                                                         # Minima
+Median  = rep(NaN,ntp),                                                         # Mediane
+Mean    = rep(NaN,ntp),                                                         # Mittelwerte
+Var     = rep(NaN,ntp),                                                         # Varianzen
+Std     = rep(NaN,ntp),                                                         # Standardabweichungen
+row.names = tp)                                                                 # Therapiebedingungen
+for(i in 1:ntp){                                                                # Iteration über Studienbedingungen
+    data        = D$BDI[D$Treatment == tp[i]]                                   # Daten
+    S$n[i]      = length(data)                                                  # Stichprobengröße
+    S$Max[i]    = max(data)                                                     # Maxima
+    S$Min[i]    = min(data)                                                     # Minima
+    S$Median[i] = median(data)                                                  # Mediane
+    S$Mean[i]   = mean(data)                                                    # Mittelwerte
+    S$Var[i]    = var(data)                                                     # Varianzen
+    S$Std[i]    = sd(data)                                                      # Standardabweichungen
+}
+cat("Deskriptivstatistik")
+kable(S, digits = 1)
+```
+
+```{r, echo = F}
+# Laden des Datensatzes
+fname       = "5-Einfaktorielle-Varianzanalyse.csv"                             # Dateiname
+D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
+y           = D$BDI
+n           = length(y)
+X           = matrix(                                                           # Designmatrix
+              c(rep(1,n_i[1]),rep(1,n_i[2]),rep(1,n_i[3]),rep(1,n_i[4]),        # \mu_0    Regressor
+                rep(0,n_i[1]),rep(1,n_i[2]),rep(0,n_i[3]),rep(0,n_i[4]),        # \alpha_2 Regressor
+                rep(0,n_i[1]),rep(0,n_i[2]),rep(1,n_i[3]),rep(0,n_i[4]),        # \alpha_3 Regressor
+                rep(0,n_i[1]),rep(0,n_i[2]),rep(0,n_i[3]),rep(1,n_i[4])),       # \alpha_4 Regressor
+              nrow = n)                                                         # Anzahl Zeilen
+p           = ncol(X)
+X_1         = X[,1]                                                             # Designmatrix reduziertes Modell
+beta_hat    = solve(t(X) %*% X) %*% t(X) %*% y                                  # Betaparameterschätzer vollständiges Modell
+beta_hat_1  = solve(t(X_1) %*% X_1) %*% t(X_1) %*% y                            # Betaparameterschätzer reduziertes Modell
+eps_hat     = y - X %*% beta_hat                                                # Residuenvektor vollständiges Modell
+eps_hat_1   = y - X_1 %*% beta_hat_1                                            # Residuenvektor reduziertes Modell
+SQT         = t(eps_hat_1) %*% eps_hat_1                                        # Sum of Squares Total
+SQW         = t(eps_hat)   %*% eps_hat                                          # Sum of Squares Within
+SQB         = SQT - SQW                                                         # Sum of Squares Between
+DFB         = p - 1                                                             # Between Degrees of Freedom
+DFW         = n - p                                                             # Within  Degrees of Freedom
+DFB         = p - 1                                                             # Between Degrees of Freedom
+MSB         = SQB/DFB                                                           # Mean Sum of Squares Between
+MSW         = SQW/DFW                                                           # Mean Sum of Squares Within
+Eff         = MSB/MSW                                                           # F-Teststatistik
+p           = 1 - pf(Eff, p-1, n-p)                                             # p-Wert
+```
+```{r, echo = F}
+# aov Evaluation
+res = aov(D$BDI ~ D$Treatment, data = D)
+cat("Einfaktorielle Varianzanalyse mit aov()")
+summary(res)
+```
+\vspace{-3mm}
+\normalsize
+\noindent 2. Visualisieren Sie die entsprechenden Gruppenmittelwerte als
+Balkendiagramm mit Fehlerbalken und den gesamten Datensatz als Boxplot. Ihre
+Abbildung sollte in etwa aussehen wie @fig-abbildung.
+
+```{r echo = F, eval = F}   
+dev.new()
+pdf(
+file        = file.path("5-Einfaktorielle-Varianzanalyse-Abbildung.pdf"),
+width       = 10,
+height      = 5)
+par(
+family      = "sans",
+mfcol       = c(1,2),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1)
+
+# Balkendiagramm mit Fehlerbalken        
+groupmeans  = S$Mean
+groupstds   = S$Std
+names(groupmeans) = c("CBASP","CBT-E","CBT-M","WL")                                      
+x           = barplot(                                                          
+groupmeans,                                                                     
+col         = "gray90",
+ylim        = c(0,40),
+xlim        = c(0,5),
+xlab        = "Treatment",
+ylab        = "BDI")                                                         
+arrows(                                         
+x0          = x,                                
+y0          = groupmeans - groupstds,           
+x1          = x,                                
+y1          = groupmeans + groupstds,         
+code        = 3,                                
+angle       = 90,                               
+length      = 0.05)   
+
+# Boxplot
+boxplot(BDI ~ Treatment, data = D, col = "gray90")      
+dev.off()
+```
+![Gruppenspezifische Stichprobenmittel und Stichprobenstandardabweichungen sowie Boxplots](5-Einfaktorielle-Varianzanalyse-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%}  
+
+
+\newpage
+## Dokumentation
+
+Bitte beachten Sie bei der Erstellung Ihre Dokumentation folgende Vorgaben und 
+orientieren Sie sich in der Darstellung Ihrer datenanalytischer Ergebnisse an
+den Empfehlungen des [APA Publication Manuals 7th Edition](https://apastyle.apa.org/products/publication-manual-7th-edition), insbesondere Kapitel 6.4. 
+
+### Einleitung {-}
+
+Stellen Sie die Ausgangsfrage von @rief2018 dar und erläutern Sie kurz die
+Therapieprinzipien der *CBASP*, *CBT-E*, *CBT-M* und *WL* Studiengruppen. Nutzen
+Sie dafür die Beschreibung der *Treatments* auf Seite 4 von @rief2018.
+
+### Methoden {-}
+
+Beschreiben Sie die Patient:innen und Therapiebedingungsgruppen. Erläutern Sie
+kurz den Sinn und Zweck der Anwendung einer einfaktoriellen Varianzanalyse. Erläutern
+Sie dabei insbesondere verbal, welches reduzierte und vollständige Modell die 
+Grundlage für die von Ihnen berechnete F-Statistik bildet.
+
+### Resultate {-}
+
+Reportieren Sie die von Ihnen in Programmieraufgabe 1 bestimmten Deskriptivstatistiken
+sowie das Ergebnis der einfaktoriellen Varianzanalyse. Erläutern Sie das in der Abbildung
+aus Programmieraufgabe 2 erhaltene Datenmuster.
+
+### Schlußfolgerung {-}
+
+Fassen Sie die von Ihnen erstellte Dokumentation in drei Sätzen zusammen. 
+
+## Referenzen
+\footnotesize
