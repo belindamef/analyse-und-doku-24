@@ -1,0 +1,209 @@
+---
+title: "Einfache lineare Regression"
+author: "Übungsaufgabe zu Analyse und Dokumentation SoSe 2024"
+bibliography: 1-Referenzen.bib
+lang: de
+format: 
+  pdf:
+    include-in-header:
+      text: |
+       \usepackage[font=small,format=plain,labelfont=bf, labelsep=period,justification=justified,singlelinecheck=false]{caption}
+---
+
+Grundlage dieser Übung ist die Studie von @stiles1994. Ziel ist es, die Prinzipien
+der Ausgleichsgerade und der einfache linearen Regression zu nutzen, um für 
+einzelen Patient:innen zu quantifizieren, inwieweit sich ihr Gesundheitszustand
+im Rahmen iner Psychotherapie verändert hat. Zum Zwecke dieser Übung fokussieren 
+wir dabei auf die Patient:innegrupe der Kognitiven Verhaltenstherapie Bedingung
+($n = 21$) und den *Beck Depression Inventory (BDI)* Wert als primäres Ergebnismaß
+(*primary outcome measure*) der Studie von @stiles1994.
+
+## Datensatz {-}
+
+Der Datensatz `1-Einfache-lineare-Regression.csv` enthält als Spalten simulierte 
+BDI Scores zu den Erhebungszeitpunkten *Intake* (Beginn der Therapie), *Midtherapy* 
+(Mitte der Therapie), *Termination* (Ende der Therapie) von $n = 21$ Patient:innen 
+als Zeilen. @tbl-bdi zeigt exemplarisch die Daten der ersten zehn Patient:innen.
+
+```{r, echo = F, warning = F}
+#| label: Datensimulation
+# Datensatzsimulation
+library(MASS)                                                                   # Normalverteilungen
+set.seed(0)                                                                     # Seed setzen für Ergebnisreproduzierbarkeit
+np          = 21                                                                # Anzahl Patient:innen
+n           = 3                                                                 # Anzahl Datenpunkte pro Patient:in
+p           = 2                                                                 # Anzahl Regressionskoeffizienten
+beta_b      = matrix(c(35, -3.7)    , nrow = 2)                                 # Between-Participants Betaparameter
+Sigma_b     = matrix(c(3, 0, 0, 4.2), nrow = 2)                                 # Between-Participants Kovarianzmatrix
+x_w         = seq(1, n, len = n)                                                # Within-Participants Kontrollvariable
+X_w         = matrix(c(rep(1, n), x_w), ncol = 2)                               # Within-Participants Designmatrix
+sigsqr_w    = 1                                                                 # Within-Participants Varianzparameter
+Sigma_w     = sigsqr_w*diag(n)                                                  # Within-Participants Kovarianzmatrixparameter
+Y           = matrix(rep(NaN, np * n), nrow = np)                               # Gesamtdatensatzinitialisierung
+
+for(i in 1:np){                                                                 # Iteration über Patient:innen
+  beta      = as.matrix(                                                        # Patient:in-spezifische Regressionsparameter
+    mvrnorm(n = 1, mu = beta_b, Sigma = Sigma_b))
+  mu        = X_w %*% beta                                                      # Patient:in-spezifische Regressionserwartungswertparameter
+  Y[i,]     = t(as.matrix(mvrnorm(1, mu, Sigma_w)))                             # Patient:in-spezifische Datenwerte
+}
+
+D           = data.frame(Intake      = Y[,1],                                   # BDI Scores zu Therapiebeginn
+                         Midtherapy  = Y[,2],                                   # BDI Scores zu Therapiemitte
+                         Termination = Y[,3])                                   # BDI Scores zu Therapieende
+fname       = file.path("1-Einfache-Lineare-Regression.csv")                    # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                   # Speichern
+```
+```{r, eval = T, echo = F, warning = F}
+#| label: print Tabelle
+#| tbl-cap : "BDI Scores"
+library(knitr)                                                                  # knitr für Tabellen
+fname       = "1-Einfache-Lineare-Regression.csv"                               # Dateiname
+D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
+kable(head(D, n = 10L), digits = 2, align = "c")                                # Markdowntabellenoutput für head(D)
+```
+
+\newpage
+## Programmieraufgaben {-}
+
+\noindent 1. Bestimmen Sie für jede:n Patient:in die Ausgleichsgeradenparameter basierend
+auf den drei patient:innenspezifischen BDI Scores *Intake*, *Midtherapy*, *Termination*.
+Nutzen Sie dazu beispielsweise eine `for` Schleife. Berechnen Sie das Stichprobenmittel und die Stichprobenstandardabweichung
+der Steigungsparameter. Sie sollten folgende Ergebnisse erhalten:
+
+
+```{r, eval = T, echo = F}
+#| label: Evaluation Ausfleichsgeradenparameter
+# Datenanalyse
+fname       = "1-Einfache-Lineare-Regression.csv"                               # Dateiname
+D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
+np          = nrow(D)                                                           # Anzahl Patient:innen
+n           = ncol(D)                                                           # Datenpunkte pro Patient:in
+x           = 1:n                                                               # Regressionsprädiktorwerte
+X           = matrix(c(rep(1, n), x), nrow = n)                                 # Designmatrix 
+beta_hat_p  = matrix(rep(NaN, np * 2), nrow = 2)                                # Patient:innensteigungsparameter
+beta_hat_p_alt = matrix(rep(NaN, np * 2), nrow = 2)                             # Patient:innensteigungsparameter alternative Lösung
+sp          = rep(NaN, np)                                                      # Steigungsparameter
+for(i in 1:np){                                                                 # Iteration über Patient:innen
+  # Evaluation über Gleichsungssystem lösen
+  beta_hat_p[, i]  = solve(t(X) %*% X) %*% t(X) %*% t(D[i, ])                    # Ausgleichsgeradenparameterevaluation
+  # Evaluation mithilfe des Theorems für Ausgleichsgeradenparameter
+  y_pat = as.numeric(unlist(D[i, ]))                                            # Pat.spezifische y-Werte
+  x_bar = mean(x)                                                               # Stichprobenmittel der x_i-Werte
+  y_bar = mean(y_pat)                                                           # Stichprobenmittel der y_i-Werte
+  s2x   = var(x)                                                                # Stichprobenvarianz der x_i-Werte
+  cxy   = cov(x, y_pat)                                                         # Stichprobenkovarianz der (x_i,y_i)-Werte
+  beta_hat_p_alt[2, i] = cxy/s2x                                                # \hat{\beta}_1, Steigungsparameter
+  beta_hat_p_alt[1, i] = y_bar - beta_hat_p_alt[1, i] * x_bar                   # \hat{\beta}_0, Offset Parameter
+  }
+
+cat("       Mittelwert der Steigungsparameter         :", mean(beta_hat_p[2,]),
+    "\n       Standardabweichung der Steigungsparameter :", sd(beta_hat_p[2,])
+    # "\n       Mittelwert der Steigungsparameter (Theorem)        :", mean(beta_hat_p_alt[2,]),
+    # "\n       Standardabweichung der Steigungsparameter (Theorem):", sd(beta_hat_p_alt[2,])
+    )
+```
+
+\noindent 2. Visualisieren Sie die Daten und Ausgleichsgeraden der ersten vier Patient:innen 
+in einer Abbildung. Die Abbildung sollte in etwa aussehen wie @fig-abbildung.
+
+```{r echo = F, eval = F}
+#| label: Visualisierung
+# Datenanalysevisualisierung
+pdf(
+file        = file.path("1-Einfache-Lineare-Regression-Abbildung.pdf"),
+width       = 8,
+height      = 8)
+library(latex2exp)
+par(
+  family      = "sans",
+  mfcol       = c(2, 2),
+  pty         = "s",
+  bty         = "l",
+  lwd         = 1,
+  las         = 1,
+  mgp         = c(2, 1, 0),
+  xaxs        = "i",
+  yaxs        = "i",
+  font.main   = 1,
+  cex         = 1,
+  cex.main    = 1
+)
+
+# Patient:inneniterationen
+for(i in 1:4){
+
+  # Datenwerte
+  plot(
+  1:3,
+  D[i,],
+  pch     = 16,
+  xlab    = "Therapieverlauf",
+  ylab    = "BDI",
+  xlim    = c(.5, 3.5),
+  ylim    = c(min(D)-2, max(D) + 2),
+  cex     = 1.2,
+  xaxt    = "n",
+  main    =  TeX(sprintf("Patient:in %.0f, Steigunsparameter = $ %.1f", i, beta_hat_p[2, i])))
+  axis(side = 1, at = c(1, 2, 3), labels = c("Int", "Mid", "Ter")
+  )
+
+  # Ausgleichsgerade
+  abline(
+    coef        = c(beta_hat_p[1,i], beta_hat_p[2,i]),
+    lty         = 1,
+    col         = "gray"
+  )
+
+  # Legende
+  if(i == 1){
+    legend(
+    "bottomleft",
+    c("Messwerte", "Ausgleichsgerade"),
+    lty = c(0, 1),
+    pch = c(16, NA),
+    col = c("black", "gray"),
+    bty = "n")
+  }
+}
+dev.off()
+```
+
+![Patient:innen-spezifische Ausgleichsgeraden (Int: Intake, Mid: Midtherapy, Ter: Termination)](1-Einfache-Lineare-Regression-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%} 
+
+\newpage
+## Dokumentation
+
+Bitte beachten Sie bei der Erstellung Ihre Dokumentation folgende Vorgaben und 
+orientieren Sie sich in der Darstellung Ihrer datenanalytischer Ergebnisse an
+den Empfehlungen des [APA Publication Manuals 7th Edition](https://apastyle.apa.org/products/publication-manual-7th-edition), insbesondere Kapitel 6. 
+
+### Einleitung {-}
+
+Stellen Sie die Ausgangsfrage von  @stiles1994 dar und erläutern Sie die 
+*Medikamentenmetapher (drug metaphor)*. Erläutern Sie weiterhin Sinn und Zweck 
+des *Verbal Response Mode (VRM)* Kodiersystems. Konsultieren Sie dazu auch @stiles1986.
+
+### Methoden {-}
+
+Erläutern Sie kurz die Idee der *Kognitiven Verhaltenstherapie (Cognitive Behavioral Therapy)*
+bei Depression sowie die Bestimmung des Depressionszustandes mithilfe des 
+*Beck Depression Inventory*; konsultieren Sie dazu auch @beck1961. Beschreiben 
+Sie die Patient:innen- und Therapeut:innengruppen. Beschreiben Sie, zu welchen 
+Zeitpunkten über den Therapieverlauf die BDI Werte der Patient:innen 
+erhoben wurden. Erläutern Sie Sinn und Zweck der Steigungsparameterbestimmung.
+Dokumentieren Sie ihre Datenanalyse in Form kommentierten **R** Codes zur Lösung
+von Programmieraufgabe 1.
+
+### Resultate {-}
+
+Geben Sie den Mittelwert und die Standardabweichung der Steigungsparameter an
+und erläutern Sie ihre Bedeutung. Diskutieren Sie Ihre Resultate am Beispiel
+der Abbildungen der Ausgleichsgeraden der ersten vier Patient:innen aus Programmieraufgabe 2.
+
+### Schlussfolgerung {-}
+
+Fassen Sie die von Ihnen erstellte Dokumentation in drei Sätzen zusammen.
+
+## Referenzen
+\footnotesize
