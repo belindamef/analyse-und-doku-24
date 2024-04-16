@@ -55,7 +55,7 @@ fname       = file.path("1-Einfache-Lineare-Regression.csv")                    
 write.csv(D, file = fname, row.names = FALSE)                                   # Speichern
 ```
 ```{r, eval = T, echo = F, warning = F}
-#| label: print Tabelle
+#| label: tbl-bdi
 #| tbl-cap : "BDI Scores"
 library(knitr)                                                                  # knitr für Tabellen
 fname       = "1-Einfache-Lineare-Regression.csv"                               # Dateiname
