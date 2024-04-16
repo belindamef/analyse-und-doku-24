@@ -122,7 +122,7 @@ Linienplots mit Fehlerbalken analog zu Figure 2 in @wagner2014. Visualisieren au
 die Post-Pre-Differenz Werte als gruppenspezifische *Violinplots* mithilfe des
 *R* Pakets `vioplot`.  Die Abbildung sollte in etwa aussehen wie @fig-abbildung.
 
-```{r echo = F, eval = T}
+```{r echo = F, eval = F}
 # Datenanalysevisualisierung
 # install.packages("vioplot")
 library(latex2exp)
