@@ -1,0 +1,15 @@
+project:
+  title: "analyse-und-doku-24-übungen"
+
+fontsize: 10pt
+code-font-size: 10pt
+format:
+  beamer:
+    include-in-header: ../Header.tex
+citation_package: natbib
+bibliography: ../Referenzen.bib
+execute:
+  echo: true
+  eval: true
+editor:
+  render-on-save: true
