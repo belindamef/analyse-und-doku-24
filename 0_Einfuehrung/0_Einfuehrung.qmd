@@ -168,8 +168,44 @@ Feb 2025       & Klausurwiederholungstermin                                     
 \item -> Bei Terminkonflikten entscheidet das Los
 \end{itemize}
 
+# Inhalte | SoSe 2024 | Analyse und Dokumentation
+\setstretch{1.1}
 
-# {.plain}
+\normalsize
+\textcolor{darkblue}{Bestandteile des Leistungsnachweises}
+
+
+\begin{itemize}\small \justifying
+\item Präsentation (ca. 10 min. pro Studierende)
+\begin{itemize} \tiny \justifying
+  \item Bestehend aus Einführung, Methoden (inkl. R Code), Resultate und Schlußfolgerung
+  \item Maximal 40 Minuten Präsentation, Diskussion im Anschluss
+  \item Kurze R-Übung zu in der Übungsaufgabe verwendeten Funktionen
+\end{itemize}
+\item Bericht (ca. 1/2 Seite Text pro Studierende)
+\begin{itemize} \tiny \justifying
+  \item Bestehend aus Einführung, Methoden, Resultate, Schlußfolgerung
+  \item Maximal 2 Seiten Fließtext plus Abbildungen und Code
+\end{itemize}
+\end{itemize}
+
+\normalsize
+\textcolor{darkblue}{Abgabe des Leistungsnachweises}
+
+\begin{itemize} \small \justifying
+  \item Für Präsentation und Bericht jeweils .pdf und .qmd Dateien (optional .bib) \\ 
+  $\Rightarrow$ insgesamt mindestens 4 Dateien pro Gruppe. Beispiel für die Dateibenennung:
+  \begin{itemize} \tiny
+    \item "7-Multiple-Regression-Gruppe-1-Präsentation.qmd"
+    \item "7-Multiple-Regression-Gruppe-1-Präsentation.pdf"
+    \item "7-Multiple-Regression-Gruppe-1-Bericht.qmd"
+    \item "7-Multiple-Regression-Gruppe-1-Bericht.pdf"
+    \item "7-Multiple-Regression-Gruppe-1-Referenzen.bib" (optional)
+  \end{itemize}
+  \item Abgabetermin: Ein Tag vor Präsentation in den entsprechenden \textcolor{linkblue}{\href{https://cloud.ovgu.de/s/A4yt8Yg3Z79SRaT}{Cloud-Ordner}} hochladen.
+\end{itemize}
+
+# Q & A {.plain}
 
 \Large
 
