@@ -86,7 +86,7 @@ beta_hat_p_alt = matrix(rep(NaN, np * 2), nrow = 2)                             
 sp          = rep(NaN, np)                                                      # Steigungsparameter
 for(i in 1:np){                                                                 # Iteration über Patient:innen
   # Evaluation über Gleichsungssystem lösen
-  beta_hat_p[, i]  = solve(t(X) %*% X) %*% t(X) %*% t(D[i, ])                    # Ausgleichsgeradenparameterevaluation
+  beta_hat_p[, i]  = solve(t(X) %*% X) %*% t(X) %*% t(D[i, ])                   # Ausgleichsgeradenparameterevaluation
   # Evaluation mithilfe des Theorems für Ausgleichsgeradenparameter
   y_pat = as.numeric(unlist(D[i, ]))                                            # Pat.spezifische y-Werte
   x_bar = mean(x)                                                               # Stichprobenmittel der x_i-Werte
