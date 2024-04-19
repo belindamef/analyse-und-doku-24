@@ -25,6 +25,7 @@ die jeweilige Studiengruppe und als zweite die Pre-Treatment BDI Werte. @tbl-bdi
 zeigt exemplarisch die Daten von drei Patient:innen jeder Studiengruppe.
 
 ```{r, echo = F, warning = F}
+#| label: Datensimulation
 library(MASS)                                                                   # Multivariate Normalverteilung
 set.seed(1)                                                                     # Ergebnisreproduzierbarkeit
 n_i       = c(43,45,43,42)                                                      # Anzahl Patient:innen pro Gruppe
@@ -74,6 +75,7 @@ folgende Ergebnisse erhalten.
 
 \footnotesize
 ```{r, echo = F}
+#| label: Deskriptivstatistik
 # Laden des Datensatzes
 fname       = "5-Einfaktorielle-Varianzanalyse.csv"                             # Dateiname
 D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
@@ -105,6 +107,7 @@ kable(S, digits = 1)
 ```
 
 ```{r, echo = F}
+#| label: Varianzanalyse (Theorem)
 # Laden des Datensatzes
 fname       = "5-Einfaktorielle-Varianzanalyse.csv"                             # Dateiname
 D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
@@ -134,18 +137,21 @@ Eff         = MSB/MSW                                                           
 p           = 1 - pf(Eff, p-1, n-p)                                             # p-Wert
 ```
 ```{r, echo = F}
+#| label: t-Test (aov)
 # aov Evaluation
 res = aov(D$BDI ~ D$Treatment, data = D)
 cat("Einfaktorielle Varianzanalyse mit aov()")
 summary(res)
 ```
+
 \vspace{-3mm}
 \normalsize
 \noindent 2. Visualisieren Sie die entsprechenden Gruppenmittelwerte als
 Balkendiagramm mit Fehlerbalken und den gesamten Datensatz als Boxplot. Ihre
 Abbildung sollte in etwa aussehen wie @fig-abbildung.
 
-```{r echo = F, eval = F}   
+```{r echo = F, eval = F}
+#| label: Visualisierung (low-level)
 dev.new()
 pdf(
 file        = file.path("5-Einfaktorielle-Varianzanalyse-Abbildung.pdf"),
@@ -164,32 +170,97 @@ yaxs        = "i",
 font.main   = 1,
 cex         = 1)
 
-# Balkendiagramm mit Fehlerbalken        
+# Balkendiagramm mit Fehlerbalken
 groupmeans  = S$Mean
 groupstds   = S$Std
-names(groupmeans) = c("CBASP","CBT-E","CBT-M","WL")                                      
-x           = barplot(                                                          
-groupmeans,                                                                     
+names(groupmeans) = c("CBASP","CBT-E","CBT-M","WL")
+x           = barplot(
+groupmeans,
 col         = "gray90",
 ylim        = c(0,40),
 xlim        = c(0,5),
 xlab        = "Treatment",
-ylab        = "BDI")                                                         
-arrows(                                         
-x0          = x,                                
-y0          = groupmeans - groupstds,           
-x1          = x,                                
-y1          = groupmeans + groupstds,         
-code        = 3,                                
-angle       = 90,                               
-length      = 0.05)   
+ylab        = "BDI")
+arrows(
+x0          = x,
+y0          = groupmeans - groupstds,
+x1          = x,
+y1          = groupmeans + groupstds,
+code        = 3,
+angle       = 90,
+length      = 0.05)
 
 # Boxplot
-boxplot(BDI ~ Treatment, data = D, col = "gray90")      
+boxplot(BDI ~ Treatment, data = D, col = "gray90")
 dev.off()
 ```
-![Gruppenspezifische Stichprobenmittel und Stichprobenstandardabweichungen sowie Boxplots](5-Einfaktorielle-Varianzanalyse-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%}  
 
+![Gruppenspezifische Stichprobenmittel und Stichprobenstandardabweichungen sowie Boxplots](5-Einfaktorielle-Varianzanalyse-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%}
+
+
+\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die nach *Treatment* gruppierten Deskriptien Statistiken mithilfe einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} und der Funktion `dplyr::group_by` des **R** Pakets `dplyr` berechnen können. Konsultieren Sie hierfür auch die Einführung zu Data transformation in \href{https://r4ds.hadley.nz/data-transform#groups}{R for Data Science}.
+
+```{r echo = F, eval = F}
+#| label: tidyverse style
+library(dplyr)
+library(afex)
+library(ggplot2)
+library(ggpubr)
+library(httpgd)
+
+# Daten vorbereiten
+#fname       <- "6_Übungen/5_Einfaktorielle-Varianzanalyse/5-Einfaktorielle-Varianzanalyse.csv" # Dateiname
+fname      <- "5-Einfaktorielle-Varianzanalyse.csv"                            # Dateiname
+D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
+n_subs     <- nrow(D)
+D_processed <- D %>%
+  mutate(ID = seq(n_subs))                                                     # Subject ID hinzufügen
+
+# Deskriptive Statstik
+summary_stats <- D_processed %>%
+  group_by(Treatment) %>%                                                      # Nach Treatment gruppieren
+  summarize(                                                                   # Kreiert dataframe mit eine Zeile für jede Gruppe
+    n = n(),
+    Max = max(BDI),
+    Min = min(BDI),
+    Median = median(BDI),
+    Mean = mean(BDI),
+    Var = var(BDI),
+    Std = sd(BDI)
+  )
+print(summary_stats)
+
+# Anova evaluieren
+anova_results <- D_processed %>%
+  aov_car(BDI ~ Treatment + Error(ID),
+          data = .)
+print(anova_results)                                                           # Ergebnisse ausgeben
+View(anova_results)                                                            # Mehr details ansehen
+
+# Visualisierung
+bar_plot <- ggplot(data = summary_stats) +                                     # bar plot
+  geom_col(aes(x = Treatment, y = Mean), fill = "lightblue", color = "black", size = 0.2) +
+  geom_errorbar(aes(x = Treatment, ymin = Mean - Std, ymax = Mean + Std),
+                width = 0.1, color = "black", size = 0.2) +
+  ylim(0, 40) +
+  labs(x = "Treatment", y = "BDI")
+
+box_plot <- ggplot(data = D_processed, aes(x = Treatment, y = BDI)) +          # boxplots
+  geom_boxplot(fill = "lightblue",outlier.shape = NA) +
+  ylim(22, 40) +
+  labs(x = "Treatment", y = "BDI")
+
+gesamt_plot <- ggarrange(                                                      # Plots in eine Grafik zusammenfügen
+  bar_plot, box_plot + rremove("y.text"), 
+          ncol = 2, nrow = 1)
+
+ggsave(                                                                        # Abbildung speichern
+  gesamt_plot,
+  filename = "5-Einfaktorielle-Varianzanalyse-ggplot.pdf",
+  width    = 10,
+  height   = 5
+  )
+```
 
 \newpage
 ## Dokumentation

@@ -25,6 +25,7 @@ Werte zu den Erhebungszeitpunkten *Pre* und *Post* der psychotherapeutischen
 von fünf Patient:innen jeder Studiengruppe.
 
 ```{r, echo = F, eval = T}
+#| label: Datensimulation
 library(MASS)                                                                   # Multivariate Normalverteilung
 set.seed(2)                                                                     # Ergebnisreproduzierbarkeit
 n_1         = 25                                                                # Anzahl Patient:innen Online Gruppe
@@ -237,8 +238,8 @@ library(ggplot2)
 library(httpgd)
 
 # Daten vorbereiten
-#fname      <- "4-Zweistichproben-T-Test.csv"                                     # Dateiname
-fname       <- "6_Übungen/4_Zweistichproben-T-Test/4-Zweistichproben-T-Test.csv" # Dateiname
+#fname       <- "6_Übungen/4_Zweistichproben-T-Test/4-Zweistichproben-T-Test.csv" # Dateiname
+fname      <- "4-Zweistichproben-T-Test.csv"                                     # Dateiname
 D           <- read.table(fname, sep = ",", header = TRUE)                       # Laden des Datensatzes
 D_processed <- D %>%
   mutate(Diff = as.numeric(Post - Pre)) %>%                                      # Neue Variable berechnen
