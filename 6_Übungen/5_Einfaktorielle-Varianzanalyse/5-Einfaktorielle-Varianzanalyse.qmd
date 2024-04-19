@@ -137,7 +137,7 @@ Eff         = MSB/MSW                                                           
 p           = 1 - pf(Eff, p-1, n-p)                                             # p-Wert
 ```
 ```{r, echo = F}
-#| label: t-Test (aov)
+#| label: anova (aov)
 # aov Evaluation
 res = aov(D$BDI ~ D$Treatment, data = D)
 cat("Einfaktorielle Varianzanalyse mit aov()")
@@ -198,7 +198,7 @@ dev.off()
 ![Gruppenspezifische Stichprobenmittel und Stichprobenstandardabweichungen sowie Boxplots](5-Einfaktorielle-Varianzanalyse-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%}
 
 
-\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die nach *Treatment* gruppierten Deskriptien Statistiken mithilfe einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} und der Funktion `dplyr::group_by` des **R** Pakets `dplyr` berechnen können. Konsultieren Sie hierfür auch die Einführung zu Data transformation in \href{https://r4ds.hadley.nz/data-transform#groups}{R for Data Science}.
+\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie eine zweifaktorielle Varianzanalyse mit Interaktion mithilfe einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} und der Funktion `group_by` des **R** Pakets `dplyr` berechnen können. Konsultieren Sie hierfür auch die Einführung zu Data transformation in \href{https://r4ds.hadley.nz/data-transform#groups}{R for Data Science}.
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
@@ -247,12 +247,13 @@ bar_plot <- ggplot(data = summary_stats) +                                     #
 
 box_plot <- ggplot(data = D_processed, aes(x = Treatment, y = BDI)) +          # boxplots
   geom_boxplot(fill = "lightblue",outlier.shape = NA) +
-  ylim(22, 40) +
+  ylim(0, 40) +
   labs(x = "Treatment", y = "BDI")
 
 gesamt_plot <- ggarrange(                                                      # Plots in eine Grafik zusammenfügen
-  bar_plot, box_plot + rremove("y.text"), 
-          ncol = 2, nrow = 1)
+  bar_plot, box_plot + rremove("y.text") + rremove("ylab"),
+  align = "hv",                                                                # Grid alignen
+  ncol = 2, nrow = 1)
 
 ggsave(                                                                        # Abbildung speichern
   gesamt_plot,
