@@ -28,6 +28,7 @@ Einfachheit nehmen wir hier im Unterschied zu @rief2018 an, dass jede Studiengru
 aus $40$ Patient:innen besteht.
 
 ```{r, echo = F, warning = F}
+#| label: Datensimulation
 # Modellformulierung
 set.seed(1)                                                                     # Ergebnisreproduzierbarkeit
 library(MASS)                                                                   # Multivariate Normalverteilung
@@ -83,6 +84,8 @@ Sie sollten folgende Ergebnisse erhalten.
 
 \tiny
 ```{r, echo = F}
+#| label: Deskriptivstatistik
+
 # Laden des Datensatzes
 fname     = "6-Zweifaktorielle-Varianzanalyse.csv"                              # Dateiname
 D         = read.table(file.path(fname), sep = ",", header = TRUE)              # Laden des Datensatzes
@@ -115,7 +118,11 @@ for(i in 1:length(FA)){                                                         
     idx           = idx+1}}                                                     # linear Index update
 cat("Deskriptivstatistik")                                                      # user information
 kable(S, digits = 1)                                                            # Visualisierung
+```
 
+
+```{r, echo = F}
+#| label: anova (aov)
 # Inferenzstatistik
 cat("Zweifaktorielle Varianzanalyse mit Interaktion")                           # user information
 glm         = lm(dBDI ~ Form + Treatment + Form:Treatment, data = D)            # Modellformulierung und Modellschätzung
@@ -129,6 +136,8 @@ Die Abbildung sollte in etwa aussehen wie @fig-abbildung.
 
 
 ```{r echo = F, eval = F}
+#| label: Visualisierung (low-level)
+
 # Laden des Datensatzes
 fname = "6-Zweifaktorielle-Varianzanalyse.csv"                                  # Dateiname
 D     = read.table(file.path(fname), sep = ",", header = TRUE)                  # Laden des Datensatzes
@@ -224,6 +233,79 @@ text(2,1, "CBT", xpd = T, cex = 1.1)
 dev.off()
 ```
 ![Gruppenspezifische Stichprobenmittel und Stichprobenstandardabweichungen (Chr: Chronic, Oth: Other, CBA: CBASP)](6-Zweifaktorielle-Varianzanalyse-Abbildung.pdf){#fig-abbildung fig-align="center" width=80%}  
+
+
+\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die nach *Treatment* gruppierten Deskriptien Statistiken mithilfe einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} und der Funktion `aov_car` des **R** Pakets `afex` durchführen können.
+
+```{r echo = F, eval = F}
+#| label: tidyverse style
+library(dplyr)
+library(afex)
+library(ggplot2)
+library(ggpubr)
+library(httpgd)
+
+# Daten vorbereiten
+#fname       <- "6_Übungen/6_Zweifaktorielle-Varianzanalyse/6-Zweifaktorielle-Varianzanalyse.csv" # Dateiname
+fname      <- "6-Zweifaktorielle-Varianzanalyse.csv"                           # Dateiname
+D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
+n_subs     <- nrow(D)
+D_processed <- D %>%
+  mutate(ID = seq(n_subs))                                                     # Subject ID hinzufügen
+
+# Deskriptive Statstik
+summary_stats <- D_processed %>%
+  group_by(Treatment, Form) %>%                                                # Nach Treatment und Form gruppieren
+  summarize(                                                                   # Kreiert dataframe mit eine Zeile für jede Gruppe
+    n = n(),
+    Max = max(dBDI),
+    Min = min(dBDI),
+    Median = median(dBDI),
+    Mean = mean(dBDI),
+    Var = var(dBDI),
+    Std = sd(dBDI)
+  )
+print(summary_stats)
+
+# Zweifaktorielle ANOVA evaluieren
+anova_results <- D_processed %>%
+  aov_car(dBDI ~ Form * Treatment + Error(ID),
+          data = .)
+print(anova_results)                                                           # Ergebnisse ausgeben
+View(anova_results)                                                            # Mehr details ansehen
+
+# Visualisierung
+bar_plot <- ggplot(data = summary_stats, aes(x = paste(Form, Treatment), y = Mean)) +
+      geom_col(color = "gray") +
+      geom_errorbar(aes(ymin = Mean - Std, ymax = Mean + Std), 
+                    width = 0.2, color = "black") +
+      ylim(0, 18) +
+      labs(x = "Group", y = "Mean dBDI") +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+line_plot <- ggplot(
+  summary_stats,
+  aes(x = Treatment, y = Mean, group = Form, color = Form)) +
+  geom_line() +
+  geom_point(shape = 21, size = 3, fill = "white") +
+  geom_errorbar(aes(ymin = Mean - Std, ymax = Mean + Std), width = 0.1) +
+  ylim(0, 18) +
+  labs(x = "Treatment", y = "Mean dBDI") +
+  theme(legend.position = "bottom")
+
+gesamt_plot <- ggarrange(                                                      # Plots in eine Grafik zusammenfügen
+  bar_plot, line_plot + rremove("y.text") + rremove("ylab"),
+  align = "hv",                                                                # Grid aligned
+  ncol = 2, nrow = 1)
+
+ggsave(                                                                        # Abbildung speichern
+  gesamt_plot,
+  filename = "6-Zweifaktorielle-Varianzanalyse-ggplot.pdf",
+  width    = 10,
+  height   = 5
+  )
+```
+
 
 \newpage
 ## Dokumentation
