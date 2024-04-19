@@ -57,6 +57,7 @@ Sie sollten folgende Ergebnisse erhalten:
 
 \small
 ```{r echo = F}
+#| label: Korrelation (Theorem)
 # Datenanalyse
 fname    = "2-Korrelation.csv"                                                  # Dateiname
 D        = read.table(file.path(fname), sep = ",", header = TRUE)               # Laden des Datensatzes
@@ -77,14 +78,16 @@ cat("     Korrelation von General Advisement und BDI Change Index             : 
     "\n     Quadrierte Korrelation von General Advisement und BDI Change Index  : ", round(r ** 2,   digits = 3),
     "\n     SQT bei General Advisement und BDI Change Index                     : ", round(SQT,      digits = 2),
     "\n     SQE bei General Advisement und BDI Change Index                     : ", round(SQE,      digits = 3),
-    "\n     Bestimmheitsmaß bei General Advisement und BDI Change Index         : ", round(Rsquare,  digits = 3))                                               
+    "\n     Bestimmheitsmaß bei General Advisement und BDI Change Index         : ", round(Rsquare,  digits = 3))
 ```
+
 
 \noindent 2. Visualisieren Sie die Daten, die Ausgleichsgerade und die 
 Korrelationsanalysergebnisse in einer Abbildung. Die Abbildung sollte in 
 etwa aussehen wie @fig-abbildung.
 
 ```{r echo = F, eval = F}
+#| label: Visualisierung (low-level)
 # Datenanalysevisualisierung
 pdf(
   file        = file.path("2-Korrelation-Abbildung.pdf"),
@@ -139,6 +142,59 @@ dev.off()
 ```
 
 ![Korrelation von General Advisement und BDI Change Index](2-Korrelation-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%} 
+
+\noindent 3. Zeigen Sie in einer R-Übung, wie Sie die Abbildung aus Aufgabe 2 mit dem **R** Paket `ggplot2`'generieren können. Hierfür können sie Beispiel können Sie die Funktionen `ggplot2::geom_point()` und `ggplot2::geom_smooth()` verwenden. Konsultieren Sie dazu auch die Einführung zu Visualisierungen in \href{https://r4ds.hadley.nz/data-visualize}{R for Data Science}.
+
+```{r echo = F, eval = F}
+#| label: tidyverse style
+library(corrr)
+library(ggplot2)
+library(latex2exp)
+library(dplyr)
+library(httpgd)
+
+# Daten vorbereiten
+# fname    = "6_Übungen/2_Korrelation/2-Korrelation.csv"                       # Dateiname
+fname    = "2-Korrelation.csv"                                                 # Dateiname
+D        = read.table(fname, sep = ",", header = TRUE)                         # Laden des Datensatzes
+
+# Korrelation evaluieren
+gen_adv_cor <- D %>%
+  select(GeneralAdvisement, BDIChange) %>%                                     # Spalten für Korrelation wählen (Bei 21 x 2 dataframe überflüssig)
+  correlate()
+gen_adv_cor                                                                    # Korrelationsmatrix ausgeben
+r = round(gen_adv_cor$BDIChange[1], digits = 2)                                # Stichprobenkorrelation extrahieren
+cat(                                                                           # Ausgabe
+  "Korrelation von General Advisement und BDI Change Index: ",
+  round(r,        digits = 3)
+  )
+
+# Visualisierung Ausgleichsgerade
+# # Start plot viewer
+# hgd()
+# hgd_browse()
+ggplot(
+  data = D,                                                                    # Daten
+  mapping = aes(x = GeneralAdvisement, y = BDIChange)                          # Daten-Axen-mapping
+) + 
+  coord_cartesian(xlim = c(2, 8), ylim = c(-6, 0)) +                           # Achsen-limits anpassen
+  labs(x = "General Advisement", y = "BDI Change") +                           # Achsenlabel anpassen
+  geom_point() +                                                               # Datenpunkte zeichnen
+  geom_smooth(method = "lm", color = "gray", se = F) +                         # Ausgleichsgerade zeichnen
+  ggtitle(
+    TeX(
+      sprintf(
+        "r = %.2f, SQE = %.2f, SQT = %.2f, $R^2=$ %.2f", r, SQE, SQT, Rsquare  # Titel
+      )
+    )
+  )
+
+ggsave(                                                                        # Abbildung speichern
+  filename = "2-Korrelation-ggplot.pdf",
+  height = 5, width = 5
+)
+```
+
 
 \newpage
 ## Dokumentation

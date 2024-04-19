@@ -72,6 +72,7 @@ den Wert 1 annimmt. Diese geschätzte Wahrscheinlichkeit wird manchmal als
 
 \footnotesize
 ```{r echo = F, warning = F}
+#| label: t-Test (Theorem)
 # Datenanalyse
 fname       = "3-Einstichproben-T-Test.csv"                                     # Dateiname
 D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
@@ -115,7 +116,7 @@ als *Violinplot* mithilfe des **R** Pakets `vioplot`. Die Abbildung sollte in
 etwa aussehen wie @fig-abbildung.
 
 ```{r echo = F, eval = F, warning = F}
-# Datenanalysevisualisierung
+#| label: Visualisierung (low-level)
 # install.packages("vioplot")
 library(latex2exp)
 library(vioplot)
@@ -182,6 +183,48 @@ add         = TRUE)
 dev.off()
 ```
 ![Pre-Post-Interventions BDI Werte](3-Einstichproben-T-Test-Abbildung.pdf){#fig-abbildung fig-align="center" width=90%}  
+
+\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die Post-Pre Differenz BDI Werte mit einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} berechnen können. Konsultieren Sie hierfür auch die Einführung zu Data transformation in \href{https://r4ds.hadley.nz/data-transform#sec-the-pipe}{R for Data Science}. Zeigen Sie weiterhin, wie Sie die Post-Pre Differenz BDI Werte als *Violinplot* mithilfe des **R** Pakets `ggplot2` visualisieren können.
+
+```{r echo = F, eval = F}
+#| label: tidyverse style
+library(dplyr)
+library(ggplot2)
+library(httpgd)
+
+# Daten vorbereiten
+#fname      <- "6_Übungen/3_Einstichproben-T-Test/3-Einstichproben-T-Test.csv"  # Dateiname
+fname       <- "3-Einstichproben-T-Test.csv"                                   # Dateiname
+D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
+D_processed <- D %>%
+  mutate(Diff = as.numeric(Post - Pre))                                        # Neue Variable berechnen
+
+# T-Test berechnen
+t_test_results <- t.test(D_processed$Diff)                                     # t- test durchführen
+t_test_results                                                                 # Ergebnisse ausgeben
+
+# Violinplot erstellen
+# # Start plot viewer
+# hgd()
+# hgd_browse()
+ggplot(data = D_processed, aes(x = "", y = Diff)) +
+  geom_violin(fill = "gray80", color = "black") +
+  geom_point(
+    aes(y = Diff),
+    position = position_jitter(width = 0.1, height = 0),
+    size = 2,
+    fill = "black"
+    ) +
+  labs(
+    x = NULL, y = "BDI DIfferenzwerte", title = "Pre Post BDI Differenzwerte"
+    )
+
+ggsave(                                                                        # Abbildung speichern
+  filename = "3-Einstichproben-T-Test-ggplot.pdf",
+  height   = 5,
+  width    = 5
+  )
+```
 
 \newpage
 ## Dokumentation

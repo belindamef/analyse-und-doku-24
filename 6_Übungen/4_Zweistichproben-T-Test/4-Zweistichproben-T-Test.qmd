@@ -77,6 +77,7 @@ Sie sollten folgende Ergebnisse erhalten:
 
 \footnotesize
 ```{r echo = F, eval  = T}
+#| label: t-Test (Theorem)
 # Datenanalyse
 fname       = "4-Zweistichproben-T-Test.csv"                                    # Dateiname
 D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
@@ -123,12 +124,14 @@ die Post-Pre-Differenz Werte als gruppenspezifische *Violinplots* mithilfe des
 *R* Pakets `vioplot`.  Die Abbildung sollte in etwa aussehen wie @fig-abbildung.
 
 ```{r echo = F, eval = F}
+#| label: Visualisierung (low-level)
 # Datenanalysevisualisierung
 # install.packages("vioplot")
 library(latex2exp)
 library(vioplot)
 fname       = "4-Zweistichproben-T-Test.csv"                                     
 D           = read.table(file.path(fname), sep = ",", header = TRUE)             
+D$Diff      = -(D$Post - D$Pre)
 pdf(
 file        = file.path("4-Zweistichproben-T-Test-Abbildung.pdf"),
 width       = 8,
@@ -198,7 +201,7 @@ text(2,1.7, "Posttest", xpd = T, cex = 1.1)
 
 # Post-Pre Differenzwert Violinplot
 vioplot(
-D$Post ~ D$Condition,
+D$Diff ~ D$Condition,
 D,
 col         = "gray80",                          
 rectCol     = "black",                           
@@ -208,7 +211,7 @@ border      = "black",
 pchMed      = 16,                                
 plotCentre  = "points",
 ylab        = "BDI Differenzwerte",
-ylim        = c(5,20),
+ylim        = c(0,30),
 xlab        = "")
 stripchart(
 D$Post ~ D$Condition,
@@ -224,6 +227,56 @@ dev.off()
 ```
 
 ![Post-Pre BDI Differenz Gruppenanalyse.](4-Zweistichproben-T-Test-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%}  
+
+\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die Post-Pre Differenz BDI Werte mit einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} berechnen können. Konsultieren Sie hierfür auch die Einführung zu Data transformation in \href{https://r4ds.hadley.nz/data-transform#sec-the-pipe}{R for Data Science}. Zeigen Sie weiterhin, wie Sie die Post-Pre Differenz BDI Werte als *Violinplot* mithilfe des **R** Pakets `ggplot2` visualisieren können.
+
+```{r echo = F, eval = F}
+#| label: tidyverse style
+library(dplyr)
+library(ggplot2)
+library(httpgd)
+
+# Daten vorbereiten
+#fname      <- "4-Zweistichproben-T-Test.csv"                                     # Dateiname
+fname       <- "6_Übungen/4_Zweistichproben-T-Test/4-Zweistichproben-T-Test.csv" # Dateiname
+D           <- read.table(fname, sep = ",", header = TRUE)                       # Laden des Datensatzes
+D_processed <- D %>%
+  mutate(Diff = as.numeric(Post - Pre)) %>%                                      # Neue Variable berechnen
+  mutate(Diff_betrag = as.numeric(-(Post - Pre)))
+
+# T-Test durchführen
+alpha_0 <- 0.05
+t_test_results <- t.test(
+        Diff_betrag ~ Condition, data = D_processed,
+        var.equal = TRUE,
+        alternative = "two.sided",
+        conf.level = 1 - alpha_0
+        )
+print(t_test_results)                                                            # Ergebnisse ausgeben
+
+# Violinplots erstellen
+# # Start plot viewer
+# hgd()
+# hgd_browse()
+# Violinplot erstellen
+ggplot(data = D_processed, aes(x = "", y = Diff_betrag, fill = Condition)) +
+  geom_violin(trim = T) +                                          # Violinplots
+  geom_point(                                                                  # Datenpunkte
+    aes(y = Diff_betrag),
+    position = position_jitter(width = 0.15, height = 0),
+    size = 2,
+    fill = "black"
+    ) +
+  labs(x = "", y = "Differenz der Werte", title = "Face-to-Face vs. Online") + # Label hinzufügen
+  facet_wrap(~ Condition, ncol = 2) +                                          # Panel nach Condition in zwei Spalten soirtern
+  theme(legend.position = "none")                                              # Legende ausblenden, da die Füllfarbe schon die Gruppen darstellt
+
+ggsave(                                                                        # Abbildung speichern
+  filename = "4-Zweistichproben-T-Test-ggplot.pdf",
+  width    = 5,
+  height   = 5
+  )
+```
 
 \newpage
 ## Dokumentation
