@@ -1,0 +1,246 @@
+---
+title: "Multiple Regression"
+author: "Übungsaufgabe zu Analyse und Dokumentation SoSe 2024"
+bibliography: 7-Referenzen.bib
+lang: de
+format: 
+  pdf:
+    include-in-header:
+      text: |
+       \usepackage[font=small,format=plain,labelfont=bf, labelsep=period,justification=justified,singlelinecheck=false]{caption}
+---
+
+Grundlage und Inspiration für diese Übungsaufgabe ist die Studie von @covi1976. 
+Ziel ist es, mithilfe von partiellen Korrelationsanalysen und einer multiplen Regressionsanalyse
+zu quantifizieren, welche Einfluss das Patient:innenalter und die Qualität der 
+Therapeut:innen-Patient:innenbeziehung auf den Erfolg einer Psychotherapie bei 
+Depression haben. Dazu betrachten wir an @covi1976  beispielgebend nur die Gruppe 
+der Gruppentherapieintervention und fokussieren auf simulierte Pre-Post *Profiles of Mood (POMS)* 
+Depressionsselbsteinschätzungsdifferenzwerte als fiktives Ergebnismaß der Studie. 
+
+## Datensatz {-}
+
+Der Datensatz `7-Multiple-Regression.csv` enthält als erste Spalte simulierte 
+Pre-Post POMS Depressionsselbsteinschätzungsdifferenzwerte (`dPOMS`) für insgesamt 
+$n = 100$ Patient:innen, als zweite Spalte das Patient:innenalter (`AGE`) und 
+als dritte Spalte die Qualität der Patient:innen-Therapeut:innenbeziehung 
+basierend auf dem Barrett-Lennard Relationship Inventory (`BRI`). Alle Variablendaten 
+liegen dabei in *normalisierter* Form, d.h. mit Stichprobenmittel 0 und 
+Stichprobenvarianz 1 vor. @tbl-bdi zeigt exemplarisch die Daten der ersten zehn Patient:innen.
+
+```{r, echo = F}
+#| label: Datensimulation
+
+# Modellformulierung
+set.seed(1)                                                                     # Ergebnisreproduzierbarkeit
+library(MASS)                                                                   # Multivariate Normalverteilung
+n         = 100                                                                 # Anzahl Patient:innen
+X         = round(mvrnorm(n, c(0,0),diag(2)), digits = 1)                       # Kovariatenrealisierungen 
+beta      = matrix(c(1,1), nrow = 2)                                            # wahrer, aber unbekannter, Betaparameter
+sigsqr    = 1                                                                   # wahrer, aber unbekannter, Varianzparameter
+y         = mvrnorm(1, X%*%beta, sigsqr*diag(n))                                # Datenrealisierung
+D         = data.frame(dPOMS = y,                                               # dPOMS Werte
+                       AGE   = X[,1],                                           # AGE Regressorwerte
+                       BRI   = X[,2])                                           # BRI Regressorwerte
+fname   = file.path("7-Multiple-Regression.csv")                                # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                   # Speicherung 
+```
+
+\footnotesize
+```{r echo = F, eval = T}
+#| label: tbl-bdi
+#| tbl-cap : "Daten der ersten 10 Patient:innen des Datensatzes"
+library(knitr)                                                                  # knitr für Tabellen
+fname       = "7-Multiple-Regression.csv"                                       # Dateiname
+D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
+kable(D[1:10,], digits = 2, align = "c")                                        # erste 10 Patient:innen
+``` 
+
+\newpage
+\normalsize
+## Programmieraufgaben {-}
+\noindent 1. Bestimmen Sie die paarweisen Korrelationen der Variablen 
+`dPOMS`, `AGE` und `BRI`. Bestimmen Sie weiterhin die partiellen Korrelationen 
+von `dPOMS` und `AGE` gegeben `BRI` und von `dPOMS` und `BRI` gegeben `AGE` mithilfe
+der **R** Funktion `ppcor()`. Bestimmen Sie schließlich den Betaparameterschätzer 
+in einer multiplen Regressionsanalyse mit abhängiger Variable `dPOMS` und 
+unabhängigen Variablen `AGE` und `BRI`, einmal mithilfe der ALM Standardformel
+und einmal auf Grundlage der partiellen Korrelationen.
+
+\footnotesize
+```{r, warning = F, echo = F}
+#| label: Korrelationen (Theorem)
+
+fname      = file.path(getwd(), "7-Multiple-Regression.csv")                    # Dateipfad     
+D          = read.table(fname, sep = ",", header = TRUE)                        # Datensatzeinlesen
+y          = D$dPOMS                                                            # Abhängige Variable
+n          = length(y)                                                          # Anzahl Datenpunkte
+X          = matrix(c(rep(1,n), D$AGE, D$BRI), nrow = n)                        # Designmatrix
+p          = ncol(X)                                                            # Anzahl Parameter
+beta_hat   = solve(t(X) %*% X) %*% t(X) %*% y                                   # Betaparameterschätzer
+eps_hat    = y - X %*% beta_hat                                                 # Residuenvektor
+sigsqr_hat = (t(eps_hat) %*% eps_hat) /(n-p)                                    # Varianzparameterschätzer
+
+# Betaparameterschätzer aus partiellen Korrelationen und Korrelationen
+library(ppcor)                                                                  # partielle Korrelationentoolbox
+y12        = cbind(y,X[,2:3])                                                   # y,x_1,x_2 Matrix
+bars       = apply(y12, 2, mean)                                                # Stichprobenmittel
+s          = apply(y12, 2, sd)                                                  # Stichprobenstandardabweichungen
+r          = cor(y12)                                                           # Stichprobenkorrelationen
+pr         = pcor(y12)                                                          # partielle Stichprobenkorrelationen
+pr         = pr$estimate                                                        # partielle Stichprobenkorrelationen
+beta_hat_1 = pr[1,2]*sqrt((1-r[1,3]^2)/(1-r[2,3]^2))*(s[1]/s[2])                # \hat{\beta}_1
+beta_hat_2 = pr[1,3]*sqrt((1-r[1,2]^2)/(1-r[3,2]^2))*(s[1]/s[3])                # \hat{\beta}_2
+beta_hat_0 = bars[1] - beta_hat_1*bars[2] - beta_hat_2*bars[3]                  # \hat{\beta}_0
+
+# Ausgabe
+cat("Korrelationen  r(dPOMS,AGE),r(dPOMS,BRI),r(AGE,BRI)        :"  , round(c(r[1,2],r[1,3],r[2,3]), digits = 3),
+     "\nPartielle Korrelationen r(dPOMS,AGE|BRI), r(dPOMS,BRI|AGE) :", round(c(pr[1,2],pr[1,3]), digits = 3),
+     "\nbeta_hat ALM Schätzer                                      :", round(beta_hat, digits = 3),
+     "\nbeta_hat aus partieller Korrelation                        :", round(c(beta_hat_0,beta_hat_1,beta_hat_2), digits = 3))
+```
+
+\normalsize
+
+\noindent 2. Visualisieren den Datensatz zusammen mit der durch den Betaparameterschätzer
+definierten Regressionsebene. Die Abbildung sollte in etwa aussehen wie @fig-mrg-fit.
+
+```{r, eval = F, echo = F, warning=FALSE, message=FALSE}
+#| label: Visualisierung (low-level)
+
+library(scatterplot3d)
+# Dateneinlesen
+#install.packages("scatterplot3d")
+fname      = file.path(getwd(), "7-Multiple-Regression.csv")
+D          = read.table(fname, sep = ",", header = TRUE)        
+graphics.off()
+pdf(
+file        = file.path("7-Multiple-Regression-Abbildung.pdf"),
+width       = 5,
+height      = 5)
+spd = scatterplot3d(
+D$AGE,
+D$BRI,
+D$dPOMS,
+pch         = 21,
+color       = "gray",
+bg          = "black",
+type        = "h",
+xlab        = "AGE",
+ylab        = "BRI",
+zlab        = "dPOMS",
+angle       = 75)
+alm         = lm(dPOMS ~ AGE + BRI, data = D)
+spd$plane3d(alm)
+dev.off()
+``` 
+
+![Visualisierung des Datensatzes und Regressionsebene](7-Multiple-Regression-Abbildung){#fig-mrg-fit fig-align="center" width=70%}  
+
+
+\noindent 3. Demonstrieren Sie in einer kurzen R-Übung, wie Sie analog zu der in Aufgabe 2 erstellten Grafik, eine interaktive Visualisierung erzeugen können. Nutzen sie dafür die Funktion `plot_ly` des **R** Pakets `plotly`.
+
+```{r echo = F, eval = F}
+#| label: tidyverse style
+library(dplyr)
+library(tidyr)
+library(plotly)
+library(ppcor)
+
+# Daten vorbereiten
+fname      <- "6_Übungen/7_Multiple-Regression/7-Multiple-Regression.csv"      # Dateiname
+fname      <- "7-Multiple-Regression.csv"                                      # Dateiname
+D          <- read.table(fname, sep = ",", header = TRUE)                      # Laden des Datensatzes
+
+# (partielle) Korrelationen
+korrs <- D %>%
+  mutate(y12 = paste(dPOMS, AGE, BRI, sep = ",")) %>%
+  separate(y12, into = c("dPOMS", "AGE", "BRI"), sep = ",") %>%
+  mutate_at(vars(dPOMS, AGE, BRI), as.numeric) %>%
+  summarize(
+    r_dPOMS_AGE = cor(dPOMS, AGE),
+    r_dPOMS_BRI = cor(dPOMS, BRI),
+    r_AGE_BRI = cor(AGE, BRI),
+    partielle_r_dPOMS_AGE_giv_BRI = pcor(x = .)$estimate[1,2],
+    partielle_r_dPOMS_BRI_giv_AGE = pcor(x = .)$estimate[1,3]
+  ) %>%
+    round(digits = 3)
+
+cat("Korrelationen  r(dPOMS,AGE),r(dPOMS,BRI),r(AGE,BRI)        :", korrs$r_dPOMS_AGE, korrs$r_dPOMS_BRI, korrs$r_AGE_BRI,
+     "\nPartielle Korrelationen r(dPOMS,AGE|BRI), r(dPOMS,BRI|AGE) :", korrs$partielle_r_dPOMS_AGE_giv_BRI, korrs$partielle_r_dPOMS_BRI_giv_AGE
+)
+
+# ------ Visualisierung -------------------------------------------------------
+# Lineare Regression durchführen
+lm_model <- lm(dPOMS ~ AGE + BRI, data = D)                                    # beta_hat ALM Schätzer der multiplen Regression
+
+# Dataframe mit 400 x- und y-Werten (UVs) für Regressionfäche erstellen
+x_und_y_Werte <- expand.grid(                                                  # erstellt df m. 1 Zeile pro Kombination der übegeb. Werte
+    AGE = seq(min(D$AGE), max(D$AGE), length.out = 20),                        # 20 Werte zw min und max AGE
+    BRI = seq(min(D$BRI), max(D$BRI), length.out = 20)                         # 20 Werte zw min und max AGE
+)
+
+# Vektor mit z-Werten (AV, dPOMS) geg. der UVs, i.e. x-Werte (AGE) und y-Werte (BRI)
+z_Werte <- predict(
+  lm_model,                                                                    # Model für Vorhersage
+  newdata = x_und_y_Werte                                                      # UVs, i.e. x-Werte (AGE) und y-Werte (BRI)
+)
+
+# 3-dimensionale Daten für Regressionsfläche erstellen
+reggressions_flaeche <- data.frame(                                            # Neues dataframe
+  x_und_y_Werte,                                                               # Spalte 1 und 2: x (AGE) und y (BRI)
+  dPOMS = z_Werte                                                              # Spalte 3: z (dPOMS)
+)
+
+# Interaktives Streudiagramm erzeugen
+scatter_plot <- plot_ly(
+  D,                                                                           # Daten
+  x = ~AGE, y = ~BRI, z = ~dPOMS,                                              # Achsen-Daten-Mapping
+  type = "scatter3d",                                                          # Streudiagramm
+  mode = "markers",                                                            # Jeder Datenpunkt ein Marker
+  marker = list(color = "gray", size = 3, symbol = "circle"),                  # Marker finetuning
+  opacity = 0.7) %>%                                                           # Transparenz
+  add_trace(                                                                   # Regressionsfläche hinzufügen
+    data = reggressions_flaeche,                                               # 3-Dim Datenwerte der Regressionsfläche
+    x = ~AGE, y = ~BRI, z = ~dPOMS,                                            # Achsen-Daten-Mapping
+    type = "mesh3d"                                                            # Typ: 3-Dim Gitterdiagramm
+  )
+
+# Plot anzeigen
+scatter_plot
+```
+
+
+
+
+\newpage
+## Dokumentation
+
+Bitte beachten Sie bei der Erstellung Ihre Dokumentation folgende Vorgaben und 
+orientieren Sie sich in der Darstellung Ihrer datenanalytischer Ergebnisse an
+den Empfehlungen des [APA Publication Manuals 7th Edition](https://apastyle.apa.org/products/publication-manual-7th-edition), insbesondere Kapitel 6. 
+
+### Einleitung {-}
+
+Stellen Sie kurz die Ausgangsfrage der Studie von @covi1976 und speziell der vorliegenden 
+Übungsaufgabe dar und erläutern Sie kurz die Profiles of Mood State (POMS) und das Barrett-Lennard Relationship Inventory (BRI) als Maße für Depressivität und die Qualität von Patient:innen-Therapeut:innenbeziehungen.
+
+### Methoden {-}
+
+Erläutern Sie kurz die Begriffe der partiellen Korrelation und der multiplen Regression.
+
+### Resultate {-}
+
+Reportieren Sie die von Ihnen in Programmieraufgabe 1 bestimmten Statistiken. Diskutieren
+Sie dabei die wechselseitigen Abhängigkeiten der drei betrachteten Variablen und 
+gehen Sie dabei insbesondere auf die Korrelation der `AGE` und `BRI` Variablen und ihre
+jeweiligen partiellen Korrelationen mit der `dPOMS` Variable ein. Erläutern Sie
+die Lage und Orientierung der Regressionsebene vor dem Hintergrund der in 
+Programmieraufgabe 1 bestimmten Werte des ALM Betaparameterschätzers.
+
+### Schlußfolgerung
+
+Fassen Sie die von Ihnen erstellte Dokumentation in drei Sätzen zusammen.
+
+## Referenzen 
+\footnotesize

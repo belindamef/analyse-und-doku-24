@@ -275,6 +275,9 @@ print(anova_results)                                                           #
 View(anova_results)                                                            # Mehr details ansehen
 
 # Visualisierung
+# # Start plot viewer
+# hgd()
+# hgd_browse()
 bar_plot <- ggplot(data = summary_stats, aes(x = paste(Form, Treatment), y = Mean)) +
       geom_col(color = "gray") +
       geom_errorbar(aes(ymin = Mean - Std, ymax = Mean + Std), 
