@@ -163,7 +163,7 @@ Feb 2025       & Klausurwiederholungstermin                                     
   \item Maximal 40 Minuten
 \end{itemize}
 \item $\Rightarrow$ 1/2 Seite Fließtext plus 10 Minuten Präsentation pro Studierende
-\item Prakatischce Umsetzung der Analysemethoden is klausurrelevant
+\item Praktische Umsetzung der Analysemethoden is klausurrelevant
 \item Organisation der Gruppen und Präsentationstermine über Moodle
 \item -> Bei Terminkonflikten entscheidet das Los
 \end{itemize}
