@@ -229,7 +229,7 @@ dev.off()
 
 ![Post-Pre BDI Differenz Gruppenanalyse.](4-Zweistichproben-T-Test-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%}  
 
-\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die Post-Pre Differenz BDI Werte mit einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} berechnen können. Konsultieren Sie hierfür auch die Einführung zu Data transformation in \href{https://r4ds.hadley.nz/data-transform#sec-the-pipe}{R for Data Science}. Zeigen Sie weiterhin, wie Sie die Post-Pre Differenz BDI Werte als *Violinplot* mithilfe des **R** Pakets `ggplot2` visualisieren können.
+\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie mit einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} die Post-Pre-Differenz der BDI-Werte berechnen und diese direkt als neue Spalte in das Dataframe integrieren können. Konsultieren Sie hierfür auch die Einführung zu Data transformation in \href{https://r4ds.hadley.nz/data-transform#sec-the-pipe}{R for Data Science}. Zeigen Sie weiterhin, wie Sie die Post-Pre Differenz BDI Werte als *Violinplot* mithilfe des **R** Pakets `ggplot2` visualisieren können.
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
@@ -238,11 +238,11 @@ library(ggplot2)
 library(httpgd)
 
 # Daten vorbereiten
-#fname       <- "6_Übungen/4_Zweistichproben-T-Test/4-Zweistichproben-T-Test.csv" # Dateiname
-fname      <- "4-Zweistichproben-T-Test.csv"                                     # Dateiname
-D           <- read.table(fname, sep = ",", header = TRUE)                       # Laden des Datensatzes
+fname       <- "6_Übungen/4_Zweistichproben-T-Test/4-Zweistichproben-T-Test.csv" # Dateiname
+fname       <- "4-Zweistichproben-T-Test.csv"                                  # Dateiname
+D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
 D_processed <- D %>%
-  mutate(Diff = as.numeric(Post - Pre)) %>%                                      # Neue Variable berechnen
+  mutate(Diff = as.numeric(Post - Pre)) %>%                                    # Neue Variable berechnen
   mutate(Diff_betrag = as.numeric(-(Post - Pre)))
 
 # T-Test durchführen
@@ -253,7 +253,7 @@ t_test_results <- t.test(
         alternative = "two.sided",
         conf.level = 1 - alpha_0
         )
-print(t_test_results)                                                            # Ergebnisse ausgeben
+print(t_test_results)                                                          # Ergebnisse ausgeben
 
 # Violinplots erstellen
 # # Start plot viewer
@@ -261,7 +261,7 @@ print(t_test_results)                                                           
 # hgd_browse()
 # Violinplot erstellen
 ggplot(data = D_processed, aes(x = "", y = Diff_betrag, fill = Condition)) +
-  geom_violin(trim = T) +                                          # Violinplots
+  geom_violin(trim = T) +                                                      # Violinplots
   geom_point(                                                                  # Datenpunkte
     aes(y = Diff_betrag),
     position = position_jitter(width = 0.15, height = 0),
