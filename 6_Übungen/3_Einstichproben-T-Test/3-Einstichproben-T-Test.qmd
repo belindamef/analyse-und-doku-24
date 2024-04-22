@@ -26,31 +26,32 @@ Werte zu den Erhebungszeitpunkten *Pre* und *Post* der psychotherapeutischen
 
 ```{r, echo = F, eval = F}
 #| label: Datensim
-library(MASS)                                                                   # Multivariate Normalverteilung
-set.seed(10)                                                                    # Ergebnisreproduzierbarkeit
-n           = 32                                                                # Anzahl Patient:innen
-k           = 2                                                                 # Anzahl Gruppen (Pre/Post)
-betas       = c(23,12)                                                          # Erwartungswertparameter \mu_{pre}/\mu_{post}
-sigsqrs     = c(6 ** 2, 10 ** 2)                                                # Varianzparameter \sigma^2_{pre}/\sigma^2_{post}
-Y           = matrix(rep(NaN,n*2), nrow = n)                                    # Datensatzarrayinitialisierung
-X           = matrix(rep(1,n), nrow = n)                                        # Designmatrix 
-for(i in 1:k){                                                                  # Pre-Post Iteration                
-    Y[,i] = mvrnorm(1, X %*% betas[i], sigsqrs[i]*diag(n))}                     # Datenrealisierung
-Y           = round(Y)                                                          # diskrete BDI Werte
-Y[Y < 0]    = 0                                                                 # natürliche BDI Werte
-D           = data.frame(Pre  = Y[,1],                                          # Pre BDI Werte
-                         Post = Y[,2])                                          # Post BDI Werte 
-fname       = file.path("3-Einstichproben-T-Test.csv")                          # Dateiname
-write.csv(D, file = fname, row.names = FALSE)                                   # Speichern 
+library(MASS)                                                                  # Multivariate Normalverteilung
+set.seed(10)                                                                   # Ergebnisreproduzierbarkeit
+n           <- 32                                                              # Anzahl Patient:innen
+k           <- 2                                                               # Anzahl Gruppen (Pre/Post)
+betas       <- c(23,12)                                                        # Erwartungswertparameter \mu_{pre}/\mu_{post}
+sigsqrs     <- c(6 ** 2, 10 ** 2)                                              # Varianzparameter \sigma^2_{pre}/\sigma^2_{post}
+Y           <- matrix(rep(NaN,n*2), nrow = n)                                  # Datensatzarrayinitialisierung
+X           <- matrix(rep(1,n), nrow = n)                                      # Designmatrix 
+for(i in 1:k){                                                                 # Pre-Post Iteration                
+    Y[,i] <- mvrnorm(1, X %*% betas[i], sigsqrs[i]*diag(n))                    # Datenrealisierung
+}
+Y           <- round(Y)                                                        # diskrete BDI Werte
+Y[Y < 0]    <- 0                                                               # natürliche BDI Werte
+D           <- data.frame(Pre  = Y[,1],                                        # Pre BDI Werte
+                         Post = Y[,2])                                         # Post BDI Werte 
+fname       <- file.path("3-Einstichproben-T-Test.csv")                        # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                  # Speichern 
 ```
 
 ```{r echo = F, warning = F}
 #| label: tbl-bdi
 #| tbl-cap : "Pre- und Post-Intervention BDI Werte"
-library(knitr)                                                                  # knitr für Tabellen
-fname       = "3-Einstichproben-T-Test.csv"                                     # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-kable(head(D, n = 12L), digits = 2, align = "c")                                # Markdowntabellenoutput für head(D)
+library(knitr)                                                                 # knitr für Tabellen
+fname       <- "3-Einstichproben-T-Test.csv"                                   # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+kable(head(D, n = 12L), digits = 2, align = "c")                               # Markdowntabellenoutput für head(D)
 ``` 
 
 \newpage
@@ -74,30 +75,30 @@ den Wert 1 annimmt. Diese geschätzte Wahrscheinlichkeit wird manchmal als
 ```{r echo = F, warning = F}
 #| label: t-Test (Theorem)
 # Datenanalyse
-fname       = "3-Einstichproben-T-Test.csv"                                     # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-y           = D$Post - D$Pre                                                    # Post-Pre Differenzwerte
-n           = length(y)                                                         # Anzahl Datenpunkte
-p           = 1                                                                 # Anzahl Betaparameter
-c           = 1                                                                 # Kontrastgewichtsvektor
-mu_0        = 0                                                                 # Nullhypothesenparameter       
-delta       = 0.95                                                              # Konfidenzlevel
-alpha_0     = 0.05                                                              # Signifikanzlevel  
-X           = matrix(rep(1,n), nrow = n)                                        # Einstichproben-T-Test Designmatrix 
-beta_hat    = solve(t(X)%*%X)%*%t(X)%*%y                                        # Betaparameterschätzer
-eps_hat     = y - X %*% beta_hat                                                # Residuenvektor 
-sigsqr_hat  = (t(eps_hat) %*% eps_hat)/(n-p)                                    # Varianzparameterschätzer
-t_delta     = qt((1+delta)/2,n-1)                                               # \Psi^{-1}(1+\delta)/2, n-1)
-lambda      = diag(solve(t(X) %*% X))                                           # \lambda_j Werte
-kappa_u     = beta_hat - sqrt(sigsqr_hat*lambda)*t_delta                        # untere Konfidenzintervallgrenze
-kappa_o     = beta_hat + sqrt(sigsqr_hat*lambda)*t_delta                        # obere Konfidenzintervallgrenze
-t_num       = t(c) %*% beta_hat - mu_0                                          # Zähler der Einstichproben-T-Teststatistik
-t_den       = sqrt(sigsqr_hat %*% t(c) %*% solve(t(X) %*% X) %*% c)             # Nenner der Einstichproben-T-Teststatistik
-t           = t_num/t_den                                                       # Wert der Einstichproben-T-Teststatistik
-pval        = 2*(1 - pt(abs(t), n-1))                                           # p-Wert bei zweiseitigem Einstichproben-T-Test
-d           = t/sqrt(n)                                                         # Cohen's d
-k_alpha_0   = qt(1-alpha_0/2, n-1)                                              # kritischer Wert 
-p_delta_hat = 1-pt(k_alpha_0, n-1, t)+pt(-k_alpha_0, n-1, t)                    # "Post-hoc power"
+fname       <- "3-Einstichproben-T-Test.csv"                                   # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+y           <- D$Post - D$Pre                                                  # Post-Pre Differenzwerte
+n           <- length(y)                                                       # Anzahl Datenpunkte
+p           <- 1                                                               # Anzahl Betaparameter
+c           <- 1                                                               # Kontrastgewichtsvektor
+mu_0        <- 0                                                               # Nullhypothesenparameter       
+delta       <- 0.95                                                            # Konfidenzlevel
+alpha_0     <- 0.05                                                            # Signifikanzlevel  
+X           <- matrix(rep(1,n), nrow <- n)                                     # Einstichproben-T-Test Designmatrix 
+beta_hat    <- solve(t(X)%*%X)%*%t(X)%*%y                                      # Betaparameterschätzer
+eps_hat     <- y - X %*% beta_hat                                              # Residuenvektor 
+sigsqr_hat  <- (t(eps_hat) %*% eps_hat)/(n-p)                                  # Varianzparameterschätzer
+t_delta     <- qt((1+delta)/2,n-1)                                             # \Psi^{-1}(1+\delta)/2, n-1)
+lambda      <- diag(solve(t(X) %*% X))                                         # \lambda_j Werte
+kappa_u     <- beta_hat - sqrt(sigsqr_hat*lambda)*t_delta                      # untere Konfidenzintervallgrenze
+kappa_o     <- beta_hat + sqrt(sigsqr_hat*lambda)*t_delta                      # obere Konfidenzintervallgrenze
+t_num       <- t(c) %*% beta_hat - mu_0                                        # Zähler der Einstichproben-T-Teststatistik
+t_den       <- sqrt(sigsqr_hat %*% t(c) %*% solve(t(X) %*% X) %*% c)           # Nenner der Einstichproben-T-Teststatistik
+t           <- t_num/t_den                                                     # Wert der Einstichproben-T-Teststatistik
+pval        <- 2*(1 - pt(abs(t), n-1))                                         # p-Wert bei zweiseitigem Einstichproben-T-Test
+d           <- t/sqrt(n)                                                       # Cohen's d
+k_alpha_0   <- qt(1-alpha_0/2, n-1)                                            # kritischer Wert 
+p_delta_hat <- 1-pt(k_alpha_0, n-1, t)+pt(-k_alpha_0, n-1, t)                  # "Post-hoc power"
 
 # Ausgabe
 cat("                 Betaparameterschätzer           : ", round(beta_hat, digits = 3),
@@ -106,7 +107,7 @@ cat("                 Betaparameterschätzer           : ", round(beta_hat, digi
     "\n                 Einstichproben-T-Teststatistik  : ", round(t, digits = 3),
     "\n                 p-Wert                          : ", round(pval, digits = 3),
     "\n                 Cohen's d                       : ", round(d,digits = 3),
-    "\n                 Post-hoc power                  : ", round(p_delta_hat,digits = 3))                                       
+    "\n                 Post-hoc power                  : ", round(p_delta_hat,digits = 3))
 ```
 \normalsize
 
@@ -121,65 +122,70 @@ etwa aussehen wie @fig-abbildung.
 library(latex2exp)
 library(vioplot)
 pdf(
-file        = file.path("3-Einstichproben-T-Test-Abbildung.pdf"),
-width       = 7,
-height      = 3.5)
+  file        = file.path("3-Einstichproben-T-Test-Abbildung.pdf"),
+  width       = 7,
+  height      = 3.5
+)
 par(
-family      = "sans",
-mfcol       = c(1,2),
-pty         = "s",
-bty         = "l",
-lwd         = 1,
-las         = 1,
-mgp         = c(2,1,0),
-xaxs        = "i",
-yaxs        = "i",
-font.main   = 1,
-cex         = .8)
+  family      = "sans",
+  mfcol       = c(1,2),
+  pty         = "s",
+  bty         = "l",
+  lwd         = 1,
+  las         = 1,
+  mgp         = c(2,1,0),
+  xaxs        = "i",
+  yaxs        = "i",
+  font.main   = 1,
+  cex         = .8
+)
 
 # Pre und Post BDI Werte
-M = rbind(matrix(D$Pre, ncol = n), matrix(D$Post, ncol = n))
+M <- rbind(matrix(D$Pre, ncol = n), matrix(D$Post, ncol = n))
 matplot(
-M,
-type    = "b",
-pch     = 21,
-bg      = "Black",
-col     = "gray",
-bty     = "L",
-xlim    = c(0.8,2.2),
-ylim    = c(0,40),
-ylab    = "BDI",
-lty     = 1,
-xaxt    = "n",
-cex     = .8,
-main    = "Pre Post BDI Werte",
-xpd     = T)
+  M,
+  type    = "b",
+  pch     = 21,
+  bg      = "Black",
+  col     = "gray",
+  bty     = "L",
+  xlim    = c(0.8,2.2),
+  ylim    = c(0,40),
+  ylab    = "BDI",
+  lty     = 1,
+  xaxt    = "n",
+  cex     = .8,
+  main    = "Pre Post BDI Werte",
+  xpd     = T
+)
 axis(side = 1, at = c(1, 2), labels = c("Pre", "Post"))
 
 # Pre-Post-Differenzwerte Violinplot
 vioplot(
-y,
-ylim        = c(-30,30),
-xlim        = c(0,2),
-col         = "gray80",                          
-rectCol     = "black",                           
-lineCol     = "white",                           
-colMed      = "gray80",                         
-border      = "black",                            
-pchMed      = 16,                                
-plotCentre  = "points",
-xaxt        = "n",
-ylab        = "BDI DIfferenzwerte",
-main        = "Pre Post BDI Differenzwerte")
+  y,
+  ylim        = c(-30,30),
+  xlim        = c(0,2),
+  col         = "gray80",
+  rectCol     = "black",
+  lineCol     = "white",
+  colMed      = "gray80",
+  border      = "black",
+  pchMed      = 16,
+  plotCentre  = "points",
+  xaxt        = "n",
+  ylab        = "BDI DIfferenzwerte",
+  main        = "Pre Post BDI Differenzwerte"
+)
 stripchart(
-y, 
-method      = "jitter", 
-xaxt        = "n",
-vertical    = TRUE, 
-pch         = 21,
-bg          = "Black",
-col         = "gray80",
-add         = TRUE)
+  y, 
+  method      = "jitter", 
+  xaxt        = "n",
+  vertical    = TRUE, 
+  pch         = 21,
+  bg          = "Black",
+  col         = "gray80",
+  add         = TRUE
+)
 dev.off()
 ```
 ![Pre-Post-Interventions BDI Werte](3-Einstichproben-T-Test-Abbildung.pdf){#fig-abbildung fig-align="center" width=90%}  
@@ -188,19 +194,19 @@ dev.off()
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
-library(dplyr)
-library(ggplot2)
-library(httpgd)
+library(tidyverse)                                                             # Für Pipe (%>%), mutate(), filter()
+library(ggplot2)                                                               # Für ggplot()
+library(httpgd)                                                                # Für hgd() und hgd_browse()
 
 # Daten vorbereiten
-#fname      <- "6_Übungen/3_Einstichproben-T-Test/3-Einstichproben-T-Test.csv"  # Dateiname
+fname       <- "6_Übungen/3_Einstichproben-T-Test/3-Einstichproben-T-Test.csv"  # Dateiname
 fname       <- "3-Einstichproben-T-Test.csv"                                   # Dateiname
 D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
 D_processed <- D %>%
   mutate(Diff = as.numeric(Post - Pre))                                        # Neue Variable berechnen
 
 # T-Test berechnen
-t_test_results <- t.test(D_processed$Diff)                                     # t- test durchführen
+t_test_results <- t.test(D_processed$Diff)                                     # t-test durchführen
 t_test_results                                                                 # Ergebnisse ausgeben
 
 # Violinplot erstellen
@@ -208,22 +214,22 @@ t_test_results                                                                 #
 # hgd()
 # hgd_browse()
 ggplot(data = D_processed, aes(x = "", y = Diff)) +
-  geom_violin(fill = "gray80", color = "black") +
-  geom_point(
+  geom_violin(fill = "gray80", color = "black") +                              # Violinenplit
+  geom_point(                                                                  # Streudiagramm
     aes(y = Diff),
     position = position_jitter(width = 0.1, height = 0),
     size = 2,
     fill = "black"
-    ) +
+  ) +
   labs(
     x = NULL, y = "BDI DIfferenzwerte", title = "Pre Post BDI Differenzwerte"
-    )
+  )
 
 ggsave(                                                                        # Abbildung speichern
   filename = "3-Einstichproben-T-Test-ggplot.pdf",
   height   = 5,
   width    = 5
-  )
+)
 ```
 
 \newpage

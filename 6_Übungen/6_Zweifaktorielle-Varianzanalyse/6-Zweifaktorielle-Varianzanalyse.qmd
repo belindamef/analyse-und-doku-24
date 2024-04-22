@@ -30,46 +30,46 @@ aus $40$ Patient:innen besteht.
 ```{r, echo = F, warning = F}
 #| label: Datensimulation
 # Modellformulierung
-set.seed(1)                                                                     # Ergebnisreproduzierbarkeit
-library(MASS)                                                                   # Multivariate Normalverteilung
-I        = 2                                                                    # Anzahl Level Faktor A (Depressionsforms)
-J        = 2                                                                    # Anzahl Level Faktor B (Therapieart)
-n_ij     = 40                                                                   # balanciertes ANOVA Design
-n        = I*J*n_ij                                                             # Anzahl Datenpunkte
-p        = 1 + (I-1)+(J-1)+(I*J-3)                                              # Anzahl Parameter
-D        = matrix(c(1,0,0,0,                                                    # Referenzgruppenregressor
-                    1,1,0,0,                                                    # Haupteffekt Form Regressor 
-                    1,0,1,0,                                                    # Haupteffekt Therapie Regressor
-                    1,1,1,1), nrow  = p, byrow = TRUE)                          # Interaktionseffekt Regressor
-C        = matrix(rep(1,n_ij),nrow = n_ij)                                      # Prototypischer Zellenvektor für balancierte Designs
-X        = kronecker(D,C)                                                       # Kroneckerprodukt für balancierte Designs
-I_n      = diag(n)                                                              # n x n Einheitsmatrix
-beta     = matrix(c(10,2,0,-2), nrow = p)                                       # \beta = (\mu_0,\alpha_2,\beta_2,\gamma_22)
-sigsqr   = 8                                                                    # \sigma^2
-y        = mvrnorm(1, X %*% beta, sigsqr*diag(n))                               # Datenrealisierung
-y        = round(y)                                                             # diskrete BDI Werte
-y[y < 0] = 0                                                                    # natürliche BDI Werte
-D        = data.frame(Form      = c(rep("Chr"  , n_ij*2),                     # Chronic Form                                       
-                                    rep("Oth"  , n_ij*2)),                    # Other Form  
-                     Treatment  = c(rep("CBA"  , n_ij),                       # CBASP                                     
-                                    rep("CBT"  , n_ij),                       # CBT 
-                                    rep("CBA"  , n_ij),                       # CBASP                                     
-                                    rep("CBT"  , n_ij)),                      # CBT
-                      dBDI      = y)                                            # BDI Differenzwerte
-fname    = file.path("6-Zweifaktorielle-Varianzanalyse.csv")                    # Dateiname
-write.csv(D, file = fname, row.names = FALSE)                                   # Speicherung 
+set.seed(1)                                                                    # Ergebnisreproduzierbarkeit
+library(MASS)                                                                  # Multivariate Normalverteilung
+I        <- 2                                                                  # Anzahl Level Faktor A (Depressionsforms)
+J        <- 2                                                                  # Anzahl Level Faktor B (Therapieart)
+n_ij     <- 40                                                                 # balanciertes ANOVA Design
+n        <- I*J*n_ij                                                           # Anzahl Datenpunkte
+p        <- 1 + (I-1)+(J-1)+(I*J-3)                                            # Anzahl Parameter
+D        <- matrix(c(1,0,0,0,                                                  # Referenzgruppenregressor
+                    1,1,0,0,                                                   # Haupteffekt Form Regressor 
+                    1,0,1,0,                                                   # Haupteffekt Therapie Regressor
+                    1,1,1,1), nrow  = p, byrow = TRUE)                         # Interaktionseffekt Regressor
+C        <- matrix(rep(1,n_ij),nrow = n_ij)                                    # Prototypischer Zellenvektor für balancierte Designs
+X        <- kronecker(D, C)                                                    # Kroneckerprodukt für balancierte Designs
+I_n      <- diag(n)                                                            # n x n Einheitsmatrix
+beta     <- matrix(c(10,2,0,-2), nrow = p)                                     # \beta = (\mu_0,\alpha_2,\beta_2,\gamma_22)
+sigsqr   <- 8                                                                  # \sigma^2
+y        <- mvrnorm(1, X %*% beta, sigsqr*diag(n))                             # Datenrealisierung
+y        <- round(y)                                                           # diskrete BDI Werte
+y[y < 0] <- 0                                                                  # natürliche BDI Werte
+D        <- data.frame(Form     = c(rep("Chr"  , n_ij*2),                      # Chronic Form                                       
+                                    rep("Oth"  , n_ij*2)),                     # Other Form  
+                     Treatment  = c(rep("CBA"  , n_ij),                        # CBASP                                     
+                                    rep("CBT"  , n_ij),                        # CBT 
+                                    rep("CBA"  , n_ij),                        # CBASP                                     
+                                    rep("CBT"  , n_ij)),                       # CBT
+                      dBDI      = y)                                           # BDI Differenzwerte
+fname    <- file.path("6-Zweifaktorielle-Varianzanalyse.csv")                  # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                  # Speicherung 
 ```
 
 ```{r echo = F, eval = T, warning = F}
 #| label: tbl-bdi
 #| tbl-cap : "Pre-Post BDI Differenzwerte Werte der Studiengruppen (Chr: Chronic, Oth: Other, CBA: CBASP)"
-library(knitr)                                                                  # knitr für Tabellen
-fname       = "6-Zweifaktorielle-Varianzanalyse.csv"                            # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-kable(D[c(1:2,                                                                  # erste zwei Patient:innen Chronic/CBASP Bedingung
-         (1:2)+sum(n_ij*1),                                                     # erste zwei Patient:innen Chronic/CBT   Bedingung
-         (1:2)+sum(n_ij*2),                                                     # erste zwei Patient:innen Other/CASP    Bedingung
-         (1:2)+sum(n_ij*3)),], digits = 2, align = "c")                         # erste zwei Patient:innen Chronic/CBT   Bedingung
+library(knitr)                                                                 # knitr für Tabellen
+fname       <- "6-Zweifaktorielle-Varianzanalyse.csv"                          # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+kable(D[c(1:2,                                                                 # erste zwei Patient:innen Chronic/CBASP Bedingung
+         (1:2)+sum(n_ij*1),                                                    # erste zwei Patient:innen Chronic/CBT   Bedingung
+         (1:2)+sum(n_ij*2),                                                    # erste zwei Patient:innen Other/CASP    Bedingung
+         (1:2)+sum(n_ij*3)),], digits = 2, align = "c")                        # erste zwei Patient:innen Chronic/CBT   Bedingung
 ``` 
 
 
@@ -87,46 +87,47 @@ Sie sollten folgende Ergebnisse erhalten.
 #| label: Deskriptivstatistik
 
 # Laden des Datensatzes
-fname     = "6-Zweifaktorielle-Varianzanalyse.csv"                              # Dateiname
-D         = read.table(file.path(fname), sep = ",", header = TRUE)              # Laden des Datensatzes
+fname     <- "6-Zweifaktorielle-Varianzanalyse.csv"                            # Dateiname
+D         <- read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
 
 # Deskriptivstatistiken
-FA        = c("Chr", "Oth")                                                     # Faktor A Level
-FB        = c("CBA", "CBT")                                                     # Faktor B Level
-fk        = c("Chr-CBA", "Chr-CBT", "Oth-CBA", "Oth-CBT")                       # Faktor Level Combinations
-nsb       = length(FA)*length(FB)                                               # Anzahl Studienbedingungen
-S         = data.frame(                                                         # Dataframeerzeugung
-n         = rep(NaN,nsb),                                                       # Stichprobengrößen
-Max       = rep(NaN,nsb),                                                       # Maxima
-Min       = rep(NaN,nsb),                                                       # Minima
-Median    = rep(NaN,nsb),                                                       # Mediane
-Mean      = rep(NaN,nsb),                                                       # Mittelwerte
-Var       = rep(NaN,nsb),                                                       # Varianzen
-Std       = rep(NaN,nsb),                                                       # Standardabweichungen
-row.names = fk)                                                                 # Studienbedingungen
-idx       = 1                                                                   # linear index
-for(i in 1:length(FA)){                                                         # Iteration über Faktor A Level  
-  for(j in 1:length(FB)){                                                       # Iteration über Faktor B Level  
-    data          = D$dBDI[D$Form == FA[i] & D$Treatment == FB[j]]              # Daten
-    S$n[idx]      = length(data)                                                # Stichprobengröße
-    S$Max[idx]    = max(data)                                                   # Maxima
-    S$Min[idx]    = min(data)                                                   # Minima
-    S$Median[idx] = median(data)                                                # Mediane
-    S$Mean[idx]   = mean(data)                                                  # Mittelwerte
-    S$Var[idx]    = var(data)                                                   # Varianzen
-    S$Std[idx]    = sd(data)                                                    # Standardabweichungen
-    idx           = idx+1}}                                                     # linear Index update
-cat("Deskriptivstatistik")                                                      # user information
-kable(S, digits = 1)                                                            # Visualisierung
+FA        <- c("Chr", "Oth")                                                   # Faktor A Level
+FB        <- c("CBA", "CBT")                                                   # Faktor B Level
+fk        <- c("Chr-CBA", "Chr-CBT", "Oth-CBA", "Oth-CBT")                     # Faktor Level Combinations
+nsb       <- length(FA)*length(FB)                                             # Anzahl Studienbedingungen
+S         <- data.frame(                                                       # Dataframeerzeugung
+  n         = rep(NaN,nsb),                                                    # Stichprobengrößen
+  Max       = rep(NaN,nsb),                                                    # Maxima
+  Min       = rep(NaN,nsb),                                                    # Minima
+  Median    = rep(NaN,nsb),                                                    # Mediane
+  Mean      = rep(NaN,nsb),                                                    # Mittelwerte
+  Var       = rep(NaN,nsb),                                                    # Varianzen
+  Std       = rep(NaN,nsb),                                                    # Standardabweichungen
+  row.names = fk                                                               # Studienbedingungen
+)
+idx       <- 1                                                                 # linear index
+for(i in 1:length(FA)){                                                        # Iteration über Faktor A Level  
+  for(j in 1:length(FB)){                                                      # Iteration über Faktor B Level  
+    data          <- D$dBDI[D$Form == FA[i] & D$Treatment == FB[j]]            # Daten
+    S$n[idx]      <- length(data)                                              # Stichprobengröße
+    S$Max[idx]    <- max(data)                                                 # Maxima
+    S$Min[idx]    <- min(data)                                                 # Minima
+    S$Median[idx] <- median(data)                                              # Mediane
+    S$Mean[idx]   <- mean(data)                                                # Mittelwerte
+    S$Var[idx]    <- var(data)                                                 # Varianzen
+    S$Std[idx]    <- sd(data)                                                  # Standardabweichungen
+    idx           <- idx+1}}                                                   # linear Index update
+cat("Deskriptivstatistik")                                                     # user information
+kable(S, digits = 1)                                                           # Visualisierung
 ```
 
 
 ```{r, echo = F}
 #| label: anova (aov)
 # Inferenzstatistik
-cat("Zweifaktorielle Varianzanalyse mit Interaktion")                           # user information
-glm         = lm(dBDI ~ Form + Treatment + Form:Treatment, data = D)            # Modellformulierung und Modellschätzung
-kable(anova(glm), digits = 2)                                                   # ANOVA Tabelllenausgabe   
+cat("Zweifaktorielle Varianzanalyse mit Interaktion")                          # user information
+glm         <- lm(dBDI ~ Form + Treatment + Form:Treatment, data = D)          # Modellformulierung und Modellschätzung
+kable(anova(glm), digits = 2)                                                  # ANOVA Tabelllenausgabe   
 ```
 
 \normalsize
@@ -139,94 +140,101 @@ Die Abbildung sollte in etwa aussehen wie @fig-abbildung.
 #| label: Visualisierung (low-level)
 
 # Laden des Datensatzes
-fname = "6-Zweifaktorielle-Varianzanalyse.csv"                                  # Dateiname
-D     = read.table(file.path(fname), sep = ",", header = TRUE)                  # Laden des Datensatzes
+fname <- "6-Zweifaktorielle-Varianzanalyse.csv"                                # Dateiname
+D     <- read.table(file.path(fname), sep = ",", header = TRUE)                # Laden des Datensatzes
 
 # Reformatierung des Datensatzes
-Y           = data.frame(
-              ChrCBA  = D$dBDI[D$Form=="Chr" & D$Treatment=="CBA"],             # dBDI Werte Chronic/CBASP 
-              ChrCBT  = D$dBDI[D$Form=="Chr" & D$Treatment=="CBT"],             # dBDI Werte Chronic/CBT
-              OthCBA  = D$dBDI[D$Form=="Oth" & D$Treatment=="CBA"],             # dBDI Werte Other/CBASP
-              OthCBT  = D$dBDI[D$Form=="Oth" & D$Treatment=="CBT"])             # dBDI Werte Other/CBT
+Y <- data.frame(
+  ChrCBA  = D$dBDI[D$Form=="Chr" & D$Treatment=="CBA"],                        # dBDI Werte Chronic/CBASP 
+  ChrCBT  = D$dBDI[D$Form=="Chr" & D$Treatment=="CBT"],                        # dBDI Werte Chronic/CBT
+  OthCBA  = D$dBDI[D$Form=="Oth" & D$Treatment=="CBA"],                        # dBDI Werte Other/CBASP
+  OthCBT  = D$dBDI[D$Form=="Oth" & D$Treatment=="CBT"]                         # dBDI Werte Other/CBT
+)
 
 
 # Visualisierung
 pdf(
-file        = file.path("6-Zweifaktorielle-Varianzanalyse-Abbildung.pdf"),
-width       = 10,
-height      = 5)
+  file        = file.path("6-Zweifaktorielle-Varianzanalyse-Abbildung.pdf"),
+  width       = 10,
+  height      = 5
+)
 par(
-family      = "sans",
-mfcol       = c(1,2),
-pty         = "s",
-bty         = "l",
-lwd         = 1,
-las         = 1,
-mgp         = c(2,1,0),
-xaxs        = "i",
-yaxs        = "i",
-font.main   = 1,
-cex         = 1)
+  family      = "sans",
+  mfcol       = c(1,2),
+  pty         = "s",
+  bty         = "l",
+  lwd         = 1,
+  las         = 1,
+  mgp         = c(2,1,0),
+  xaxs        = "i",
+  yaxs        = "i",
+  font.main   = 1,
+  cex         = 1
+)
 
 # # Balkendiagramm mit Fehlerbalken
-groupmeans  = colMeans(Y)                                                        
-groupstds   = apply(Y,2,sd)                                                      
-x           = barplot(                                                          
-groupmeans,                                                                     
-col         = "gray90",
-ylim        = c(0,18),
-xlim        = c(0,5),
-xlab        = "Group")                                                         
-arrows(                                         
-x0          = x,                                
-y0          = groupmeans - groupstds,           
-x1          = x,                                
-y1          = groupmeans + groupstds,           
-code        = 3,                                
-angle       = 90,                               
-length      = 0.05)                             
+groupmeans  <- colMeans(Y)
+groupstds   <- apply(Y,2,sd)
+x           <- barplot(
+  groupmeans,
+  col         = "gray90",
+  ylim        = c(0,18),
+  xlim        = c(0,5),
+  xlab        = "Group"
+)
+  arrows(
+  x0          = x,
+  y0          = groupmeans - groupstds,
+  x1          = x,
+  y1          = groupmeans + groupstds,
+  code        = 3,
+  angle       = 90,
+  length      = 0.05
+)
 
 # Linienplot mit Fehlerbalken
-x           = 1:2
-groupmeans  = matrix(colMeans(Y), nrow = 2)
-groupstds   = matrix(apply(Y, 2, sd), nrow = 2)
-cols        = c("gray30", "gray70")
-lwds        = c(3,1)
+x           <- 1:2
+groupmeans  <- matrix(colMeans(Y), nrow = 2)
+groupstds   <- matrix(apply(Y, 2, sd), nrow = 2)
+cols        <- c("gray30", "gray70")
+lwds        <- c(3,1)
 matplot(
-x,
-groupmeans,
-type        = "b",
-pch         = 21,
-xlim        = c(.5,2.5),
-ylim        = c(2,18),
-lty         = 1,
-col         = cols,
-lwd         = lwds,
-xlab        = "Treatment",
-ylab        = "",
-xaxt        = "n")
+  x,
+  groupmeans,
+  type        = "b",
+  pch         = 21,
+  xlim        = c(.5,2.5),
+  ylim        = c(2,18),
+  lty         = 1,
+  col         = cols,
+  lwd         = lwds,
+  xlab        = "Treatment",
+  ylab        = "",
+  xaxt        = "n"
+)
 for(i in 1:2){
-  arrows(                                          
-  x0          = x,                                 
-  y0          = groupmeans[,i] - groupstds[,i],    
-  x1          = x,                                 
-  y1          = groupmeans[,i] + groupstds[,i],    
-  col         = cols[[i]],                         
-  lwd         = lwds[[i]],                         
-  code        = 3,                                 
-  angle       = 90,                                
-  length      = 0.05)
+  arrows(
+    x0          = x,
+    y0          = groupmeans[,i] - groupstds[,i],
+    x1          = x,
+    y1          = groupmeans[,i] + groupstds[,i],
+    col         = cols[[i]],
+    lwd         = lwds[[i]],
+    code        = 3,
+    angle       = 90,
+    length      = 0.05
+  )
 }
 legend(
-"bottomright",
-c("Chr", "Oth"),
-lty         = 1,
-col         = c("gray30", "gray90"),
-lwd         = lwds,
-bty         = "n",
-cex         = 1,
-x.intersp  = .3,
-seg.len     = 0.6,
+  "bottomright",
+  c("Chr", "Oth"),
+  lty         = 1,
+  col         = c("gray30", "gray90"),
+  lwd         = lwds,
+  bty         = "n",
+  cex         = 1,
+  x.intersp  = .3,
+  seg.len     = 0.6
 )
 text(1,1, "CBA" , xpd = T, cex = 1.1)
 text(2,1, "CBT", xpd = T, cex = 1.1)
@@ -235,21 +243,22 @@ dev.off()
 ![Gruppenspezifische Stichprobenmittel und Stichprobenstandardabweichungen (Chr: Chronic, Oth: Other, CBA: CBASP)](6-Zweifaktorielle-Varianzanalyse-Abbildung.pdf){#fig-abbildung fig-align="center" width=80%}  
 
 
-\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die nach *Treatment* gruppierten Deskriptien Statistiken mithilfe einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} und der Funktion `aov_car` des **R** Pakets `afex` durchführen können.
+\noindent 3. Zeigen Sie in einer kurzen R-Übung wie Sie die nach *Treatment* gruppierten Deskriptien Statistiken mithilfe einer \href{https://style.tidyverse.org/pipes.html#pipes}{tydiverse Pipe} und der Funktion `aov_car` des **R** Pakets `afex` durchführen können. Konsultieren Sie zum Verständnis der Pipe Funktion auch die Einführung zu Data transformation in\href{https://r4ds.hadley.nz/data-transform#sec-the-pipe}{R for Data Science}.
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
-library(dplyr)
-library(afex)
-library(ggplot2)
-library(ggpubr)
-library(httpgd)
+
+library(tidyverse)                                                             # Für Pipe (%>%), mutate(), filter()
+library(ggplot2)                                                               # Für ggplot()
+library(httpgd)                                                                # Für hgd() und hgd_browse()
+library(afex)                                                                  # Für aov_car()
+library(ggpubr)                                                                # Für ggarrange()
 
 # Daten vorbereiten
-#fname       <- "6_Übungen/6_Zweifaktorielle-Varianzanalyse/6-Zweifaktorielle-Varianzanalyse.csv" # Dateiname
-fname      <- "6-Zweifaktorielle-Varianzanalyse.csv"                           # Dateiname
+fname <- "6_Übungen/6_Zweifaktorielle-Varianzanalyse/6-Zweifaktorielle-Varianzanalyse.csv" # Dateiname
+fname <- "6-Zweifaktorielle-Varianzanalyse.csv"                                            # Dateiname
 D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
-n_subs     <- nrow(D)
+n_subs      <- nrow(D)
 D_processed <- D %>%
   mutate(ID = seq(n_subs))                                                     # Subject ID hinzufügen
 

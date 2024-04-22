@@ -26,37 +26,38 @@ von fünf Patient:innen jeder Studiengruppe.
 
 ```{r, echo = F, eval = T}
 #| label: Datensimulation
-library(MASS)                                                                   # Multivariate Normalverteilung
-set.seed(2)                                                                     # Ergebnisreproduzierbarkeit
-n_1         = 25                                                                # Anzahl Patient:innen Online Gruppe
-n_2         = 28                                                                # Anzahl Patient:innen Face-to-Face Gruppe
-n           = n_1 + n_2                                                         # Gesamtzahl Datenpunkte pro Messpunkt
-n_m         = 2                                                                 # Anzahl Messzeitpunkte Pre und Post
-betas       = matrix(c(22,23, 12, 12), nrow = 2)                                # Erwartungswertparameter Online/Face-to-Face und Pre/Post
-sigsqr      = 8                                                                 # VarianzparameterOnline/Face-to-Face und Pre/Post
-Y           = matrix(rep(NaN,n*2), nrow = n)                                    # Datensatzarrayinitialisierung
-X           = matrix(c(rep(1,n_1), rep(0,n_2),                                  # Zweistichproben-T-Test Designmatrix 
+library(MASS)                                                                  # Multivariate Normalverteilung
+set.seed(2)                                                                    # Ergebnisreproduzierbarkeit
+n_1        <- 25                                                               # Anzahl Patient:innen Online Gruppe
+n_2        <- 28                                                               # Anzahl Patient:innen Face-to-Face Gruppe
+n          <- n_1 + n_2                                                        # Gesamtzahl Datenpunkte pro Messpunkt
+n_m        <- 2                                                                # Anzahl Messzeitpunkte Pre und Post
+betas      <- matrix(c(22,23, 12, 12), nrow = 2)                               # Erwartungswertparameter Online/Face-to-Face und Pre/Post
+sigsqr     <- 8                                                                # VarianzparameterOnline/Face-to-Face und Pre/Post
+Y           <- matrix(rep(NaN,n*2), nrow = n)                                  # Datensatzarrayinitialisierung
+X           <- matrix(c(rep(1,n_1), rep(0,n_2),                                # Zweistichproben-T-Test Designmatrix 
                        rep(0,n_1), rep(1,n_2)),
-                       nrow = n)                                        
-for(i in 1:n_m){                                                                # Pre-Post Iteration                
-    Y[,i] = mvrnorm(1, X %*% betas[,i], sigsqr*diag(n))}                        # Datenrealisierung
-Y           = round(Y)                                                          # diskrete BDI Werte
-Y[Y < 0]    = 0                                                                 # natürliche BDI Werte
-D           = data.frame(Condition  = c(rep("Online"      , n_1), 
+                       nrow = n)
+for(i in 1:n_m){                                                               # Pre-Post Iteration                
+    Y[,i] <- mvrnorm(1, X %*% betas[,i], sigsqr*diag(n))                       # Datenrealisierung
+}
+Y           <- round(Y)                                                        # diskrete BDI Werte
+Y[Y < 0]    <- 0                                                               # natürliche BDI Werte
+D           <- data.frame(Condition  = c(rep("Online"      , n_1), 
                                         rep("Face-to-Face", n_2)),
-                         Pre        = Y[,1],                                    # Pre BDI Werte
-                         Post       = Y[,2])                                    # Post BDI Werte 
-fname       = file.path("4-Zweistichproben-T-Test.csv")                         # Dateiname
-write.csv(D, file = fname, row.names = FALSE)                                   # Speichern 
+                         Pre        = Y[,1],                                   # Pre BDI Werte
+                         Post       = Y[,2])                                   # Post BDI Werte 
+fname       <- file.path("4-Zweistichproben-T-Test.csv")                       # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                  # Speichern 
 ```
 
 ```{r echo = F, eval = T, warning = F}
 #| label: tbl-bdi
 #| tbl-cap : "Exemplarische Pre- und Post-Intervention BDI Werte der Studiengruppen."
-library(knitr)                                                                  # knitr für Tabellen
-fname       = "4-Zweistichproben-T-Test.csv"                                    # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-kable(head(D[c(1:5,31:35),], n = 10L), digits = 2, align = "c")                 # Markdowntabellenoutput für head(D)
+library(knitr)                                                                 # knitr für Tabellen
+fname       <- "4-Zweistichproben-T-Test.csv"                                  # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+kable(head(D[c(1:5,31:35),], n = 10L), digits = 2, align = "c")                # Markdowntabellenoutput für head(D)
 ``` 
 
 \newpage
@@ -80,33 +81,34 @@ Sie sollten folgende Ergebnisse erhalten:
 ```{r echo = F, eval  = T}
 #| label: t-Test (Theorem)
 # Datenanalyse
-fname       = "4-Zweistichproben-T-Test.csv"                                    # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-n_1         = 25                                                                # Anzahl Patient:innen Online Gruppe
-n_2         = 28                                                                # Anzahl Patient:innen Face-to-Face Gruppe
-n           = n_1 + n_2                                                         # Gesamtzahl Datenpunkte pro Messpunkt
-y           = D$Post - D$Pre                                                    # Post-Pre Differenzwerte
-p           = 2                                                                 # Anzahl Betaparameter
-c           = matrix(c(1,-1), nrow = 2)                                         # Kontrastgewichtsvektor
-delta       = 0.95                                                              # Konfidenzlevel
-mu_0        = 0                                                                 # Nullhypothesenparameter       
-alpha_0     = 0.05                                                              # Signifikanzlevel  
-X           = matrix(c(rep(1,n_1),rep(0,n_2),rep(0,n_1),rep(1,n_2)),nrow=n)     # Zweistichproben-T-Test Designmatrix           
-beta_hat    = solve(t(X)%*%X)%*%t(X)%*%y                                        # Betaparameterschätzer
-eps_hat     = y - X %*% beta_hat                                                # Residuenvektor 
-sigsqr_hat  = (t(eps_hat) %*% eps_hat)/(n-p)                                    # Varianzparameterschätzer
-t_delta     = qt((1+delta)/2,n-2)                                                # Psi^{-1}((1+delta)/2,n-2)
-lambda      = diag(solve(t(X) %*% X))                                           # \lambda_j Werte
-kappa       = matrix(rep(NaN, p*2), nrow = p)                                   # Konfidenzintervallarray
-for(j in 1:p){                                                                  # \beta_j Iteration
-  kappa[j,1] = beta_hat[j]-sqrt(sigsqr_hat*lambda[j])*t_delta                   # untere Konfidenzintervallgrenze
-  kappa[j,2] = beta_hat[j]+sqrt(sigsqr_hat*lambda[j])*t_delta}                  # obere Konfidenzintervallgrenze
-t_num       = t(c) %*% beta_hat - mu_0                                          # Zähler der Zweistichproben-T-Teststatistik
-t_den       = sqrt(sigsqr_hat %*% t(c) %*% solve(t(X) %*% X) %*% c)             # Nenner der Zweistichproben-T-Teststatistik
-t           = t_num/t_den                                                       # Wert der Zweistichproben-T-Teststatistik
-pval        = 2*(1 - pt(abs(t), n-2))                                           # p-Wert bei zweiseitigem Zweistichproben-T-Test
-k_alpha_0   = qt(1-alpha_0/2, n-2)                                              # kritischer Wert 
-p_delta_hat = 1-pt(k_alpha_0, n-2, t)+pt(-k_alpha_0, n-2, t)                    # "Post-hoc power"
+fname       <- "4-Zweistichproben-T-Test.csv"                                  # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+n_1         <- 25                                                              # Anzahl Patient:innen Online Gruppe
+n_2         <- 28                                                              # Anzahl Patient:innen Face-to-Face Gruppe
+n           <- n_1 + n_2                                                       # Gesamtzahl Datenpunkte pro Messpunkt
+y           <- D$Post - D$Pre                                                  # Post-Pre Differenzwerte
+p           <- 2                                                               # Anzahl Betaparameter
+c           <- matrix(c(1,-1), nrow = 2)                                       # Kontrastgewichtsvektor
+delta       <- 0.95                                                            # Konfidenzlevel
+mu_0        <- 0                                                               # Nullhypothesenparameter       
+alpha_0     <- 0.05                                                            # Signifikanzlevel  
+X           <- matrix(c(rep(1,n_1),rep(0,n_2),rep(0,n_1),rep(1,n_2)),nrow=n)   # Zweistichproben-T-Test Designmatrix           
+beta_hat    <- solve(t(X)%*%X)%*%t(X)%*%y                                      # Betaparameterschätzer
+eps_hat     <- y - X %*% beta_hat                                              # Residuenvektor 
+sigsqr_hat  <- (t(eps_hat) %*% eps_hat)/(n-p)                                  # Varianzparameterschätzer
+t_delta     <- qt((1+delta)/2,n-2)                                             # Psi^{-1}((1+delta)/2,n-2)
+lambda      <- diag(solve(t(X) %*% X))                                         # \lambda_j Werte
+kappa       <- matrix(rep(NaN, p*2), nrow = p)                                 # Konfidenzintervallarray
+for(j in 1:p){                                                                 # \beta_j Iteration
+  kappa[j,1] <- beta_hat[j]-sqrt(sigsqr_hat*lambda[j])*t_delta                 # untere Konfidenzintervallgrenze
+  kappa[j,2] <- beta_hat[j]+sqrt(sigsqr_hat*lambda[j])*t_delta                 # obere Konfidenzintervallgrenze
+}
+t_num       <- t(c) %*% beta_hat - mu_0                                        # Zähler der Zweistichproben-T-Teststatistik
+t_den       <- sqrt(sigsqr_hat %*% t(c) %*% solve(t(X) %*% X) %*% c)           # Nenner der Zweistichproben-T-Teststatistik
+t           <- t_num/t_den                                                     # Wert der Zweistichproben-T-Teststatistik
+pval        <- 2*(1 - pt(abs(t), n-2))                                         # p-Wert bei zweiseitigem Zweistichproben-T-Test
+k_alpha_0   <- qt(1-alpha_0/2, n-2)                                            # kritischer Wert 
+p_delta_hat <- 1-pt(k_alpha_0, n-2, t)+pt(-k_alpha_0, n-2, t)                  # "Post-hoc power"
 
 # Ausgabe
 cat("                 Betaparameterschätzer           : ", beta_hat,
@@ -115,7 +117,7 @@ cat("                 Betaparameterschätzer           : ", beta_hat,
     "\n                 Varianzparameterschätzer        : ", sigsqr_hat,
     "\n                 Zweistichproben-T-Teststatistik : ", t,
     "\n                 p-Wert                          : ", pval,
-    "\n                 Post-hoc power                  : ", p_delta_hat)                                       
+    "\n                 Post-hoc power                  : ", p_delta_hat)
 ```
 \normalsize
 
@@ -130,8 +132,8 @@ die Post-Pre-Differenz Werte als gruppenspezifische *Violinplots* mithilfe des
 # install.packages("vioplot")
 library(latex2exp)
 library(vioplot)
-fname       = "4-Zweistichproben-T-Test.csv"                                     
-D           = read.table(file.path(fname), sep = ",", header = TRUE)             
+fname       <- "4-Zweistichproben-T-Test.csv"
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)
 D$Diff      = -(D$Post - D$Pre)
 pdf(
 file        = file.path("4-Zweistichproben-T-Test-Abbildung.pdf"),
@@ -152,11 +154,11 @@ cex         = .8)
 
 # Post-Pre Differenz Lineplot
 x           = 1:2
-groupmeans  = matrix(c(mean(D$Pre[D$Condition   == "Face-to-Face"]),            
+groupmeans  = matrix(c(mean(D$Pre[D$Condition   == "Face-to-Face"]),
                        mean(D$Post[D$Condition  == "Face-to-Face"]),
                        mean(D$Pre[D$Condition   == "Online"      ]),
                        mean(D$Post[D$Condition  == "Online"      ])),nrow = 2)
-groupstds   = matrix(c(sd(D$Pre[D$Condition   == "Face-to-Face"]),              
+groupstds   = matrix(c(sd(D$Pre[D$Condition   == "Face-to-Face"]),
                        sd(D$Post[D$Condition  == "Face-to-Face"]),
                        sd(D$Pre[D$Condition   == "Online"      ]),
                        sd(D$Post[D$Condition  == "Online"      ])),nrow = 2)
@@ -188,42 +190,45 @@ for(i in 1:2){
   length      = 0.05)
 }
 legend(
-"bottomleft",
-c("Face-to-Face", "Online"),
-lty         = 1,
-col         = c("gray30", "gray90"),
-lwd         = lwds,
-bty         = "n",
-cex         = 1,
-x.intersp  = .3,
-seg.len     = 0.6)
+  "bottomleft",
+  c("Face-to-Face", "Online"),
+  lty         = 1,
+  col         = c("gray30", "gray90"),
+  lwd         = lwds,
+  bty         = "n",
+  cex         = 1,
+  x.intersp  = .3,
+  seg.len     = 0.6
+)
 text(1,1.7, "Pretest" , xpd = T, cex = 1.1)
 text(2,1.7, "Posttest", xpd = T, cex = 1.1)
 
 # Post-Pre Differenzwert Violinplot
 vioplot(
-D$Diff ~ D$Condition,
-D,
-col         = "gray80",                          
-rectCol     = "black",                           
-lineCol     = "white",                           
-colMed      = "gray80",                         
-border      = "black",                           
-pchMed      = 16,                                
-plotCentre  = "points",
-ylab        = "BDI Differenzwerte",
-ylim        = c(0,30),
-xlab        = "")
+  D$Diff ~ D$Condition,
+  D,
+  col         = "gray80",                          
+  rectCol     = "black",                           
+  lineCol     = "white",                           
+  colMed      = "gray80",                         
+  border      = "black",                           
+  pchMed      = 16,                                
+  plotCentre  = "points",
+  ylab        = "BDI Differenzwerte",
+  ylim        = c(0,30),
+  xlab        = ""
+)
 stripchart(
-D$Post ~ D$Condition,
-D,
-method      = "jitter", 
-xaxt        = "n",
-vertical    = TRUE, 
-pch         = 21,
-bg          = "Black",
-col         = "gray80",
-add         = TRUE)
+  D$Post ~ D$Condition,
+  D,
+  method      = "jitter", 
+  xaxt        = "n",
+  vertical    = TRUE, 
+  pch         = 21,
+  bg          = "Black",
+  col         = "gray80",
+  add         = TRUE
+)
 dev.off()
 ```
 
@@ -233,13 +238,13 @@ dev.off()
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
-library(dplyr)
-library(ggplot2)
-library(httpgd)
+library(tidyverse)                                                             # Für Pipe (%>%), mutate(), filter()
+library(ggplot2)                                                               # Für ggplot()
+library(httpgd)                                                                # Für hgd() und hgd_browse()
 
 # Daten vorbereiten
-fname       <- "6_Übungen/4_Zweistichproben-T-Test/4-Zweistichproben-T-Test.csv" # Dateiname
-fname       <- "4-Zweistichproben-T-Test.csv"                                  # Dateiname
+fname     <- "6_Übungen/4_Zweistichproben-T-Test/4-Zweistichproben-T-Test.csv" # Dateiname
+fname     <- "4-Zweistichproben-T-Test.csv"                                    # Dateiname
 D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
 D_processed <- D %>%
   mutate(Diff = as.numeric(Post - Pre)) %>%                                    # Neue Variable berechnen

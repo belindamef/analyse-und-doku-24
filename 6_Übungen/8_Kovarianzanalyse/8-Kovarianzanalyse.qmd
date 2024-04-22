@@ -28,35 +28,35 @@ exemplarisch die Daten der ersten acht Patient:innen jeder Therapiegruppe.
 
 ```{r, echo = F, eval = F}
 #| label: Datensimulation
-library(MASS)                                                                   # Multivariate Normalverteilung
-set.seed(1)                                                                     # Ergebnisreproduzierbarkeit
-n_i       = c(20,20)                                                            # Anzahl Patient:innen pro Gruppe
-p         = 3                                                                   # Anzahl Betaparameter
-n         = sum(n_i)                                                            # Gesamtzahl Datenpunkte
-beta      = matrix(c(16,0,-4), nrow = p)                                        # wahrer, aber unbekannter, Betaparameter
-sigsqr    = 10                                                                  # Varianzparameter 
-x         = c(rnorm(n_i[1],2,1), rnorm(n_i[2],4,1))                             # Depressionsdauerkovariate
-X         = matrix(c(rep(1,n_i[1]), rep(1,n_i[2]),                              # \mu_0    Regressor
-                     rep(0,n_i[1]), rep(1,n_i[2]),                              # \alpha_2 Regressor
-                     x),                                                        # \beta_1  Regressor
-            nrow = n)                                                           # Anzahl Zeilen
-y        = mvrnorm(1, X %*% beta, sigsqr*diag(n))                               # Datenrealisierung
-y        = round(y)                                                             # diskrete BDI Werte
-D        = data.frame(THP  = c(rep("CBT", n_i[1]),                              # CBT Bedingung
-                               rep("PHC", n_i[2])),                             # PHC Bedingung 
-                      DUR  = x,                                                 # Depressionsdauer vor Therapie
-                      BDI  = y)                                                 # BDI Werte                   
-fname    = file.path("8-Kovarianzanalyse.csv")                                  # Dateiname
-write.csv(D, file = fname, row.names = FALSE)                                   # Speichern 
+library(MASS)                                                                  # Multivariate Normalverteilung
+set.seed(1)                                                                    # Ergebnisreproduzierbarkeit
+n_i       <- c(20,20)                                                          # Anzahl Patient:innen pro Gruppe
+p         <- 3                                                                 # Anzahl Betaparameter
+n         <- sum(n_i)                                                          # Gesamtzahl Datenpunkte
+beta      <- matrix(c(16,0,-4), nrow = p)                                      # wahrer, aber unbekannter, Betaparameter
+sigsqr    <- 10                                                                # Varianzparameter 
+x         <- c(rnorm(n_i[1],2,1), rnorm(n_i[2],4,1))                           # Depressionsdauerkovariate
+X         <- matrix(c(rep(1,n_i[1]), rep(1,n_i[2]),                            # \mu_0    Regressor
+                    rep(0,n_i[1]), rep(1,n_i[2]),                              # \alpha_2 Regressor
+                    x),                                                        # \beta_1  Regressor
+               nrow = n)                                                       # Anzahl Zeilen
+y        <- mvrnorm(1, X %*% beta, sigsqr*diag(n))                             # Datenrealisierung
+y        <- round(y)                                                           # diskrete BDI Werte
+D        <- data.frame(THP  = c(rep("CBT", n_i[1]),                            # CBT Bedingung
+                                rep("PHC", n_i[2])),                           # PHC Bedingung 
+                       DUR  = x,                                               # Depressionsdauer vor Therapie
+                       BDI  = y)                                               # BDI Werte                   
+fname    <- file.path("8-Kovarianzanalyse.csv")                                # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                  # Speichern 
 ```
 
 \footnotesize
 ```{r echo = F}
 #| label: tbl-bdi
 #| tbl-cap : "Auszug des Beispieldatensatzes"
-fname    = file.path("8-Kovarianzanalyse.csv")           # Dateiname
-D        = read.table(file.path(fname), sep = ",", header = TRUE)               # Laden des Datensatzes
-knitr::kable(D[c(1:8,21:28),], digits = 2, align = "c")                         # erste acht Patient:innen jeder Therapiebedingung
+fname    <- file.path("8-Kovarianzanalyse.csv")           # Dateiname
+D        <- read.table(file.path(fname), sep = ",", header = TRUE)             # Laden des Datensatzes
+knitr::kable(D[c(1:8,21:28),], digits = 2, align = "c")                        # erste acht Patient:innen jeder Therapiebedingung
 ``` 
 \normalsize
 
@@ -77,36 +77,38 @@ und Varianzparameterschätzer sowie die T-Statistk für den Therapieeffektregres
 #| label: Kovarianzanalyse (Theorem)
 
 # Laden des Datensatzes
-fname       = "8-Kovarianzanalyse.csv"                                          # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-n_i         = c(20,20)                                                          # Anzahl Datenpunkte pro Gruppe
-y           = D$BDI                                                             # Daten
-n           = length(y)                                                         # Gesamtanzahldatenpunkte
-XS          = list()                                                            # Designmatrixliste
-CS          = list()                                                            # Kontrastgewichtsvektorenliste
-XS[[1]]     = matrix(c(rep(1,n_i[1]),rep(1,n_i[2]),                             # \mu_0                              
-                       rep(0,n_i[1]),rep(1,n_i[2])), nrow = n)                  # \alpha_2 
-XS[[2]]     = matrix(c(rep(1,n_i[1]),rep(1,n_i[2]),                             # \mu_0                           
-                       rep(0,n_i[1]),rep(1,n_i[2]),                             # \alpha_2
-                       D$DUR),nrow = n)                                         # x     
-CS[[1]]     = matrix(c(0,1)  , nrow = 2)                                        # Kontrastgewichtsvektor \alpha_2
-CS[[2]]     = matrix(c(0,1,0), nrow = 3)                                        # Kontrastgewichtsvektor \alpha_2
-B           = list()                                                            # Betaparameterschätzerliste
-S           = rep(NaN,2)                                                        # Varianzparameterschätzervektor
-T           = rep(NaN,2)                                                        # T-Statistikvektor
-for(i in 1:2){                                                                  # ALM Iterationen
-  X           = XS[[i]]                                                         # Designmatrix
-  p           = ncol(X)                                                         # Anzahl Betaparameter
-  beta_hat    = solve(t(X) %*% X) %*% t(X) %*% y                                # Betaparameterschätzer vollständiges Modell
-  eps_hat     = y - X %*% beta_hat                                              # Residuenvektor 
-  sigsqr_hat  = (t(eps_hat) %*% eps_hat)/(n-p)                                  # Varianzparameterschätzer
-  c           = CS[[i]]                                                         # Kontrastgewichtsvektor
-  t_num       = t(c) %*% beta_hat                                               # Zähler der Zweistichproben-T-Teststatistik
-  t_den       = sqrt(sigsqr_hat %*% t(c) %*% solve(t(X) %*% X) %*% c)           # Nenner der Zweistichproben-T-Teststatistik
-  t           = t_num/t_den                                                     # Wert der Zweistichproben-T-Teststatistik
-  B[[i]]      = beta_hat                                                        # Betaparameterschätzer
-  S[i]        = sigsqr_hat                                                      # Varianzparameterschätzer
-  T[i]        = t                                                               # T-Statistik
+fname       <- "8-Kovarianzanalyse.csv"                                        # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+n_i         <- c(20,20)                                                        # Anzahl Datenpunkte pro Gruppe
+y           <- D$BDI                                                           # Daten
+n           <- length(y)                                                       # Gesamtanzahldatenpunkte
+XS          <- list()                                                          # Designmatrixliste
+CS          <- list()                                                          # Kontrastgewichtsvektorenliste
+XS[[1]]     <- matrix(c(rep(1,n_i[1]),rep(1,n_i[2]),                           # \mu_0
+                        rep(0,n_i[1]),rep(1,n_i[2])),                          # \alpha_2
+                      nrow = n)
+XS[[2]]     <- matrix(c(rep(1,n_i[1]),rep(1,n_i[2]),                           # \mu_0
+                        rep(0,n_i[1]),rep(1,n_i[2]),                           # \alpha_2
+                        D$DUR),
+                      nrow = n)                                                # x
+CS[[1]]     <- matrix(c(0,1)  , nrow = 2)                                      # Kontrastgewichtsvektor \alpha_2
+CS[[2]]     <- matrix(c(0,1,0), nrow = 3)                                      # Kontrastgewichtsvektor \alpha_2
+B           <- list()                                                          # Betaparameterschätzerliste
+S           <- rep(NaN,2)                                                      # Varianzparameterschätzervektor
+T           <- rep(NaN,2)                                                      # T-Statistikvektor
+for(i in 1:2){                                                                 # ALM Iterationen
+  X           <- XS[[i]]                                                       # Designmatrix
+  p           <- ncol(X)                                                       # Anzahl Betaparameter
+  beta_hat    <- solve(t(X) %*% X) %*% t(X) %*% y                              # Betaparameterschätzer vollständiges Modell
+  eps_hat     <- y - X %*% beta_hat                                            # Residuenvektor 
+  sigsqr_hat  <- (t(eps_hat) %*% eps_hat)/(n-p)                                # Varianzparameterschätzer
+  c           <- CS[[i]]                                                       # Kontrastgewichtsvektor
+  t_num       <- t(c) %*% beta_hat                                             # Zähler der Zweistichproben-T-Teststatistik
+  t_den       <- sqrt(sigsqr_hat %*% t(c) %*% solve(t(X) %*% X) %*% c)         # Nenner der Zweistichproben-T-Teststatistik
+  t           <- t_num/t_den                                                   # Wert der Zweistichproben-T-Teststatistik
+  B[[i]]      <- beta_hat                                                      # Betaparameterschätzer
+  S[i]        <- sigsqr_hat                                                    # Varianzparameterschätzer
+  T[i]        <- t                                                             # T-Statistik
 }
 cat("Stichprobenmittel BDI (CBT, PHC) : ",   round(c(mean(D$BDI[D$THP == "CBT"]), mean(D$BDI[D$THP == "PHC"])),2),
     "\nStichprobenmittel DUR (CBT, PHC) : ", round(c(mean(D$DUR[D$THP == "CBT"]), mean(D$DUR[D$THP == "PHC"])),2),  
@@ -132,60 +134,65 @@ in etwa aussehen wie @fig-abbildung.
 graphics.off()
 library(latex2exp) 
 pdf(
-file        = file.path("8-Kovarianzanalyse-Abbildung.pdf"),
-width       = 10,
-height      = 5)
-par(                                                
-mfcol       = c(1,2),
-family      = "sans",
-pty         = "s",
-bty         = "l",
-mgp         = c(2,1,0),                                   
-lwd         = 1,                                   
-las         = 1)  
-fname       = file.path("8-Kovarianzanalyse.csv")                               
-D           = read.table(fname, sep = ",", header = TRUE)                       
-Y           = data.frame(                                                       
-              CBT = D$BDI[D$THP == "CBT"],                                       
-              PHC = D$BDI[D$THP == "PHC"])   
-lab         = c("Rohdaten", "Adjustierte Daten")
+  file        = file.path("8-Kovarianzanalyse-Abbildung.pdf"),
+  width       = 10,
+  height      = 5
+)
+par(
+  mfcol       = c(1,2),
+  family      = "sans",
+  pty         = "s",
+  bty         = "l",
+  mgp         = c(2,1,0),
+  lwd         = 1,
+  las         = 1
+)
+fname       <- file.path("8-Kovarianzanalyse.csv")
+D           <- read.table(fname, sep = ",", header = TRUE)
+Y           <- data.frame(
+              CBT = D$BDI[D$THP == "CBT"],
+              PHC = D$BDI[D$THP == "PHC"])
+lab         <- c("Rohdaten", "Adjustierte Daten")
 
-# Iteration über unkorrigierte und korrigierte Daten                                   
+# Iteration über unkorrigierte und korrigierte Daten
 for(i in 1:2){
 
   # Datenadjustierung
   if(i == 2){
-    Y$CBT = Y$CBT - X[1:20 ,3] * beta_hat[3]
-    Y$PHC = Y$PHC - X[21:40,3] * beta_hat[3]
+    Y$CBT <- Y$CBT - X[1:20 ,3] * beta_hat[3]
+    Y$PHC <- Y$PHC - X[21:40,3] * beta_hat[3]
   }
  
-  # Gruppenmittelwerte und Standardabweichungen                                                                 
-  groupmeans  = colMeans(Y)                                                       
-  groupstds   = apply(Y,2,sd) 
-  x = barplot(                                        
-  groupmeans,
-  ylim        = c(-8,22),
-  col         = "gray90",
-  ylab        = "BDI",
-  xlab        = "Therapievariante",
-  main        = lab[i])
-  arrows(                                             
-  x0          = x,                                    
-  y0          = groupmeans - groupstds,               
-  x1          = x,                                    
-  y1          = groupmeans + groupstds,               
-  code        = 3,                                   
-  angle       = 90,                                  
-  length      = 0.05)                                 
+  # Gruppenmittelwerte und Standardabweichungen
+  groupmeans  <- colMeans(Y)
+  groupstds   <- apply(Y,2,sd)
+  x <- barplot(
+    groupmeans,
+    ylim        = c(-8,22),
+    col         = "gray90",
+    ylab        = "BDI",
+    xlab        = "Therapievariante",
+    main        = lab[i]
+  )
+  arrows(
+    x0          = x,
+    y0          = groupmeans - groupstds,
+    x1          = x,
+    y1          = groupmeans + groupstds,
+    code        = 3,
+    angle       = 90,
+    length      = 0.05
+  )
   
   # Einzeldatenpunkte
   for(i in 1:ncol(Y)){
     points(
-    jitter(rep(x[i], length(Y[,i])), amount = .3),
-    Y[,i],
-    pch = 21,
-    col = "White",
-    bg  = "Black")
+      jitter(rep(x[i], length(Y[,i])), amount = .3),
+      Y[,i],
+      pch = 21,
+      col = "White",
+      bg  = "Black"
+    )
   }
 }
 dev.off()
@@ -193,19 +200,16 @@ dev.off()
 
 ![Rohdaten und Adjustierte Daten](8-Kovarianzanalyse-Abbildung.pdf){#fig-abbildung fig-align="center"}  
 
-\noindent 3. Zeigen Sie in einer kurzen R-Übung, wie Sie die in Aufgabe 1 bestimmten Betaparameterschätzer und T-Teststatistiken mithilfe der Funktionen **R**  `lm()` und `afes::aov_ez()` bestimmen können.
+\noindent 3. Zeigen Sie in einer kurzen R-Übung, wie Sie die in Aufgabe 1 bestimmten Betaparameterschätzer und T-Teststatistiken mithilfe der **R** Funktionen `stats::lm()` und `afes::aov_ez()` bestimmen können.
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style + afex
-library(dplyr)
-library(tidyr)
-library(afex)
-library(plotly)
-library(ppcor)
-library(emmeans)
-library(httpgd)
-library(ggplot2)
-library(ggpubr)
+library(tidyverse)                                                             # Für Pipe (%>%), mutate(), filter()
+library(ggplot2)                                                               # Für ggplot()
+library(httpgd)                                                                # Für hgd() und hgd_browse()
+library(afex)                                                                  # Für aov_ez()
+library(ggpubr)                                                                # Für ggarrange()
+
 
 # Daten vorbereiten
 fname      <- "6_Übungen/8_Kovarianzanalyse/8-Kovarianzanalyse.csv"            # Dateiname
@@ -270,12 +274,14 @@ cat("Stichprobenmittel BDI (CBT, PHC) : ",   round(c(
 # hgd_browse()
 plot_list <- list()                                                            # leere Liste, um plots zu speichern
 # Designmatrix erstellen
-X <- matrix(c(rep(1,n_i[1]),rep(1,n_i[2]),                                     # \mu_0                           
-              rep(0,n_i[1]),rep(1,n_i[2]),                                     # \alpha_2
-              D$DUR),                                                          # x     
+n_i <- c(20, 20)                                                               # Anzahl Datenpunkte pro Gruppe
+n <- nrow(D_processed)
+X <- matrix(c(rep(1, n_i[1]), rep(1, n_i[2]),                                  # \mu_0
+              rep(0, n_i[1]), rep(1, n_i[2]),                                  # \alpha_2
+              D_processed$DUR),                                                # x
             nrow = n)
 
-# Iteration über unkorrigierte und korrigierte Daten                                   
+# Iteration über unkorrigierte und korrigierte Daten
 for (i in c("Rohdaten", "Adjustierte Daten")){
 
   if (i == "Rohdaten"){
@@ -290,8 +296,8 @@ for (i in c("Rohdaten", "Adjustierte Daten")){
 
   # Deskriptive Statistiken
   summary_stats <- data_set %>%
-    group_by(THP) %>%                                                            # Nach Treatment gruppieren
-    summarize(                                                                   # Kreiert dataframe mit eine Zeile für jede Gruppe
+    group_by(THP) %>%                                                          # Nach Treatment gruppieren
+    summarize(                                                                 # Kreiert dataframe mit eine Zeile für jede Gruppe
       Mean = mean(BDI),
       Var = var(BDI),
       Std = sd(BDI)

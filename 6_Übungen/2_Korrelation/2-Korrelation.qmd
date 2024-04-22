@@ -26,25 +26,25 @@ Advisement* und *BDI Change Index* Werte von $n = 21$ Patient:innen als Zeilen.
 
 ```{r echo = F, eval = T}
 #| label: Datensim
-library(MASS)                                                                   # Multivariate Normalverteilung
-set.seed(3)                                                                     # Seed setzen für Ergebnisreproduzierbarkeit
-n           = 21                                                                # Anzahl Patient:innen
-mu          = rep(c(5, -3))                                                     # Erwartungswertparameter \mu
-Sigma       = matrix(c(2, -.1, -.1, 2), nrow = 2)                               # Kovarianzmatrixparameter \Sigma
-Y           = mvrnorm(n, mu, Sigma)                                             # Realisierungen von GA, CD, BDIC
-D           = data.frame(GeneralAdvisement  = Y[,1],                            # General Advisement Scores
-                         BDIChange          = Y[,2])                            # BDI Change Scores
-fname       = file.path("2-Korrelation.csv")                                    # Dateiname
-write.csv(D, file = fname, row.names = FALSE)                                   # Speichern
+library(MASS)                                                                  # Multivariate Normalverteilung
+set.seed(3)                                                                    # Seed setzen für Ergebnisreproduzierbarkeit
+n           <- 21                                                              # Anzahl Patient:innen
+mu          <- rep(c(5, -3))                                                   # Erwartungswertparameter \mu
+Sigma       <- matrix(c(2, -.1, -.1, 2), nrow = 2)                             # Kovarianzmatrixparameter \Sigma
+Y           <- mvrnorm(n, mu, Sigma)                                           # Realisierungen von GA, CD, BDIC
+D           <- data.frame(GeneralAdvisement  = Y[,1],                          # General Advisement Scores
+                         BDIChange          = Y[,2])                           # BDI Change Scores
+fname       <- file.path("2-Korrelation.csv")                                  # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                  # Speichern
 ```
 
 ```{r echo = F, warning = F}
 #| label: tbl-vrm
 #| tbl-cap : "Verbal Response Mode und BDI Change Index Werte"
-library(knitr)                                                                  # knitr für Tabellen
-fname       = "2-Korrelation.csv"                                               # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-kable(head(D, n = 10L), digits = 2, align = "c")                                # Markdowntabellenoutput für head(D)
+library(knitr)                                                                 # knitr für Tabellen
+fname       <- "2-Korrelation.csv"                                             # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+kable(head(D, n = 10L), digits = 2, align = "c")                               # Markdowntabellenoutput für head(D)
 ```
 
 \newpage
@@ -59,19 +59,19 @@ Sie sollten folgende Ergebnisse erhalten:
 ```{r echo = F}
 #| label: Korrelation (Theorem)
 # Datenanalyse
-fname    = "2-Korrelation.csv"                                                  # Dateiname
-D        = read.table(file.path(fname), sep = ",", header = TRUE)               # Laden des Datensatzes
-n        = nrow(D)                                                              # Anzahl Patient:innen
-r        = cor(D[,1], D[,2])                                                    # Korrelation
-x        = D[,1]                                                                # Regressionsprädiktorwerte
-X        = matrix(c(rep(1,n),x), nrow = n)                                      # Designmatrix 
-y        = as.matrix(D[,2])                                                     # Datensatz
-beta_hat = solve(t(X) %*% X) %*% t(X) %*% y                                     # Ausgleichsgeradenparameter
-y_bar    = mean(y)                                                              # Stichprobenmittel
-y_hat    = X %*% beta_hat                                                       # erklärte Werte
-SQT      = t(y-y_bar) %*% (y - y_bar)                                           # Total Sum of Squares
-SQE      = t(y_hat - y_bar) %*% (y_hat - y_bar)                                 # Explained Sum of Squares
-Rsquare  = SQE/SQT                                                              # Bestimmheitsmaß
+fname    <- "2-Korrelation.csv"                                                # Dateiname
+D        <- read.table(file.path(fname), sep = ",", header = TRUE)             # Laden des Datensatzes
+n        <- nrow(D)                                                            # Anzahl Patient:innen
+r        <- cor(D[,1], D[,2])                                                  # Korrelation
+x        <- D[,1]                                                              # Regressionsprädiktorwerte
+X        <- matrix(c(rep(1,n),x), nrow = n)                                    # Designmatrix 
+y        <- as.matrix(D[,2])                                                   # Datensatz
+beta_hat <- solve(t(X) %*% X) %*% t(X) %*% y                                   # Ausgleichsgeradenparameter
+y_bar    <- mean(y)                                                            # Stichprobenmittel
+y_hat    <- X %*% beta_hat                                                     # erklärte Werte
+SQT      <- t(y-y_bar) %*% (y - y_bar)                                         # Total Sum of Squares
+SQE      <- t(y_hat - y_bar) %*% (y_hat - y_bar)                               # Explained Sum of Squares
+Rsquare  <- SQE/SQT                                                            # Bestimmheitsmaß
 
 # Ausgabe
 cat("     Korrelation von General Advisement und BDI Change Index             : ",   round(r,        digits = 3),
@@ -123,9 +123,9 @@ plot(
 
 # Ausgleichsgerade
 abline(
-  coef        = c(beta_hat[1], beta_hat[2]),
-  lty         = 1,
-  col         = "gray"
+  coef    = c(beta_hat[1], beta_hat[2]),
+  lty     = 1,
+  col     = "gray"
 )
 
 # Legende
@@ -143,40 +143,51 @@ dev.off()
 
 ![Korrelation von General Advisement und BDI Change Index](2-Korrelation-Abbildung.pdf){#fig-abbildung fig-align="center" width=70%} 
 
-\noindent 3. Zeigen Sie in einer R-Übung, wie Sie die Abbildung aus Aufgabe 2 mit dem **R** Paket `ggplot2`'generieren können. Hierfür können sie Beispiel können Sie die Funktionen `ggplot2::geom_point()` und `ggplot2::geom_smooth()` verwenden. Konsultieren Sie dazu auch die Einführung zu Visualisierungen in \href{https://r4ds.hadley.nz/data-visualize}{R for Data Science}.
+\noindent 3. Zeigen Sie in einer R-Übung, wie Sie die Abbildung aus Aufgabe 2 mit dem **R** Paket `ggplot2` generieren können. Hierfür können sie Beispiel können Sie die Funktionen `ggplot2::geom_point()` und `ggplot2::geom_smooth()` verwenden. Konsultieren Sie dazu auch die Einführung zu Visualisierungen in \href{https://r4ds.hadley.nz/data-visualize}{R for Data Science}.
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
-library(corrr)
-library(ggplot2)
-library(latex2exp)
-library(dplyr)
-library(httpgd)
+library(tidyverse)                                                             # Für Pipe (%>%), mutate(), filter()
+library(corrr)                                                                 # Für correlate()
+library(ggplot2)                                                               # Für ggplot()
+library(httpgd)                                                                # Für hgd() und hgd_browse()
+library(latex2exp)                                                             # Für TeX
 
 # Daten vorbereiten
-# fname    = "6_Übungen/2_Korrelation/2-Korrelation.csv"                       # Dateiname
-fname    = "2-Korrelation.csv"                                                 # Dateiname
-D        = read.table(fname, sep = ",", header = TRUE)                         # Laden des Datensatzes
+fname    <- "6_Übungen/2_Korrelation/2-Korrelation.csv"                        # Dateiname
+fname    <- "2-Korrelation.csv"                                                # Dateiname
+D        <- read.table(fname, sep = ",", header = TRUE)                        # Laden des Datensatzes
 
 # Korrelation evaluieren
 gen_adv_cor <- D %>%
   select(GeneralAdvisement, BDIChange) %>%                                     # Spalten für Korrelation wählen (Bei 21 x 2 dataframe überflüssig)
   correlate()
-gen_adv_cor                                                                    # Korrelationsmatrix ausgeben
-r = round(gen_adv_cor$BDIChange[1], digits = 2)                                # Stichprobenkorrelation extrahieren
+gen_adv                                                                        # Korrelationsmatrix ausgeben
+r <- round(gen_adv_cor$BDIChange[1], digits = 2)                               # Stichprobenkorrelation extrahieren
 cat(                                                                           # Ausgabe
   "Korrelation von General Advisement und BDI Change Index: ",
   round(r,        digits = 3)
   )
 
 # Visualisierung Ausgleichsgerade
+# Quadratsummen und Bestimmtheitsmaß bestimmen
+n        <- nrow(D)                                                            # Anzahl Patient:innen
+x        <- D[, 1]                                                             # Regressionsprädiktorwerte
+X        <- matrix(c(rep(1, n), x), nrow = n)                                  # Designmatrix 
+y        <- as.matrix(D[, 2])                                                  # Datensatz
+beta_hat <- solve(t(X) %*% X) %*% t(X) %*% y                                   # Ausgleichsgeradenparameter
+y_bar    <- mean(y)                                                            # Stichprobenmittel
+y_hat    <- X %*% beta_hat                                                     # erklärte Werte
+SQT      <- t(y-y_bar) %*% (y - y_bar)                                         # Total Sum of Squares
+SQE      <- t(y_hat - y_bar) %*% (y_hat - y_bar)                               # Explained Sum of Squares
+Rsquare  <- SQE / SQT                                                          # Bestimmheitsmaß
+
 # # Start plot viewer
 # hgd()
 # hgd_browse()
 ggplot(
   data = D,                                                                    # Daten
-  mapping = aes(x = GeneralAdvisement, y = BDIChange)                          # Daten-Axen-mapping
-) + 
+  mapping = aes(x = GeneralAdvisement, y = BDIChange)) +                       # Daten-Axen-mapping
   coord_cartesian(xlim = c(2, 8), ylim = c(-6, 0)) +                           # Achsen-limits anpassen
   labs(x = "General Advisement", y = "BDI Change") +                           # Achsenlabel anpassen
   geom_point() +                                                               # Datenpunkte zeichnen

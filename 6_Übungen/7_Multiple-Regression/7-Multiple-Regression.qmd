@@ -32,28 +32,29 @@ Stichprobenvarianz 1 vor. @tbl-bdi zeigt exemplarisch die Daten der ersten zehn 
 #| label: Datensimulation
 
 # Modellformulierung
-set.seed(1)                                                                     # Ergebnisreproduzierbarkeit
-library(MASS)                                                                   # Multivariate Normalverteilung
-n         = 100                                                                 # Anzahl Patient:innen
-X         = round(mvrnorm(n, c(0,0),diag(2)), digits = 1)                       # Kovariatenrealisierungen 
-beta      = matrix(c(1,1), nrow = 2)                                            # wahrer, aber unbekannter, Betaparameter
-sigsqr    = 1                                                                   # wahrer, aber unbekannter, Varianzparameter
-y         = mvrnorm(1, X%*%beta, sigsqr*diag(n))                                # Datenrealisierung
-D         = data.frame(dPOMS = y,                                               # dPOMS Werte
-                       AGE   = X[,1],                                           # AGE Regressorwerte
-                       BRI   = X[,2])                                           # BRI Regressorwerte
-fname   = file.path("7-Multiple-Regression.csv")                                # Dateiname
-write.csv(D, file = fname, row.names = FALSE)                                   # Speicherung 
+set.seed(1)                                                                    # Ergebnisreproduzierbarkeit
+library(MASS)                                                                  # Multivariate Normalverteilung
+n         <- 100                                                               # Anzahl Patient:innen
+X         <- round(mvrnorm(n, c(0,0),diag(2)), digits = 1)                     # Kovariatenrealisierungen 
+beta      <- matrix(c(1,1), nrow = 2)                                          # wahrer, aber unbekannter, Betaparameter
+sigsqr    <- 1                                                                 # wahrer, aber unbekannter, Varianzparameter
+y         <- mvrnorm(1, X%*%beta, sigsqr*diag(n))                              # Datenrealisierung
+D         <- data.frame(dPOMS = y,                                             # dPOMS Werte
+                        AGE   = X[,1],                                         # AGE Regressorwerte
+                        BRI   = X[,2]                                          # BRI Regressorwerte
+             )
+fname   <- file.path("7-Multiple-Regression.csv")                              # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                  # Speicherung 
 ```
 
 \footnotesize
 ```{r echo = F, eval = T}
 #| label: tbl-bdi
 #| tbl-cap : "Daten der ersten 10 Patient:innen des Datensatzes"
-library(knitr)                                                                  # knitr für Tabellen
-fname       = "7-Multiple-Regression.csv"                                       # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-kable(D[1:10,], digits = 2, align = "c")                                        # erste 10 Patient:innen
+library(knitr)                                                                 # knitr für Tabellen
+fname       <- "7-Multiple-Regression.csv"                                     # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+kable(D[1:10,], digits = 2, align = "c")                                       # erste 10 Patient:innen
 ``` 
 
 \newpage
@@ -71,27 +72,27 @@ und einmal auf Grundlage der partiellen Korrelationen.
 ```{r, warning = F, echo = F}
 #| label: Korrelationen (Theorem)
 
-fname      = file.path(getwd(), "7-Multiple-Regression.csv")                    # Dateipfad     
-D          = read.table(fname, sep = ",", header = TRUE)                        # Datensatzeinlesen
-y          = D$dPOMS                                                            # Abhängige Variable
-n          = length(y)                                                          # Anzahl Datenpunkte
-X          = matrix(c(rep(1,n), D$AGE, D$BRI), nrow = n)                        # Designmatrix
-p          = ncol(X)                                                            # Anzahl Parameter
-beta_hat   = solve(t(X) %*% X) %*% t(X) %*% y                                   # Betaparameterschätzer
-eps_hat    = y - X %*% beta_hat                                                 # Residuenvektor
-sigsqr_hat = (t(eps_hat) %*% eps_hat) /(n-p)                                    # Varianzparameterschätzer
+fname      <- file.path(getwd(), "7-Multiple-Regression.csv")                  # Dateipfad
+D          <- read.table(fname, sep = ",", header = TRUE)                      # Datensatzeinlesen
+y          <- D$dPOMS                                                          # Abhängige Variable
+n          <- length(y)                                                        # Anzahl Datenpunkte
+X          <- matrix(c(rep(1,n), D$AGE, D$BRI), nrow = n)                      # Designmatrix
+p          <- ncol(X)                                                          # Anzahl Parameter
+beta_hat   <- solve(t(X) %*% X) %*% t(X) %*% y                                 # Betaparameterschätzer
+eps_hat    <- y - X %*% beta_hat                                               # Residuenvektor
+sigsqr_hat <- (t(eps_hat) %*% eps_hat) / (n-p)                                 # Varianzparameterschätzer
 
 # Betaparameterschätzer aus partiellen Korrelationen und Korrelationen
-library(ppcor)                                                                  # partielle Korrelationentoolbox
-y12        = cbind(y,X[,2:3])                                                   # y,x_1,x_2 Matrix
-bars       = apply(y12, 2, mean)                                                # Stichprobenmittel
-s          = apply(y12, 2, sd)                                                  # Stichprobenstandardabweichungen
-r          = cor(y12)                                                           # Stichprobenkorrelationen
-pr         = pcor(y12)                                                          # partielle Stichprobenkorrelationen
-pr         = pr$estimate                                                        # partielle Stichprobenkorrelationen
-beta_hat_1 = pr[1,2]*sqrt((1-r[1,3]^2)/(1-r[2,3]^2))*(s[1]/s[2])                # \hat{\beta}_1
-beta_hat_2 = pr[1,3]*sqrt((1-r[1,2]^2)/(1-r[3,2]^2))*(s[1]/s[3])                # \hat{\beta}_2
-beta_hat_0 = bars[1] - beta_hat_1*bars[2] - beta_hat_2*bars[3]                  # \hat{\beta}_0
+library(ppcor)                                                                 # partielle Korrelationentoolbox
+y12        <- cbind(y,X[,2:3])                                                 # y,x_1,x_2 Matrix
+bars       <- apply(y12, 2, mean)                                              # Stichprobenmittel
+s          <- apply(y12, 2, sd)                                                # Stichprobenstandardabweichungen
+r          <- cor(y12)                                                         # Stichprobenkorrelationen
+pr         <- pcor(y12)                                                        # partielle Stichprobenkorrelationen
+pr         <- pr$estimate                                                      # partielle Stichprobenkorrelationen
+beta_hat_1 <- pr[1,2]*sqrt((1-r[1,3]^2)/(1-r[2,3]^2))*(s[1]/s[2])              # \hat{\beta}_1
+beta_hat_2 <- pr[1,3]*sqrt((1-r[1,2]^2)/(1-r[3,2]^2))*(s[1]/s[3])              # \hat{\beta}_2
+beta_hat_0 <- bars[1] - beta_hat_1*bars[2] - beta_hat_2*bars[3]                # \hat{\beta}_0
 
 # Ausgabe
 cat("Korrelationen  r(dPOMS,AGE),r(dPOMS,BRI),r(AGE,BRI)        :"  , round(c(r[1,2],r[1,3],r[2,3]), digits = 3),
@@ -111,26 +112,28 @@ definierten Regressionsebene. Die Abbildung sollte in etwa aussehen wie @fig-mrg
 library(scatterplot3d)
 # Dateneinlesen
 #install.packages("scatterplot3d")
-fname      = file.path(getwd(), "7-Multiple-Regression.csv")
-D          = read.table(fname, sep = ",", header = TRUE)        
+fname      <- file.path(getwd(), "7-Multiple-Regression.csv")
+D          <- read.table(fname, sep = ",", header = TRUE)
 graphics.off()
 pdf(
-file        = file.path("7-Multiple-Regression-Abbildung.pdf"),
-width       = 5,
-height      = 5)
-spd = scatterplot3d(
-D$AGE,
-D$BRI,
-D$dPOMS,
-pch         = 21,
-color       = "gray",
-bg          = "black",
-type        = "h",
-xlab        = "AGE",
-ylab        = "BRI",
-zlab        = "dPOMS",
-angle       = 75)
-alm         = lm(dPOMS ~ AGE + BRI, data = D)
+  file        = file.path("7-Multiple-Regression-Abbildung.pdf"),
+  width       = 5,
+  height      = 5
+)
+spd <- scatterplot3d(
+  D$AGE,
+  D$BRI,
+  D$dPOMS,
+  pch         = 21,
+  color       = "gray",
+  bg          = "black",
+  type        = "h",
+  xlab        = "AGE",
+  ylab        = "BRI",
+  zlab        = "dPOMS",
+  angle       = 75
+)
+alm <- lm(dPOMS ~ AGE + BRI, data = D)
 spd$plane3d(alm)
 dev.off()
 ``` 
@@ -142,10 +145,11 @@ dev.off()
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
-library(dplyr)
-library(tidyr)
-library(plotly)
-library(ppcor)
+library(tidyverse)                                                             # Für Pipe (%>%), mutate(), filter()
+library(ggplot2)                                                               # Für ggplot()
+library(httpgd)                                                                # Für hgd() und hgd_browse()
+library(ppcor)                                                                 # Für pcor()
+library(plotly)                                                                # Für plot_ly()
 
 # Daten vorbereiten
 fname      <- "6_Übungen/7_Multiple-Regression/7-Multiple-Regression.csv"      # Dateiname

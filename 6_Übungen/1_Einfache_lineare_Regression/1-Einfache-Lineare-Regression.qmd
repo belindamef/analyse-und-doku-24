@@ -28,39 +28,39 @@ als Zeilen. @tbl-bdi zeigt exemplarisch die Daten der ersten zehn Patient:innen.
 ```{r, echo = F, warning = F}
 #| label: Datensimulation
 # Datensatzsimulation
-library(MASS)                                                                   # Normalverteilungen
-set.seed(0)                                                                     # Seed setzen für Ergebnisreproduzierbarkeit
-np          = 21                                                                # Anzahl Patient:innen
-n           = 3                                                                 # Anzahl Datenpunkte pro Patient:in
-p           = 2                                                                 # Anzahl Regressionskoeffizienten
-beta_b      = matrix(c(35, -3.7)    , nrow = 2)                                 # Between-Participants Betaparameter
-Sigma_b     = matrix(c(3, 0, 0, 4.2), nrow = 2)                                 # Between-Participants Kovarianzmatrix
-x_w         = seq(1, n, len = n)                                                # Within-Participants Kontrollvariable
-X_w         = matrix(c(rep(1, n), x_w), ncol = 2)                               # Within-Participants Designmatrix
-sigsqr_w    = 1                                                                 # Within-Participants Varianzparameter
-Sigma_w     = sigsqr_w*diag(n)                                                  # Within-Participants Kovarianzmatrixparameter
-Y           = matrix(rep(NaN, np * n), nrow = np)                               # Gesamtdatensatzinitialisierung
+library(MASS)                                                                  # Normalverteilungen
+set.seed(0)                                                                    # Seed setzen für Ergebnisreproduzierbarkeit
+np          <- 21                                                              # Anzahl Patient:innen
+n           <- 3                                                               # Anzahl Datenpunkte pro Patient:in
+p           <- 2                                                               # Anzahl Regressionskoeffizienten
+beta_b      <- matrix(c(35, -3.7), nrow = 2)                                   # Between-Participants Betaparameter
+Sigma_b     <- matrix(c(3, 0, 0, 4.2), nrow = 2)                               # Between-Participants Kovarianzmatrix
+x_w         <- seq(1, n, len = n)                                              # Within-Participants Kontrollvariable
+X_w         <- matrix(c(rep(1, n), x_w), ncol = 2)                             # Within-Participants Designmatrix
+sigsqr_w    <- 1                                                               # Within-Participants Varianzparameter
+Sigma_w     <- sigsqr_w*diag(n)                                                # Within-Participants Kovarianzmatrixparameter
+Y           <- matrix(rep(NaN, np * n), nrow = np)                             # Gesamtdatensatzinitialisierung
 
-for(i in 1:np){                                                                 # Iteration über Patient:innen
-  beta      = as.matrix(                                                        # Patient:in-spezifische Regressionsparameter
+for(i in 1:np){                                                                # Iteration über Patient:innen
+  beta      <- as.matrix(                                                      # Patient:in-spezifische Regressionsparameter
     mvrnorm(n = 1, mu = beta_b, Sigma = Sigma_b))
-  mu        = X_w %*% beta                                                      # Patient:in-spezifische Regressionserwartungswertparameter
-  Y[i,]     = t(as.matrix(mvrnorm(1, mu, Sigma_w)))                             # Patient:in-spezifische Datenwerte
+  mu        <- X_w %*% beta                                                    # Patient:in-spezifische Regressionserwartungswertparameter
+  Y[i,]     <- t(as.matrix(mvrnorm(1, mu, Sigma_w)))                           # Patient:in-spezifische Datenwerte
 }
 
-D           = data.frame(Intake      = Y[,1],                                   # BDI Scores zu Therapiebeginn
-                         Midtherapy  = Y[,2],                                   # BDI Scores zu Therapiemitte
-                         Termination = Y[,3])                                   # BDI Scores zu Therapieende
-fname       = file.path("1-Einfache-Lineare-Regression.csv")                    # Dateiname
-write.csv(D, file = fname, row.names = FALSE)                                   # Speichern
+D           <- data.frame(Intake      = Y[,1],                                 # BDI Scores zu Therapiebeginn
+                          Midtherapy  = Y[,2],                                 # BDI Scores zu Therapiemitte
+                          Termination = Y[,3])                                 # BDI Scores zu Therapieende
+fname       <- file.path("1-Einfache-Lineare-Regression.csv")                  # Dateiname
+write.csv(D, file = fname, row.names = FALSE)                                  # Speichern
 ```
 ```{r, eval = T, echo = F, warning = F}
 #| label: tbl-bdi
 #| tbl-cap : "BDI Scores"
-library(knitr)                                                                  # knitr für Tabellen
-fname       = "1-Einfache-Lineare-Regression.csv"                               # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-kable(head(D, n = 10L), digits = 2, align = "c")                                # Markdowntabellenoutput für head(D)
+library(knitr)                                                                 # knitr für Tabellen
+fname       <- "1-Einfache-Lineare-Regression.csv"                             # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+kable(head(D, n = 10L), digits = 2, align = "c")                               # Markdowntabellenoutput für head(D)
 ```
 
 \newpage
@@ -75,32 +75,32 @@ der Steigungsparameter. Sie sollten folgende Ergebnisse erhalten:
 ```{r, eval = T, echo = F}
 #| label: Ausgleichsgeradenparameter (Theorem)
 # Datenanalyse
-fname       = "1-Einfache-Lineare-Regression.csv"                               # Dateiname
-D           = read.table(file.path(fname), sep = ",", header = TRUE)            # Laden des Datensatzes
-np          = nrow(D)                                                           # Anzahl Patient:innen
-n           = ncol(D)                                                           # Datenpunkte pro Patient:in
-x           = 1:n                                                               # Regressionsprädiktorwerte
-X           = matrix(c(rep(1, n), x), nrow = n)                                 # Designmatrix 
-beta_hat_algr  = matrix(rep(NaN, np * 2), nrow = 2)                             # Patient:innensteigungsparameter Lösung über lineare Algebra
-beta_hat_theorem = matrix(rep(NaN, np * 2), nrow = 2)                           # Patient:innensteigungsparameter Lösung mit Theoremsformeln
-beta_hat_lm = matrix(rep(NaN, np * 2), nrow = 2)                                # Patient:innensteigungsparameter Lösung mit der funktion lm()
+fname       <- "1-Einfache-Lineare-Regression.csv"                             # Dateiname
+D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
+np          <- nrow(D)                                                         # Anzahl Patient:innen
+n           <- ncol(D)                                                         # Datenpunkte pro Patient:in
+x           <- 1:n                                                             # Regressionsprädiktorwerte
+X           <- matrix(c(rep(1, n), x), nrow = n)                               # Designmatrix 
+beta_hat_algr  <- matrix(rep(NaN, np * 2), nrow = 2)                           # Patient:innensteigungsparameter Lösung über lineare Algebra
+beta_hat_theorem <- matrix(rep(NaN, np * 2), nrow = 2)                         # Patient:innensteigungsparameter Lösung mit Theoremsformeln
+beta_hat_lm <- matrix(rep(NaN, np * 2), nrow = 2)                              # Patient:innensteigungsparameter Lösung mit der funktion lm()
 
-sp          = rep(NaN, np)                                                      # Steigungsparameter
-for(i in 1:np){                                                                 # Iteration über Patient:innen
+sp          <- rep(NaN, np)                                                    # Steigungsparameter
+for(i in 1:np){                                                                # Iteration über Patient:innen
   # Evaluation über Gleichsungssystem lösen
-  beta_hat_algr[, i]  = solve(t(X) %*% X) %*% t(X) %*% t(D[i, ])                   # Ausgleichsgeradenparameterevaluation
+  beta_hat_algr[, i]  <- solve(t(X) %*% X) %*% t(X) %*% t(D[i, ])              # Ausgleichsgeradenparameterevaluation
   # Evaluation mithilfe des Theorems für Ausgleichsgeradenparameter
-  y_pat = as.numeric(unlist(D[i, ]))                                            # Pat.spezifische y-Werte
-  x_bar = mean(x)                                                               # Stichprobenmittel der x_i-Werte
-  y_bar = mean(y_pat)                                                           # Stichprobenmittel der y_i-Werte
-  s2x   = var(x)                                                                # Stichprobenvarianz der x_i-Werte
-  cxy   = cov(x, y_pat)                                                         # Stichprobenkovarianz der (x_i,y_i)-Werte
-  beta_hat_theorem[2, i] = cxy/s2x                                                # \hat{\beta}_1, Steigungsparameter
-  beta_hat_theorem[1, i] = y_bar - beta_hat_theorem[1, i] * x_bar                   # \hat{\beta}_0, Offset Parameter
+  y_pat <- as.numeric(unlist(D[i, ]))                                          # Pat.spezifische y-Werte
+  x_bar <- mean(x)                                                             # Stichprobenmittel der x_i-Werte
+  y_bar <- mean(y_pat)                                                         # Stichprobenmittel der y_i-Werte
+  s2x   <- var(x)                                                              # Stichprobenvarianz der x_i-Werte
+  cxy   <- cov(x, y_pat)                                                       # Stichprobenkovarianz der (x_i,y_i)-Werte
+  beta_hat_theorem[2, i] <- cxy/s2x                                            # \hat{\beta}_1, Steigungsparameter
+  beta_hat_theorem[1, i] <- y_bar - beta_hat_theorem[1, i] * x_bar             # \hat{\beta}_0, Offset Parameter
   # Evalutaion mit der Funktion lm()
   fit <- lm(y_pat ~ x)
-  beta_hat_lm[2, i] = fit$coefficients[2]
-  beta_hat_lm[1, i] = fit$coefficients[1]
+  beta_hat_lm[2, i] <- fit$coefficients[2]
+  beta_hat_lm[1, i] <- fit$coefficients[1]
   # browser()
 }
 
@@ -187,24 +187,22 @@ dev.off()
 
 ```{r echo = F, eval = F}
 #| label: tidyverse style
-library(tidyverse)
-library(tidyr)
-library(dplyr)
-library(httpgd)
-library(ggplot2)
+library(tidyverse)                                                             # Für Pipe (%>%), mutate(), filter()
+library(httpgd)                                                                # Für hgd() und hgd_browse()
+library(ggplot2)                                                               # Für ggplot()
 
 # Daten vorbereiten
-# file_path = "6_Übungen/1_Einfache_lineare_Regression/1-Einfache-Lineare-Regression.csv"
-file_path = "1-Einfache-Lineare-Regression.csv"
-D = read.table(file_path, sep = ",", header = TRUE)
-n_pat = nrow(D)                                                            # Anzahl Patientinnen
-D_processed <- D %>%                                                       # PatientIn ID hinzufügen
+# file_path <- "6_Übungen/1_Einfache_lineare_Regression/1-Einfache-Lineare-Regression.csv"
+file_path <- "1-Einfache-Lineare-Regression.csv"
+D <- read.table(file_path, sep = ",", header = TRUE)
+n_pat <- nrow(D)                                                               # Anzahl Patientinnen
+D_processed <- D %>%                                                           # PatientIn ID hinzufügen
   mutate(PatientIn = seq(n_pat))    
-therapieverlauf_mapping <- c(                                              # Zuordnung Therapieverlauf strings zuz numeric values
+therapieverlauf_mapping <- c(                                                  # Zuordnung Therapieverlauf strings zuz numeric values
   "Intake" = 1, "Midtherapy" = 2, "Termination" = 3
   )
-D_long_format <- gather(D_processed, Therapieverlauf, BDI, -PatientIn)     # Daten in long format bringen
-D_for_plotting <- D_long_format %>%                                        # Daten der ersten 4 Patientinnen auswählen
+D_long_format <- gather(D_processed, Therapieverlauf, BDI, -PatientIn)         # Daten in long format bringen
+D_for_plotting <- D_long_format %>%                                            # Daten der ersten 4 PatientInnen auswählen
   filter(PatientIn %in% 1:4) %>%
   mutate(Therapieverlauf = therapieverlauf_mapping[Therapieverlauf])
 
@@ -212,24 +210,25 @@ D_for_plotting <- D_long_format %>%                                        # Dat
 # # Start plot viewer
 # hgd()
 # hgd_browse()
-custom_labeller <- function(variable, value) {                            # PatientIn-spezifische plot label
+custom_labeller <- function(variable, value) {                                 # PatientIn-spezifische plot label
   value <- paste0("PatientIn ", value)
   return(value)
 }
+
 print(D_for_plotting)
 ggplot(
-  data = D_for_plotting,                                                  # Daten
-  mapping = aes(x = Therapieverlauf, y = BDI)) +                          # Daten-Axen-mapping
-  coord_cartesian(ylim = c(15, 35)) +                                     # y-limits anpassen
-  geom_point() +                                                          # Datenpunkte zeichnen
-  geom_smooth(method = "lm", color = "gray", se = F, size=0.4) +          # Ausgleichsgerade zeichnen
+  data = D_for_plotting,                                                       # Daten
+  mapping = aes(x = Therapieverlauf, y = BDI)) +                               # Daten-Axen-mapping
+  coord_cartesian(ylim = c(15, 35)) +                                          # y-limits anpassen
+  geom_point() +                                                               # Datenpunkte zeichnen
+  geom_smooth(method = "lm", color = "gray", se = F, size = 0.4) +             # Ausgleichsgerade zeichnen
   facet_wrap(~PatientIn, nrow = 2, labeller = custom_labeller)
 
-ggsave(                                                                   # Abbildung speichern
+ggsave(                                                                        # Abbildung speichern
   filename = "1-Einfache-Lineare-Regression-ggplot.pdf",
   height = 5, width = 5
 )
-
+ 
 dev.off()
 ```
 
