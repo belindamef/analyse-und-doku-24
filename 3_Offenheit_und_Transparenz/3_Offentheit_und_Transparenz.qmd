@@ -251,7 +251,7 @@ $\Rightarrow$ Menschen machen Fehler
 \vfill
 
 
-# Motivation für Methodentransparenz und Datentransparenz
+# Aspekte von Methodentransparenz und Datentransparenz
 
 Wissenschaftliche Qualitätssicherung
 
