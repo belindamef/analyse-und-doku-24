@@ -1,0 +1,116 @@
+---
+title: "Quarto Demonstration"
+author: "Belinda Fleischmann"
+date: today
+format: 
+  html:
+    fig-width: 6
+    fig-height: 3
+    code-fold: true
+---
+
+## Visualisierung des Zusammenhangs zwischen zwei Variablen
+
+Das hier ist Beispiel-text mit Referenz zur der Abbildung @fig-ausgleichsgerade.
+
+```{r echo = T, eval = TRUE}
+#| label: fig-ausgleichsgerade
+#| fig-cap: "Dauer der Depressionssymptomatik und Prä-Post BDI-Differenz."
+#| warning: false
+
+library(dplyr)                                                                 # Für Pipe (%>%), mutate()
+library(ggplot2)                                                               # Für ggplot()
+
+# Daten vorbereiten
+# file_path <- "6_Übungen/1_Einfache_lineare_Regression/1-Einfache-Lineare-Regression.csv"
+file_path <- "Daten_2.csv"
+wd <- getwd()
+
+D <- read.table(file_path, sep = ",", header = TRUE)
+n_pat <- nrow(D)                                                               # Anzahl Patientinnen
+D_processed <- D %>%                                                           # PatientIn ID hinzufügen
+  mutate(PatientIn = seq(n_pat))
+
+# Visualisierung
+ggplot(
+  data = D_processed,                                                          # Daten
+  mapping = aes(x = DUR, y = BDI)) +                                           # Daten-Axen-mapping
+  coord_cartesian(ylim = c(-10, 20)) +                                         # y-limits anpassen
+  geom_point() +                                                               # Datenpunkte zeichnen
+  geom_smooth(method = "lm", color = "blue", se = F, size = 0.4) +             # Ausgleichsgerade zeichnen
+  ylab("BDI Diff") + xlab("Dauer Symptomatik [Monate]")
+
+out_fn = "ggplot_demo.pdf"
+ggsave(                                                                        # Abbildung speichern
+  filename = out_fn,
+  height = 5, width = 5
+)
+```
+
+Ich kann im Fließtext auch Variablen referenzieren und den im Arbeitsspeicher hinterliegten Wert abrufen. So kann ich hier beispielsweise darüber informieren, dass die @fig-ausgleichsgerade als pdf Datei in `r file.path(getwd(), out_fn)` abgelegt wird.
+
+
+## Zusammenhangsmaße
+
+Als nächstes kann ich noch ein Maße angeben, die den Zusammenhang quantifizieren.
+Der Folgende Code bestimmt die Korrelation und Parameter der Ausgleichsgeraden.
+
+```{r echo = T, eval = TRUE}
+#| label: Maße
+# Lineare Regression durchführen
+lm_model <- lm(BDI ~ DUR, data = D_processed)
+
+# Steigung (slope) extrahieren
+beta_1 <- coef(lm_model)["DUR"]
+
+# y-Achsenabschnitt (intercept) extrahieren
+beta_0 <- coef(lm_model)["(Intercept)"]
+
+# Korrelation bestimmen
+r <- cor(D$BDI, D$DUR)
+```
+
+Die Ergebnisse kann ich jetzt im Fließtext beschreiben. Die Korrelation zwischen BDI Differenz und Dauer der Depressionssymptomatik zu Therapiebeginn beträgt `r round(r, digits = 2)`. Der Steigungsparameter der Ausgleichsgerade ist $\beta_1 = `r round(beta_1, digits = 2)`$ und der y-Achsenabschitt $\beta_0 = `r round(beta_0, digits = 2)`$. 
+
+Noch ein wenig eleganter wäre es allerdings, die Werte in die Grafik zu integrieren. Der nachfolgende Code setzt produziert @fig-ausgleichsgerade-mit-Maßen
+, wo wir das umsetzen.
+
+```{r echo = T, eval = TRUE}
+#| label: fig-ausgleichsgerade-mit-Maßen
+#| fig-cap: "Dauer der Depressionssymptomatik und Prä-Post BDI-Differenz."
+#| warning: false
+library(latex2exp)                                                             # Für TeX()
+
+
+beschriftung <- sprintf(
+  "r = %.2f, beta_0 = %.2f, beta_1 = %.2f", r, beta_0, beta_1
+)
+
+# Visualisierung
+ggplot(
+  data = D_processed,                                                          # Daten
+  mapping = aes(x = DUR, y = BDI)) +                                           # Daten-Axen-mapping
+  coord_cartesian(ylim = c(-10, 20)) +                                         # y-limits anpassen
+  geom_point() +                                                               # Datenpunkte zeichnen
+  geom_smooth(method = "lm", color = "blue", se = F, size = 0.4) +             # Ausgleichsgerade zeichnen
+  ylab("BDI Diff") + xlab("Dauer Symptomatik [Monate]") + 
+   annotate(                                                                   # "geom" (Objekt) hinzufügen
+    "text",                                                                    # Typ des OBjekt ist Text
+    label = beschriftung,                                                      # Inhalt des Text-Objekts
+    x = Inf,                                                                   # x-Achsen-Position ganz rechts
+    hjust = 1,                                                                 # rechtsbündig (0: linksbündig, 0.5: zentriert)
+    y = 19,                                                                    # y-Achsen-Position bei Wert 20.
+    vjust = 1                                                                  # nach bündig (0: unten bündig, 0.5: zentriert)
+   )
+ggsave(                                                                        # Abbildung speichern
+  filename = "ggplot_demo_2.pdf",
+  height = 5, width = 5
+)
+```
+
+
+## TO-DIFF in DEMO
+
+* Unterschied pdf und html zeigen
+* echo true false
+* code fold in html

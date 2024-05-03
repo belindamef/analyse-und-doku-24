@@ -1,0 +1,24 @@
+---
+title: "Quarto Demonstration"
+author: "Belinda Fleischmann"
+date: today
+format: pdf
+---
+
+# Überschrift zu Kapitel 1.
+
+Hier steht der Text für Kapitel 1. Darin könnte auch eine Abbildung enthalten sein. 
+
+![](../Abbildungen/otto.png){width="10%"}
+
+
+## Überschrift zum Unterkapitel 1.1
+
+Hier steht der Text für Unterkapitel 1.1. Manche Worte möchte ich **fett** und manche Worte _kursiv_. und Befehle in `monospace` schreiben. Mögliche Farben möchte ich mit Stichpunkten auflisten.
+
+* \textcolor{blue}{blau}
+* \textcolor{green}{grün}
+* \textcolor{red}{rot}
+* \textcolor{gray}{grau}
+
+Wenn wir mathematische Ausdrücke mit Dollarzeichen umrahmen, werden sie mithilfe von \LaTeX formatiert. So können wir z.B. die Verteilung eines Zufallsvektors formal mit $\upsilon \sim N(\mu, \sigma^2 I_n)$ mit $\mu := X\beta \in \mathbb{R}^n$ aufschreiben.

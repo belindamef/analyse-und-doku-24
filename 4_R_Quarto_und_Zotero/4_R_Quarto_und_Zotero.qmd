@@ -1,0 +1,669 @@
+---
+format:
+  beamer:
+    include-in-header: ../Header_add_copyright.tex
+---
+
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Analyse und Dokumentation
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie SoSe 2024
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren teilweise auf [Design, Analyse, Dokumentation](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Sommersemester+2023/Design_+Analyse_+Dokumentation-p-2086.html) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+
+# Termine {.plain}
+
+\setstretch{1.3}
+\vfill
+\center
+\small
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{llll}
+Datum          & Einheit               & Thema                                    & Lehrperson   \\\hline
+10.04.24       & Seminar               &  (1) Ethik und Ethische Formalitäten     & BF \\
+17.04.24       & Seminar               &  (2) Wissenschaftliche Berichte          & BF \\
+24.04.24       & Seminar               &  (3) Offenheit und Transparenz           & BF \\
+01.05.24       & \textcolor{gray}{Tag der Arbeit}   \\
+\textbf{08.05.24}       & \textbf{Seminar}               &  \textbf{(4) R, Quarto und Zotero }                       & \textbf{BF} \\  \hline
+15.05.24       & Praxisseminar         &      Offene Übung                        & BF \\
+22.05.24       & Präsentationen        &  Einfache Lineare Regression         & JS \\
+29.05.24       & Präsentationen        &  Korrelation                         & JS \\
+05.06.24       & Präsentationen        &  Einstichproben-T-Test               & JS \\
+12.06.24       & Präsentationen        &  Zweistichproben-T-Test              & JS \\
+19.06.24       & Präsentationen        &  Einfaktorielle Varianzanalyse       & BF \\
+26.06.24       & Präsentationen        &  Zweifaktorielle Varianznalyse       & BF \\
+03.07.24       & Präsentationen        &  Multipe Regression                  & BF \\
+10.07.24       & Präsentationen        &  Kovarianzanalyse                    & BF \\\hline
+26.07.24       & Klausurtermin                                                     \\
+Feb 2025       & Klausurwiederholungstermin                                        \\
+\end{tabular}
+
+
+
+# (4) Quarto - Titelfolie {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(4) R, Quarto und Zotero}
+\vfill
+
+
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+
+R Tools
+
+Quarto
+
+Zotero
+
+
+
+
+# R Tools ===================================== {.plain}
+\AtBeginSection{}
+\section{R Tools}
+
+\large
+\vfill
+\setstretch{2.5}
+
+
+**R Tools**
+
+Quarto
+
+Zotero
+
+# Hilfreiche Quellen
+
+\setstretch{2}
+
+\textcolor{linkblue}{\href{https://code.visualstudio.com/docs/languages/r}{Visual Studio Code (VS Code) Website}}
+
+\textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R}{VS Code-R Wiki}}
+
+\textcolor{linkblue}{\href{https://r4ds.hadley.nz/}{R for Data Science (2e)}}
+
+\textcolor{linkblue}{\href{https://ggplot2-book.org/}{ggplot2: Elegant Graphics for Data Analysis (3e)}}
+
+
+# Wiederholung: R und VS Code
+
+![](../Abbildungen/ad_4_R_VSC.png){width="90%" fig-align="center"}
+
+\textcolor{linkblue}{\href{https://code.visualstudio.com/docs/languages/r}{VS Code Website}}
+
+
+# Wiederholung: R workspace und Interactive Viewer
+
+\textcolor{darkblue}{Help Viewer}
+
+![](../Abbildungen/ad_4_R_workspace_help_viewer_VSC.png){width="90%" fig-align="center"}
+
+\setstretch{1.2}
+\footnotesize
+
+Mit dem Befehl `?funktionsname` oder über \fbox{HELP PAGES} öffnen.
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki/Interactive-viewers}{VS Code Wiki - Interactive viewers}}
+\end{flushright}
+
+# Wiederholung: R workspace und Interactive Viewer
+
+\textcolor{darkblue}{Table Viewer}
+
+![](../Abbildungen/ad_4_R_workspace_table_viewer_VSC.png){width="90%" fig-align="center"}
+
+
+\setstretch{1.2}
+\footnotesize
+
+Mit dem Befehl `View()` oder im R \fbox{WORKSPACE} $\rightarrow$ \fbox{Global Environment} über das View Symbol ![](../Abbildungen/ad_4_view_symbol.png){width="4%" fig-align="center"} neben entsprechendem Objekt
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki/Interactive-viewers}{VS Code Wiki - Interactive viewers}}
+\end{flushright}
+
+
+# Wiederholung: R workspace und Interactive Viewer
+
+\textcolor{darkblue}{List Viewer}
+
+![](../Abbildungen/ad_4_R_workspace_list_viewer_VSC.png){width="90%" fig-align="center"}
+
+
+\setstretch{1.2}
+\footnotesize
+
+Mit dem Befehl `View()` oder im R \fbox{WORKSPACE} $\rightarrow$ \fbox{Global Environment} über das View Symbol ![](../Abbildungen/ad_4_view_symbol.png){width="4%" fig-align="center"} neben entsprechendem Objekt
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki/Interactive-viewers}{VS Code Wiki - Interactive viewers}}
+\end{flushright}
+
+
+# Wiederholung: R workspace und Interactive Viewer
+
+\textcolor{darkblue}{Plot Viewer}
+
+![](../Abbildungen/ad_4_R_workspace_plot_viewer_VSC.png){width="90%" fig-align="center"}
+
+\setstretch{1.2}
+\small
+
+Mit dem `R Paket` \textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki/Plot-viewer}{httpgd}} erleichtert die Ansicht erstellter Grafiken.
+
+Nach Installation über r.plot.useHttpgd in VS Code Einstellungen freischalten.
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki/Interactive-viewers}{VS Code Wiki - Interactive viewers}}
+\end{flushright}
+
+# Debugging mit `browser()`
+
+\setstretch{1.5}
+\small
+
+Die `R base` Funktion `browser()` erlaubt das Pausieren der Exekution eines Skripts und Inspektion der aktuellen *environment*.
+
+\textcolor{darkcyan}{Beispiel}
+\footnotesize
+
+```{r, eval = F, echo = T}
+#| label: browser()
+# Variableninitiation
+erste_variable <- 1
+zweite_variable <- 3
+ergebnis <- c()
+
+# Inspektion des environments
+browser()                     # Pausiert Skript
+
+# Mitte des Skripts
+ergebnis <- erste_variable + zweite_variable
+browser()
+```
+
+\small
+
+Über das Argument `expr` kann auch eine Bedingung als boolesche Operation spezifiziert werden.
+
+Mit \fbox{Enter} wird die Exekution fortgeführt.
+
+Mit \fbox{Q} wird der browser beendet.
+
+
+# tidyverse
+
+![](../Abbildungen/ad_4_tidyverse.png){width="100%" fig-align="center"}
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://www.tidyverse.org/}{Tidyverse}}
+\end{flushright}
+
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://posit.co/resources/cheatsheets/}{Cheat Sheets}}
+\end{flushright}
+
+
+# Datenvorverarbeitung mit `dplyr`
+
+\vspace{3mm}
+
+![](../Abbildungen/ad_4_dplyr_cheatsheet.png){width="85%" fig-align="center"}
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://rstudio.github.io/cheatsheets/data-transformation.pdf}{dplyr Cheat Sheet}}
+\end{flushright}
+
+# Datenvorverarbeitung mit `dplyr`
+
+\tiny
+```{r echo = T, eval = T}
+#| label: daten 1 einlesen
+#| warning: false
+D <- read.table("Daten_1.csv", sep = ",", header = TRUE)    # Daten einlesen
+```
+
+\setstretch{1.1}
+```{r, eval = T, echo = F, warning = F}
+library(knitr)
+
+# Ausgabe des Dataframes
+knitr::kable(D, digits = 2)                                 # Markdowntabellenoutput
+```
+
+
+# Datenvorverarbeitung mit `dplyr`
+
+\vspace{3mm}
+\footnotesize
+
+Der Pipe operater `%>%` oder `|>` ermöglicht es, Funktionen in einer Reihe nacheinander auszuführen.
+
+Mit der R-Funktion `mutate()` können wir neue Spalten erzeugen (auch als Funktionen bestehender Spalten).
+
+\vspace{2mm}
+
+\tiny
+\setstretch{1.1}
+
+```{r echo = T, eval = T}
+#| label: dplyer example 1
+#| warning: false
+library(dplyr)
+n <- nrow(D)                                                              # Anzahl Beobachtungen
+D_processed <- D %>%                                                      # D wird an nächste Funktion übergeben
+  mutate(ID = seq(n)) %>%                                                 # ID-Spalte hinzufügen
+  mutate(Summe = Variable_1 + Variable_2 + Variable_3)                    # Summen-Spalte hinzufügen
+```
+
+\setstretch{1}
+```{r, eval = T, echo = F, warning = F}
+library(knitr)
+
+# Ausgabe des neuen Dataframes
+knitr::kable(D_processed, digits = 2, align = "ccc", caption = NULL)     # Markdowntabellenoutput
+```
+
+
+
+# Datenvorverarbeitung mit `dplyr`
+\vspace{3mm}
+
+\tiny
+\footnotesize
+Mit der R-Funktion `filter()` können wir Zeilen gemäß bestimmten Bedingungen auswählen.
+\vspace{2mm}
+
+
+\tiny
+```{r echo = T, eval = T}
+#| label: dplyer example 2
+
+D_selected <- D_processed %>%
+  filter(ID %in% 1:10) %>%                               # Auswahl der IDs 1-10
+  filter(Summe > 90)                                     # Selektion der Beobachtungen mit Summe > 90
+```
+
+\setstretch{1.1}
+```{r, eval = T, echo = F, warning = F}
+library(knitr)
+
+# Ausgabe des neuen Dataframes
+knitr::kable(D_selected, digits = 2, caption = NULL)     # Markdowntabellenoutput
+```
+
+\vfill
+
+
+# Plotten mit ggplot2
+
+\vspace{3mm}
+
+![](../Abbildungen/ad_4_ggplot_Cheatsheet.png){width="85%" fig-align="center"}
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://rstudio.github.io/cheatsheets/data-visualization.pdf}{ggplot2 Cheat Sheet}}
+\end{flushright}
+
+
+# Plotten mit ggplot
+
+\textcolor{darkblue}{Beispieldatensatz}
+\vfill
+
+\tiny
+
+```{r echo = T, eval = T}
+library(dplyr)                                               # Für Pipe (%>%), mutate()
+
+# Daten vorbereiten
+D <- read.table("Daten_2.csv", sep = ",", header = TRUE)     # Daten einlesen
+n_pat <- nrow(D)                                             # Anzahl Patientinnen
+D_processed <- D %>%                                         # PatientIn ID hinzufügen
+  mutate(PatientIn = seq(n_pat))
+```
+
+
+\small
+Die ersten 12 Zeilen des Dataframes: 
+
+\tiny
+\setstretch{1.1}
+```{r, eval = T, echo = F, warning = F}
+library(knitr)
+
+# Ausgabe der ersten 6 Zeilen jeder Gruppe
+knitr::kable(head(D_processed, n=12L), digits = 2, caption = NULL)
+```
+
+
+# Plotten mit ggplot
+
+\vspace{2mm}
+\tiny
+\setstretch{1.1}
+
+```{r echo = F, eval = F}
+#| label: Maße
+# Lineare Regression durchführen
+lm_model <- lm(BDI ~ DUR, data = D_processed)
+
+# Steigung (slope) extrahieren
+beta_1 <- coef(lm_model)["DUR"]
+
+# y-Achsenabschnitt (intercept) extrahieren
+beta_0 <- coef(lm_model)["(Intercept)"]
+
+# Korrelation bestimmen
+r <- cor(D$BDI, D$DUR)
+
+# Beschriftung
+beschriftung <- sprintf(
+  "r = %.2f, beta_0 = %.2f, beta_1 = %.2f", r, beta_0, beta_1
+)
+```
+
+```{r echo = T, eval = F}
+#| label: fig-ausgleichsgerade
+#| fig-cap: "Dauer der Depressionssymptomatik und Prä-Post BDI-Differenz."
+#| warning: false
+library(ggplot2)                                         # Für ggplot()
+
+# Visualisierung
+ggplot(
+  data = D_processed,                                    # Daten
+  mapping = aes(x = DUR, y = BDI)                        # Daten-Axen-mapping
+  ) +
+  coord_cartesian(ylim = c(-10, 20)) +                   # y-limits anpassen
+  geom_point() +                                         # Datenpunkte zeichnen
+  geom_smooth(                                           # Ausgleichsgerade zeichnen
+    method = "lm",
+    color = "green", se = F, linewidth = 0.4
+    ) +
+  ylab("BDI Diff") + xlab("Dauer Symptomatik [Monate]")  # Achsenbeschriftung
+graphics.off()                                           # Schließt browser
+
+ggsave(                                                  # Abbildung speichern
+  filename = "ggplot_beispiel.pdf",
+  height = 5, width = 5
+)
+```
+
+
+# Plotten mit ggplot
+
+\vfill
+
+![](ggplot_beispiel.pdf){width="60%" fig-align="center"}
+
+
+# Quarto ===================================== {.plain}
+\AtBeginSection{}
+\section{Quarto}
+
+\large
+\vfill
+\setstretch{2.5}
+
+
+R Tools
+
+**Quarto**
+
+Zotero
+
+
+# Quarto
+
+\center
+\vfill
+![](../Abbildungen/dad_7_quarto_1.pdf){width=90%}
+\vfill
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://quarto.org/}{Quarto Website}}
+\end{flushright}
+
+# Quarto
+\setstretch{2.3}
+\textcolor{darkblue}{Was ist Quarto?}
+
+\small
+
+* Ein seit 2022 verfügbares freies wissenschaftlich-technisches Publikationssystem
+* Eine Weiterentwicklung von [\textcolor{linkblue}{RMarkdown}](https://rmarkdown.rstudio.com/) und [\textcolor{linkblue}{RBookdown}](https://bookdown.org/) durch [\textcolor{linkblue}{Posit}](https://posit.co/) 
+* RMarkdown/RBookdown sind RStudio Adaptationen von [\textcolor{linkblue}{Markdown}](https://www.markdownguide.org/) und [\textcolor{linkblue}{Jupyter Notebooks}](https://jupyter.org/)
+* Allgemeines Ziel ist hier die einfache Integration von ausführbarem Programmiercode 
+in ein ansprechendes Text-, Tabellen- und Abbildungslayout für Web- und Printdokumente.
+* Quarto nutzt  [\textcolor{linkblue}{Markdown}](https://www.markdownguide.org/) und [\textcolor{linkblue}{Latex}](https://www.latex-project.org/) für Layoutprozesse.
+* Quarto nutzt [\textcolor{linkblue}{Pandoc}](https://pandoc.org/) für multiple Outputformate (.html, .docx, .pdf, etc.)
+* Quarto läuft smoother und schneller als RMarkdown und RBookdown.
+
+
+# Installation von Quarto
+
+\center
+\vfill
+![](../Abbildungen/ad_4_quarto_getting_started.png){width=90%}
+\vfill
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://quarto.org/docs/get-started/}{Quarto Website Installation}}
+\end{flushright}
+
+
+# Quarto und VS Code
+
+\center
+\vfill
+![](../Abbildungen/ad_quarto_vsc.png){width=90%}
+\vfill
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://quarto.org/docs/get-started/hello/vscode.html}{Quarto Website Tutorial: VS Code}}
+\end{flushright}
+
+
+# Markdown
+\small
+
+* Eine Markup Language (Auszeichnungssprache) zur Erzeugung formatierten Texts 
+* Eine HTML Alternative zur Erstellung von Webseiten etc. mithilfe einfacher Texteditoren
+* Von John Gruber und Aaron Swartz 2004 mit dem Ziel hoher Lesbarkeit entwickelt  
+
+\center
+\vfill
+![](../Abbildungen/dad_7_markdown.pdf){width=70%}
+\vfill
+
+
+# LaTeX
+
+\setstretch{1.6}
+\small
+
+* Ein Softwarepaket zur Vereinfachung von [\textcolor{linkblue}{TeX}](https://ctan.org/tex?lang=en)
+* [\textcolor{linkblue}{TeX}](https://ctan.org/tex?lang=en) ist ein von Donald E. Knuth ab 1977 entwickeltes Textsatzsystem mit Makrosprache
+* LaTeX wurde von Leslie Lamport Anfang 1984 entwickelt
+* LaTeX ist insbesondere für mathematische Berichte und Präsentationen (Beamer) nützlich
+
+\vspace{2mm}
+\center
+![](../Abbildungen/dad_7_latex_1.pdf){width=60%}
+
+$\Downarrow$
+
+![](../Abbildungen/dad_7_latex_2.pdf){width=60%}
+
+# Pandoc
+\small
+* [\textcolor{linkblue}{Pandoc}](https://pandoc.org/) ist eine kostenlose Document Conversion Software von John MacFarlane  
+* [\textcolor{linkblue}{Pandoc}](https://pandoc.org/) ist in die Quarto Engine integriert
+* Einige von [\textcolor{darkblue}{Pandocs}](https://pandoc.org/) Konvertierungsoptionen sind im Folgenden aufgeführt
+
+\center
+![](../Abbildungen/dad_7_pandoc.pdf){width=40%}
+
+
+
+# Quarto Guide
+
+\center
+\vfill
+![](../Abbildungen/ad_4_quarto_guide.png){width=90%}
+\vfill
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://quarto.org/docs/guide/}{Quarto Website Guide}}
+\end{flushright}
+
+
+
+# Quarto Beispiel
+
+\tiny
+
+```{r, eval = FALSE}
+#| label: my_quarto_chunk
+#| highlight: js
+---
+title: "Quarto Demonstration"
+author: "Belinda Fleischmann"
+date: today
+format: pdf
+---
+
+# Überschrift zu Kapitel 1.
+
+Hier steht der Text für Kapitel 1. Darin könnte auch eine Abbildung enthalten sein. 
+
+![](../Abbildungen/otto.png){width="10%"}
+
+## Überschrift zum Unterkapitel 1.1
+
+Hier steht der Text für Unterkapitel 1.1. Manche Worte möchte ich **fett** und manche Worte _kursiv_, und Befehle 
+in `monospace` schreiben. Mögliche Farben möchte ich mit Stichpunkten auflisten.
+
+* \textcolor{blue}{blau}
+* \textcolor{green}{grün}
+* \textcolor{red}{rot}
+* \textcolor{gray}{grau}
+
+Wenn wir mathematische Ausdrücke mit Dollarzeichen umrahmen, werden sie mithilfe von \LaTeX formatiert.
+So können wir z.B. die Verteilung eines Zufallsvektors formal mit $\upsilon \sim N(\mu, \sigma^2 I_n)$ mit
+$\mu := X\beta \in \mathbb{R}^n$ aufschreiben.
+
+```
+
+
+# Quarto Beispiel
+
+\center
+![](../Abbildungen/ad_4_quarto_beispiel.png){width="100%"}
+
+
+# Berichte und Präsentationen mit Quarto
+
+\center
+\vfill
+
+[\textcolor{linkblue}{Beispielbericht}](https://bit.ly/43niMG1)
+
+
+[\textcolor{linkblue}{Beispielpräsentation}](https://bit.ly/45Jh5V2)
+\vfill
+
+
+
+# Zotero ===================================== {.plain}
+\AtBeginSection{}
+\section{Zotero}
+
+\large
+\vfill
+\setstretch{2.5}
+
+
+R Tools
+
+Quarto
+
+**Zotero**
+
+
+# Reference Manager
+\textcolor{darkblue}{Was ist ein Reference Manager?}
+\setstretch{2.7}
+
+\small
+
+* Reference Manager sind Literaturverwaltungsprogramme
+* Reference Manager unterstützen Zitationen und das Erstellen von Literaturverzeichnissen 
+* Zitierstile können automatisch auf bestimmte Spezifikationen (z.B. APA) eingestellt werden
+* Reference Manager dienen auch als digitale Bibliotheken
+* Kommerzielle Reference Manager sind z.B. EndNote, Citavi, Mendeley und Papers
+* Kostenlose/Freemium Reference Manager sind z.B. [\textcolor{linkblue}{JabRef}](https://www.jabref.org/) und [\textcolor{linkblue}{Zotero}](https://www.zotero.org/) 
+* Eine Integration in Quarto erlaubt z.B. der Export der eigenen Library in das [\textcolor{linkblue}{BibTex}](http://www.bibtex.org/) Format.
+
+
+# Zotero
+
+\center
+\vfill
+![](../Abbildungen/ad_4_zotero.png){width=100%}
+\vfill
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://www.zotero.org/}{Zotero Website}}
+\end{flushright}
+
+\tiny
+\begin{flushright}
+\textcolor{linkblue}{\href{https://www.zotero.org/support/}{Zotero Documentation}}
+\end{flushright}
+
+
+
+
+
+
