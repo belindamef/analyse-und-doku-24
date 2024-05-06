@@ -103,7 +103,7 @@ Zotero
 
 \textcolor{linkblue}{\href{https://code.visualstudio.com/docs/languages/r}{Visual Studio Code (VS Code) Website}}
 
-\textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R}{VS Code-R Wiki}}
+\textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki}{VS Code-R Wiki}}
 
 \textcolor{linkblue}{\href{https://r4ds.hadley.nz/}{R for Data Science (2e)}}
 
@@ -151,7 +151,7 @@ Mit dem Befehl `View()` oder im R \fbox{WORKSPACE} $\rightarrow$ \fbox{Global En
 \end{flushright}
 
 
-# Wiederholung: R workspace und Interactive Viewer
+# R workspace und Interactive Viewer
 
 \textcolor{darkblue}{List Viewer}
 
@@ -169,7 +169,7 @@ Mit dem Befehl `View()` oder im R \fbox{WORKSPACE} $\rightarrow$ \fbox{Global En
 \end{flushright}
 
 
-# Wiederholung: R workspace und Interactive Viewer
+# R workspace und Interactive Viewer
 
 \textcolor{darkblue}{Plot Viewer}
 
@@ -178,9 +178,9 @@ Mit dem Befehl `View()` oder im R \fbox{WORKSPACE} $\rightarrow$ \fbox{Global En
 \setstretch{1.2}
 \small
 
-Mit dem `R Paket` \textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki/Plot-viewer}{httpgd}} erleichtert die Ansicht erstellter Grafiken.
+Das `R Paket` \textcolor{linkblue}{\href{https://github.com/REditorSupport/vscode-R/wiki/Plot-viewer}{httpgd}} erleichtert die Ansicht erstellter Grafiken.
 
-Nach Installation über r.plot.useHttpgd in VS Code Einstellungen freischalten.
+Nach Installation über r.plot.useHttpgd in VS Code Einstellungen freischalten. Grafiken öffnen nach Ausführen eines plot Befehls automatisch im Plot Viewer.
 
 \tiny
 \begin{flushright}
@@ -195,21 +195,23 @@ Nach Installation über r.plot.useHttpgd in VS Code Einstellungen freischalten.
 Die `R base` Funktion `browser()` erlaubt das Pausieren der Exekution eines Skripts und Inspektion der aktuellen *environment*.
 
 \textcolor{darkcyan}{Beispiel}
-\footnotesize
+\tiny
 
 ```{r, eval = F, echo = T}
 #| label: browser()
-# Variableninitiation
+# Beispiel 1
 erste_variable <- 1
 zweite_variable <- 3
 ergebnis <- c()
-
-# Inspektion des environments
-browser()                     # Pausiert Skript
-
-# Mitte des Skripts
+browser()                                    # Pausiert Skript
 ergebnis <- erste_variable + zweite_variable
 browser()
+
+# Beispiel 2
+for (i in 1:5) {
+  print(i + 2)
+  browser()
+}
 ```
 
 \small
@@ -219,6 +221,276 @@ browser()
 Mit \fbox{Enter} wird die Exekution fortgeführt.
 
 Mit \fbox{Q} wird der browser beendet.
+
+# Kostrollstrukturen
+
+\textcolor{darkblue}{Motivation}
+
+Programmiercode wird streng sequentiell Befehl für Befehl ausgeführt.
+
+Manchmal möchten wir von dieser rein sequentiellen Befehlsreiehenfolge abweichen.
+
+Die prinzipiellen Werkzeuge dafür sind **Kontrollstrukturen**. Dazu gehören `if`-statements, `switch`-statements und Schleifen mit `for`, `while` oder `repeat`. 
+
+\vfill
+
+
+# Kostrollstrukturen: `if`-statements
+
+\textcolor{darkblue}{if-statements}
+
+\footnotesize
+
+```{r, echo = T, eval = F}
+if (Bedingung) {
+  TrueAktion        # Befehl, der ausgeführt wird, falls Bedingung TRUE ist
+}
+```
+
+\normalsize
+
+* Wenn `Bedingung` `TRUE` ist, wird `TrueAktion` ausgführt.
+* Wenn `Bedingung` `FALSE` ist, wird `TrueAktion` nicht ausgeführt.
+
+\textcolor{darkblue}{if-else-statements}
+
+\footnotesize
+
+```{r, echo = T, eval = F}
+if (Bedingung) {
+  TrueAktion        # Befehl, der ausgeführt wird, falls Bedingung TRUE ist
+} else {
+  FalseAktion       # Befehl, der ausgeführt wird, falls Bedingung FALSE ist
+}
+```
+
+\normalsize
+
+* Wenn `Bedingung` `TRUE` ist, wird `TrueAktion` ausgführt.
+* Wenn `Bedingung` `FALSE` ist, wird `FalseAktion` ausgeführt.
+
+
+# Kostrollstrukturen: `if`-statements
+
+\textcolor{darkcyan}{Beispiele}
+
+\footnotesize
+
+```{r, echo = T, eval = T}
+x <- 3
+if (x > 0) {
+  print("x ist größer als 0")
+}
+
+y <- -3
+if (y > 0){
+  print("y ist größer als 0")
+} else{
+  print("y ist nicht größer als 0")
+}
+```
+
+
+# Wiederholung: Logischer Operatoren
+
+\setstretch{1.6}
+
+\small
+
+* Die Boolesche Algebra und R kennen zwei *logische Werte*: TRUE und FALSE
+* Bei Auswertung von Relationsoperatoren ergeben sich logische Werte
+
+\begin{center}
+\begin{tabular}{l|l}
+Relationsoperator 	& Bedeutung 							\\\hline
+$==$ 				& Gleich 								\\
+$!=$ 				& Ungleich 								\\
+$<$, $>$			& Kleiner, Größer 						\\
+$<=$, $>=$ 			& Kleiner gleich, Größer gleich			\\
+$\vert$    			& ODER              					\\
+$\&$    			& UND              						\\
+\end{tabular}
+\end{center}
+
+\vfill
+
+* $<,<=,>,>=$ werden zumeist auf numerische Werte angewendet.
+* $==,!=$ werden zumeist auf beliebige Datenstrukturen angewendet.
+* $\vert$  und $\&$ werden zumeist auf logische Werte angewendet.
+* $\vert$ implementiert das inklusive *oder*. Die Funktion xor() implementiert das exklusive ODER.
+
+
+# Kostrollstrukturen: `if`-statements
+
+\textcolor{darkcyan}{Beispiele}
+
+\tiny
+\setstretch{1.1}
+
+```{r, echo = T, eval = T}
+x <- 3
+y <- 2
+
+# Logisches UND/ODER
+if (x > 0 | y > 0) {
+  print("beide, oder eine der beiden Variablen sind größer 0")
+} else{
+  print("Keine der Variablen ist größer 0")
+}
+
+# Logisches UND
+if (x > 0 | y > 0) {
+  print("x und y sind größer 0")
+} else{
+  print("Es sind nicht beide Variablen x und y größer 0, aber vielleicht eine der beiden")
+}
+
+# Exklusives ODER
+if (xor(x > 0, y > 0)){
+  print("Genau eine der 2 Variablen x und y ist größer 0")
+} else{
+  print("Es sind entweder keine der Variablen x und y oder beide größer 0")
+}
+```
+
+
+# Kontrollstrukturen: `switch`-statements
+
+\small
+\textcolor{darkblue}{Motivation}
+
+Kombinierte `if-else` -statements können leicht unübersichtlich werden.
+
+\setstretch{1.2}
+\footnotesize
+```{r, echo = T, eval = T}
+x <- 2
+if (x == 1){
+  print("Aktion 1")
+} else if(x == 2){
+  print("Aktion 2")
+} else if(x == 3){
+  print("Aktion 3")
+} else if(x == 4){
+  print("Aktion 4")
+}
+```
+
+\small
+\textcolor{darkblue}{switch-statement mit Integer}
+
+\footnotesize
+```{r, echo = T, eval = T}
+x <- 2
+switch(
+  x,                               # switch Variable
+  print("Aktion 1"),               # 1. Aktion
+  print("Aktion 2"),               # 2. Aktion
+  print("Aktion 3"),               # 3. Aktion
+  print("Aktion 4")                # 4. Aktion
+)
+```
+
+# Kontrollstrukturen: `switch`-statements
+
+
+\small
+\textcolor{darkblue}{switch-statement mit Character}
+
+\footnotesize
+```{r, echo = T, eval = T}
+x <- "a"
+switch(
+  x,                               # switch Variable
+  a = print("Aktion 1"),           # 1. Aktion
+  b = print("Aktion 2"),           # 2. Aktion
+  c = print("Aktion 3"),           # 3. Aktion
+  d = print("Aktion 4")            # 4. Aktion
+)
+```
+
+\vfill
+
+# Kontrollstrukturen: `for`-Schleifen
+
+\normalsize
+\textcolor{darkblue}{for-Schleifen}
+
+\footnotesize
+```{r, echo = T, eval = F}
+for (item in sequenz){
+  zu_wiederholende_Aktion          # Aktion, die wiederholt werden soll
+}
+```
+
+\normalsize
+\textcolor{darkcyan}{Beispiel}
+
+\footnotesize
+```{r, echo = T, eval = T}
+for (i in 1:3) {
+  print(i)                         # Aktion, die wiederholt werden soll
+}
+```
+
+
+# Kontrollstrukturen: `while` -Schleifen
+
+\setstretch{1.3}
+\normalsize
+\textcolor{darkblue}{while-Schleifen}
+
+\footnotesize
+while-Schleifen iterieren Codeabschnitte basierend auf einer Bedingung.
+
+\setstretch{1.1}
+```{r, echo = T, eval = F}
+while (Bedingung) {
+  TrueAktion            # TrueAktion wird ausgeführt, solange Condition == TRUE
+}
+```
+
+\textcolor{darkcyan}{Beispiel}
+
+\setstretch{1}
+```{r, echo = T, eval = T}
+i <- 5
+while (i < 11) {
+  print(i)
+  i <- i + 1
+}
+```
+
+
+# Kontrollstrukturen: `repeat` -Schleifen
+\setstretch{1.3}
+\normalsize
+\textcolor{darkblue}{repeat-Schleifen}
+
+\footnotesize
+repeat-loops wiederholen Codeabschnitte bis zu einem ‘break’ Befehl
+
+\setstretch{1.1}
+
+```{r, echo = T, eval = F}
+repeat {
+  TrueAktion            # Aktion wird ausgeführt, bis ein break Befehl evaluiert wird
+}
+```
+
+\textcolor{darkcyan}{Beispiel}
+
+\setstretch{1}
+```{r, echo = T, eval = T}
+i <- 1
+repeat {
+  print(i)
+  i <- i + 1
+  if (i == 5) {
+    break
+  }
+}
+```
 
 
 # tidyverse
@@ -532,15 +804,6 @@ in ein ansprechendes Text-, Tabellen- und Abbildungslayout für Web- und Printdo
 $\Downarrow$
 
 ![](../Abbildungen/dad_7_latex_2.pdf){width=60%}
-
-# Pandoc
-\small
-* [\textcolor{linkblue}{Pandoc}](https://pandoc.org/) ist eine kostenlose Document Conversion Software von John MacFarlane  
-* [\textcolor{linkblue}{Pandoc}](https://pandoc.org/) ist in die Quarto Engine integriert
-* Einige von [\textcolor{darkblue}{Pandocs}](https://pandoc.org/) Konvertierungsoptionen sind im Folgenden aufgeführt
-
-\center
-![](../Abbildungen/dad_7_pandoc.pdf){width=40%}
 
 
 
