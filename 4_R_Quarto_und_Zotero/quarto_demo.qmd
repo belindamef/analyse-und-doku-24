@@ -1,7 +1,7 @@
 ---
 title: "Quarto Demonstration"
 author: "Belinda Fleischmann"
-date: today
+date: 01-04-2023
 format: 
   html:
     fig-width: 6
@@ -9,7 +9,7 @@ format:
     code-fold: true
 ---
 
-## Visualisierung des Zusammenhangs zwischen zwei Variablen
+# Visualisierung des Zusammenhangs zwischen zwei Variablen
 
 Das hier ist Beispiel-text mit Referenz zur der Abbildung @fig-ausgleichsgerade.
 
@@ -50,7 +50,7 @@ ggsave(                                                                        #
 Ich kann im Fließtext auch Variablen referenzieren und den im Arbeitsspeicher hinterliegten Wert abrufen. So kann ich hier beispielsweise darüber informieren, dass die @fig-ausgleichsgerade als pdf Datei in `r file.path(getwd(), out_fn)` abgelegt wird.
 
 
-## Zusammenhangsmaße
+# Zusammenhangsmaße
 
 Als nächstes kann ich noch ein Maße angeben, die den Zusammenhang quantifizieren.
 Der Folgende Code bestimmt die Korrelation und Parameter der Ausgleichsgeraden.
@@ -114,3 +114,4 @@ ggsave(                                                                        #
 * Unterschied pdf und html zeigen
 * echo true false
 * code fold in html
+* date - today

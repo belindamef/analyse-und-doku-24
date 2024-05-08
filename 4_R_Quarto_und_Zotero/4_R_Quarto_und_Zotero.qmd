@@ -526,6 +526,7 @@ repeat {
 ```{r echo = T, eval = T}
 #| label: daten 1 einlesen
 #| warning: false
+
 D <- read.table("Daten_1.csv", sep = ",", header = TRUE)    # Daten einlesen
 ```
 

@@ -11,6 +11,16 @@ Hier steht der Text für Kapitel 1. Darin könnte auch eine Abbildung enthalten 
 
 ![](../Abbildungen/otto.png){width="10%"}
 
+Wir können auch Code-Snippets einfügen. Dabei können wir mit `echo` festlegen, ob diese angezeigt, und `eval`, ob die Befehle ausgeführt werden sollen.
+
+```{r, echo = FALSE, eval = TRUE}
+x <- 3
+y <- 4
+z <- y / x
+```
+
+Im workspace existierende Variablen können dann auch im Text referenziert werde. So können wir z.B. schreiben, dass y geteilt durch x den Wert `r round(z, digits = 2)` ergibt.
+
 
 ## Überschrift zum Unterkapitel 1.1
 
