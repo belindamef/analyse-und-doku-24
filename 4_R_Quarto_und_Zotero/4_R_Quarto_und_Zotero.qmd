@@ -203,14 +203,15 @@ Die `R base` Funktion `browser()` erlaubt das Pausieren der Exekution eines Skri
 erste_variable <- 1
 zweite_variable <- 3
 ergebnis <- c()
+print(ergebnis)
 browser()                                    # Pausiert Skript
 ergebnis <- erste_variable + zweite_variable
-browser()
+#browser()
 
 # Beispiel 2
 for (i in 1:5) {
   print(i + 2)
-  browser()
+  #browser()
 }
 ```
 
@@ -222,7 +223,7 @@ Mit \fbox{Enter} wird die Exekution fortgeführt.
 
 Mit \fbox{Q} wird der browser beendet.
 
-# Kostrollstrukturen
+# Kontrollstrukturen
 
 \textcolor{darkblue}{Motivation}
 
@@ -235,7 +236,7 @@ Die prinzipiellen Werkzeuge dafür sind **Kontrollstrukturen**. Dazu gehören `i
 \vfill
 
 
-# Kostrollstrukturen: `if`-statements
+# Kontrollstrukturen: `if`-statements
 
 \textcolor{darkblue}{if-statements}
 
@@ -339,7 +340,7 @@ if (x > 0 | y > 0) {
 }
 
 # Logisches UND
-if (x > 0 | y > 0) {
+if (x > 0 & y > 0) {
   print("x und y sind größer 0")
 } else{
   print("Es sind nicht beide Variablen x und y größer 0, aber vielleicht eine der beiden")
@@ -686,7 +687,7 @@ ggplot(
   geom_point() +                                         # Datenpunkte zeichnen
   geom_smooth(                                           # Ausgleichsgerade zeichnen
     method = "lm",
-    color = "green", se = F, linewidth = 0.4
+    color = "blue", se = , linewidth = 0.4
     ) +
   ylab("BDI Diff") + xlab("Dauer Symptomatik [Monate]")  # Achsenbeschriftung
 graphics.off()                                           # Schließt browser
