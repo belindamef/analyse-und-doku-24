@@ -614,7 +614,7 @@ knitr::kable(D_selected, digits = 2, caption = NULL)     # Markdowntabellenoutpu
 \end{flushright}
 
 
-# Plotten mit ggplot
+# Plotten mit ggplot2
 
 \textcolor{darkblue}{Beispieldatensatz}
 \vfill
@@ -645,7 +645,7 @@ knitr::kable(head(D_processed, n=12L), digits = 2, caption = NULL)
 ```
 
 
-# Plotten mit ggplot
+# Plotten mit ggplot2
 
 \vspace{2mm}
 \tiny
@@ -698,7 +698,7 @@ ggsave(                                                  # Abbildung speichern
 ```
 
 
-# Plotten mit ggplot
+# Plotten mit ggplot2
 
 \vfill
 
