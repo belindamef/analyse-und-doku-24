@@ -107,11 +107,3 @@ ggsave(                                                                        #
   height = 5, width = 5
 )
 ```
-
-
-## TO-DIFF in DEMO
-
-* Unterschied pdf und html zeigen
-* echo true false
-* code fold in html
-* date - today
