@@ -203,15 +203,15 @@ Die `R base` Funktion `browser()` erlaubt das Pausieren der Exekution eines Skri
 erste_variable <- 1
 zweite_variable <- 3
 ergebnis <- c()
-print(ergebnis)
 browser()                                    # Pausiert Skript
+print("Das Ergebnis ist: ", ergebnis)
 ergebnis <- erste_variable + zweite_variable
-#browser()
+browser()
 
 # Beispiel 2
 for (i in 1:5) {
   print(i + 2)
-  #browser()
+  browser()
 }
 ```
 
@@ -321,7 +321,7 @@ $\&$    			& UND              						\\
 * $\vert$ implementiert das inklusive *oder*. Die Funktion xor() implementiert das exklusive ODER.
 
 
-# Kostrollstrukturen: `if`-statements
+# Kontrollstrukturen: `if`-statements
 
 \textcolor{darkcyan}{Beispiele}
 
@@ -687,7 +687,7 @@ ggplot(
   geom_point() +                                         # Datenpunkte zeichnen
   geom_smooth(                                           # Ausgleichsgerade zeichnen
     method = "lm",
-    color = "blue", se = , linewidth = 0.4
+    color = "green", se = F, linewidth = 0.4
     ) +
   ylab("BDI Diff") + xlab("Dauer Symptomatik [Monate]")  # Achsenbeschriftung
 graphics.off()                                           # Schließt browser
