@@ -152,15 +152,12 @@ library(ppcor)                                                                 #
 library(plotly)                                                                # Für plot_ly()
 
 # Daten vorbereiten
-fname      <- "6_Übungen/7_Multiple-Regression/7-Multiple-Regression.csv"      # Dateiname
+fname      <- "5_Übungen/7_Multiple-Regression/7-Multiple-Regression.csv"      # Dateiname
 fname      <- "7-Multiple-Regression.csv"                                      # Dateiname
 D          <- read.table(fname, sep = ",", header = TRUE)                      # Laden des Datensatzes
 
 # (partielle) Korrelationen
 korrs <- D %>%
-  mutate(y12 = paste(dPOMS, AGE, BRI, sep = ",")) %>%
-  separate(y12, into = c("dPOMS", "AGE", "BRI"), sep = ",") %>%
-  mutate_at(vars(dPOMS, AGE, BRI), as.numeric) %>%
   summarize(
     r_dPOMS_AGE = cor(dPOMS, AGE),
     r_dPOMS_BRI = cor(dPOMS, BRI),

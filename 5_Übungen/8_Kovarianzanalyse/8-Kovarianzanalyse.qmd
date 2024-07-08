@@ -212,7 +212,7 @@ library(ggpubr)                                                                #
 
 
 # Daten vorbereiten
-fname      <- "6_Übungen/8_Kovarianzanalyse/8-Kovarianzanalyse.csv"            # Dateiname
+fname      <- "5_Übungen/8_Kovarianzanalyse/8-Kovarianzanalyse.csv"            # Dateiname
 fname      <- "8-Kovarianzanalyse.csv"                                         # Dateiname
 D          <- read.table(fname, sep = ",", header = TRUE)                      # Laden des Datensatzes
 n_subs     <- nrow(D)

@@ -255,7 +255,7 @@ library(afex)                                                                  #
 library(ggpubr)                                                                # Für ggarrange()
 
 # Daten vorbereiten
-fname <- "6_Übungen/6_Zweifaktorielle-Varianzanalyse/6-Zweifaktorielle-Varianzanalyse.csv" # Dateiname
+fname <- "5_Übungen/6_Zweifaktorielle-Varianzanalyse/6-Zweifaktorielle-Varianzanalyse.csv" # Dateiname
 fname <- "6-Zweifaktorielle-Varianzanalyse.csv"                                            # Dateiname
 D           <- read.table(fname, sep = ",", header = TRUE)                     # Laden des Datensatzes
 n_subs      <- nrow(D)
