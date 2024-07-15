@@ -77,6 +77,7 @@ und Varianzparameterschätzer sowie die T-Statistk für den Therapieeffektregres
 #| label: Kovarianzanalyse (Theorem)
 
 # Laden des Datensatzes
+fname       <- "5_Übungen/8_Kovarianzanalyse/8-Kovarianzanalyse.csv"            # Dateiname
 fname       <- "8-Kovarianzanalyse.csv"                                        # Dateiname
 D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
 n_i         <- c(20,20)                                                        # Anzahl Datenpunkte pro Gruppe
@@ -96,10 +97,17 @@ CS[[2]]     <- matrix(c(0,1,0), nrow = 3)                                      #
 B           <- list()                                                          # Betaparameterschätzerliste
 S           <- rep(NaN,2)                                                      # Varianzparameterschätzervektor
 T           <- rep(NaN,2)                                                      # T-Statistikvektor
+F           <- rep(NaN,2)                                                      # F-Statistikvektor
+p_Eff       <- rep(NaN,2)                                                      # p-Wert der F-Statistik Vektor
+# Datengruppen
+y_1        = D$BDI[D$THP == "CBT"]                # BDI-Differenzwerte in der F2F-Gruppe
+y_2        = D$BDI[D$THP == "PHC"]                # BDI-Differenzwerte in der ONL-Gruppe
 for(i in 1:2){                                                                 # ALM Iterationen
   X           <- XS[[i]]                                                       # Designmatrix
+  X_0         <- XS[[i]][, 1:i]                                                # Designmatrix reduziertes Modell
   p           <- ncol(X)                                                       # Anzahl Betaparameter
   beta_hat    <- solve(t(X) %*% X) %*% t(X) %*% y                              # Betaparameterschätzer vollständiges Modell
+  beta_hat_0 = solve(t(X_0) %*% X_0) %*% t(X_0) %*% y                          # Betaparameterschätzer reduziertes Modell
   eps_hat     <- y - X %*% beta_hat                                            # Residuenvektor 
   sigsqr_hat  <- (t(eps_hat) %*% eps_hat)/(n-p)                                # Varianzparameterschätzer
   c           <- CS[[i]]                                                       # Kontrastgewichtsvektor
@@ -109,7 +117,24 @@ for(i in 1:2){                                                                 #
   B[[i]]      <- beta_hat                                                      # Betaparameterschätzer
   S[i]        <- sigsqr_hat                                                    # Varianzparameterschätzer
   T[i]        <- t                                                             # T-Statistik
+
+  # Evaluation der F-Teststatistik
+  eps_hat    = y - X %*% beta_hat                        # Residuenvektor vollständiges Modell
+  eps_hat_0  = y - X_0 %*% beta_hat_0                    # Residuenvektor reduziertes Modell
+  SQT        = t(eps_hat_0) %*% eps_hat_0                # total sum of squares
+  SQW        = t(eps_hat)   %*% eps_hat                  # within sum of squares
+  SQB        = SQT - SQW                                 # between sum of squares
+  DFB        = p - 1                                     # between degrees of freedom
+  DFW        = n - p                                     # within degrees of freedom
+  MSB        = SQB/DFB                                   # mean between sum of squares
+  MSW        = SQW/DFW                                   # mean within sum of squares
+  F[i]       = MSB/MSW                                   # F-Teststatistik
+  p_Eff[i]   = 1 - pf(Eff, p-1, n-p)                     # p-Wert
 }
+
+# Evaluation F-Statistik
+# ----------------------------------------------------------------------------
+
 cat("Stichprobenmittel BDI (CBT, PHC) : ",   round(c(mean(D$BDI[D$THP == "CBT"]), mean(D$BDI[D$THP == "PHC"])),2),
     "\nStichprobenmittel DUR (CBT, PHC) : ", round(c(mean(D$DUR[D$THP == "CBT"]), mean(D$DUR[D$THP == "PHC"])),2),  
     "\nBetaparameterschätzer      ALM 1 : ", round(B[[1]],2),
@@ -117,7 +142,14 @@ cat("Stichprobenmittel BDI (CBT, PHC) : ",   round(c(mean(D$BDI[D$THP == "CBT"])
     "\nVarianzparameterschätzer   ALM 1 : ", round(S[[1]],2),
     "\nVarianzparameterschätzer   ALM 2 : ", round(S[[2]],2),
     "\nT-Statistik                ALM 1 : ", round(T[[1]],2),
-    "\nT-Statistik                ALM 2 : ", round(T[[2]],2))
+    "\nT-Statistik                ALM 2 : ", round(T[[2]],2),
+    "\nF-Statistik                ALM 1 : ", round(F[[1]],2),
+    "\nF-Statistik                ALM 2 : ", round(F[[2]],2),
+    "\np-Wert der F-Statistik     ALM 1 : ", round(p_Eff[[1]],10),
+    "\np-Wert der F-Statistik     ALM 2 : ", round(p_Eff[[2]],10)
+    )
+
+
 ```
 
 \normalsize
@@ -306,7 +338,7 @@ for (i in c("Rohdaten", "Adjustierte Daten")){
   #plot[i] <- # Erstellen des Plots mit ggp und facet_wrap
   plot_list[[i]] <- ggplot(summary_stats, aes(x = THP, y = Mean)) +
     geom_bar(stat = "identity", fill="lightblue") +
-    geom_errorbar(
+    geom_errorbar(N
       aes(ymin = Mean - Std, ymax = Mean + Std),
       width = 0.2, position = position_dodge(width = 0.9)) +
     geom_jitter(data = data_set, aes(y = BDI), width = 0.2, height = 0, shape = 21, fill = "black", color = "white") +
