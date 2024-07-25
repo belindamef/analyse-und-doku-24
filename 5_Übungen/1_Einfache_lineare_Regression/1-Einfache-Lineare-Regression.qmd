@@ -96,7 +96,7 @@ for(i in 1:np){                                                                #
   s2x   <- var(x)                                                              # Stichprobenvarianz der x_i-Werte
   cxy   <- cov(x, y_pat)                                                       # Stichprobenkovarianz der (x_i,y_i)-Werte
   beta_hat_theorem[2, i] <- cxy/s2x                                            # \hat{\beta}_1, Steigungsparameter
-  beta_hat_theorem[1, i] <- y_bar - beta_hat_theorem[1, i] * x_bar             # \hat{\beta}_0, Offset Parameter
+  beta_hat_theorem[1, i] <- y_bar - beta_hat_theorem[2, i] * x_bar             # \hat{\beta}_0, Offset Parameter
   # Evalutaion mit der Funktion lm()
   fit <- lm(y_pat ~ x)
   beta_hat_lm[2, i] <- fit$coefficients[2]

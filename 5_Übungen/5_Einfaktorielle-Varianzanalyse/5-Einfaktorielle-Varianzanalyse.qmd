@@ -114,6 +114,7 @@ fname       <- "5-Einfaktorielle-Varianzanalyse.csv"                           #
 D           <- read.table(file.path(fname), sep = ",", header = TRUE)          # Laden des Datensatzes
 y           <- D$BDI
 n           <- length(y)
+n_i         <- table(D$Treatment)                                              # Gruppengrößen
 X           <- matrix(                                                         # Designmatrix
               c(rep(1,n_i[1]),rep(1,n_i[2]),rep(1,n_i[3]),rep(1,n_i[4]),       # \mu_0    Regressor
                 rep(0,n_i[1]),rep(1,n_i[2]),rep(0,n_i[3]),rep(0,n_i[4]),       # \alpha_2 Regressor
